@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPT-Image-2 横测 Nano Banana 2：五大真实场景对决</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --bg-card: #1a1a1a;
+            --bg-card-hover: #222222;
+            --text-primary: #f0f0f0;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666666;
+            --accent-green: #22c55e;
+            --accent-green-dim: rgba(34, 197, 94, 0.1);
+            --accent-yellow: #facc15;
+            --accent-blue: #3b82f6;
+            --accent-purple: #a855f7;
+            --border: #222222;
+            --border-light: #333333;
+            --radius: 12px;
+            --radius-lg: 20px;
+            --max-width: 820px;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            padding: 100px 24px 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(34, 197, 94, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: var(--accent-green-dim);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            color: var(--accent-green);
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 28px;
+            letter-spacing: 0.5px;
+        }
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--accent-green);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
+        }
+        .hero h1 {
+            font-size: clamp(28px, 5vw, 48px);
+            font-weight: 900;
+            line-height: 1.3;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f0f0f0 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .hero-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            color: var(--text-muted);
+            font-size: 14px;
+        }
+        .hero-meta span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .hero-meta .sep {
+            width: 3px;
+            height: 3px;
+            border-radius: 50%;
+            background: var(--text-muted);
+        }
+
+        /* Container */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Content */
+        .content {
+            padding-bottom: 100px;
+        }
+        .content p {
+            font-size: 16.5px;
+            color: var(--text-secondary);
+            margin-bottom: 24px;
+            line-height: 1.9;
+        }
+        .content strong, .content b {
+            color: var(--text-primary);
+            font-weight: 700;
+        }
+        .content em, .content i {
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        /* Image */
+        .img-wrapper {
+            margin: 32px 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+        .img-wrapper img {
+            width: 100%;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .img-wrapper:hover img {
+            transform: scale(1.01);
+        }
+        .img-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin: 32px 0;
+        }
+        .img-row .img-wrapper {
+            margin: 0;
+        }
+        .img-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            margin: 32px 0;
+        }
+        .img-row-3 .img-wrapper {
+            margin: 0;
+        }
+
+        /* Caption */
+        .caption {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 13px;
+            margin-top: -20px;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        /* Section */
+        .section-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 56px 0;
+        }
+        .section-title {
+            font-size: clamp(22px, 3.5vw, 30px);
+            font-weight: 800;
+            margin-bottom: 24px;
+            padding-left: 16px;
+            border-left: 4px solid var(--accent-green);
+            letter-spacing: -0.01em;
+        }
+
+        /* Table */
+        .table-wrapper {
+            margin: 32px 0;
+            border-radius: var(--radius);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+        .table-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14.5px;
+        }
+        .table-wrapper th {
+            background: var(--bg-card);
+            padding: 14px 18px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+        }
+        .table-wrapper td {
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+        .table-wrapper tr:last-child td {
+            border-bottom: none;
+        }
+        .table-wrapper tr:hover td {
+            background: var(--bg-card-hover);
+        }
+        .table-wrapper td:first-child {
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        /* Callout */
+        .callout {
+            display: flex;
+            gap: 14px;
+            padding: 20px 22px;
+            border-radius: var(--radius);
+            margin: 28px 0;
+            border: 1px solid var(--border);
+            background: var(--bg-secondary);
+        }
+        .callout-icon {
+            font-size: 20px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .callout-content {
+            font-size: 15px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        .callout-content strong {
+            color: var(--text-primary);
+        }
+
+        /* Conclusion box */
+        .conclusion {
+            background: linear-gradient(135deg, rgba(34, 197, 94, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+            border: 1px solid rgba(34, 197, 94, 0.15);
+            border-radius: var(--radius-lg);
+            padding: 36px;
+            margin: 48px 0;
+        }
+        .conclusion h3 {
+            font-size: 22px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        .conclusion ul {
+            list-style: none;
+            padding: 0;
+        }
+        .conclusion li {
+            padding: 12px 0;
+            font-size: 15.5px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .conclusion li:last-child {
+            border-bottom: none;
+        }
+        .conclusion li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 10px;
+        }
+        .conclusion li:first-child::before { background: var(--accent-green); }
+        .conclusion li:nth-child(2)::before { background: var(--accent-yellow); }
+
+        /* Final quote */
+        .final-quote {
+            text-align: center;
+            font-size: clamp(20px, 3vw, 28px);
+            font-weight: 800;
+            padding: 48px 0 24px;
+            background: linear-gradient(135deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Bullet list */
+        .content ul {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 24px;
+        }
+        .content ul li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 15.5px;
+        }
+        .content ul li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 18px;
+            width: 8px;
+            height: 8px;
+            border-radius: 2px;
+            background: var(--accent-green);
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            padding: 40px 24px 60px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+        .footer a {
+            color: var(--accent-green);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 640px) {
+            .img-row, .img-row-3 {
+                grid-template-columns: 1fr;
+            }
+            .table-wrapper { overflow-x: auto; }
+            .table-wrapper table { min-width: 500px; }
+            .hero { padding: 60px 20px 40px; }
+            .conclusion { padding: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <div class="hero-badge"><span class="dot"></span> AI Image Benchmark 2026</div>
+    <h1>GPT-Image-2 横测 Nano Banana 2<br>五大真实场景对决</h1>
+    <div class="hero-meta">
+        <span>Deep Comparison</span>
+        <span class="sep"></span>
+        <span>5 Scenarios</span>
+        <span class="sep"></span>
+        <span>50+ Images</span>
+    </div>
+</div>
+
+<div class="container">
+    <div class="content">
+
+        <p>说实话，我对 <strong>GPT-Image-2</strong> 本来并没抱太大期望。毕竟之前的 Image-1.5 表现平平，而 <strong>Nano Banana Pro/2</strong> 系列又实在太强。沉寂 5 个月后，Image-2 竟然搞起"偷袭"，没有任何发布会就直接开启灰度测试。但在我尝试用一句话生成下面这张图后，我彻底坐不住了：<strong>OpenAI 这次稳了，背后绝对吃透了海量的顶级真实世界数据。</strong></p>
+
+        <div class="img-wrapper">
+            <img src="https://upload.maynor1024.live/file/1776480556201_img_046.png" alt="GPT-Image-2 generated realistic portrait" loading="lazy">
+        </div>
+
+        <div class="callout">
+            <span class="callout-icon">&#128204;</span>
+            <div class="callout-content"><strong>福利说明：</strong> 文中所有测试提示词（Prompt）和原尺寸对比图已打包，回复 GPT2 即可获取。</div>
+        </div>
+
+        <p>这张图里的"博主"极其真实，光影、氛围感、皮肤质感，属于那种不盯着看 30 秒根本发现不了是 AI 的程度。于是我乘胜追击，尝试复刻一个<strong>影视飓风</strong>风格的首页：</p>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480315853_img_023.png" alt="影视飓风风格复刻" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480470988_img_038.jpg" alt="影视飓风对比" loading="lazy">
+            </div>
+        </div>
+
+        <p>即便细节略有出入，但那股<strong>"数码博主味"</strong>太正了。封面的一致性和构图逻辑高得惊人。既然如此，测评方向很明确了：直接来场硬核 PK，用之前压测 Nano Banana 的"地狱级"提示词，看看 GPT-Image-2 到底能不能顶住。</p>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">&#127775; 核心升级点对比</h2>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>维度</th>
+                        <th>GPT-Image-2</th>
+                        <th>Nano Banana 2</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>文字渲染</strong></td>
+                        <td><strong>复杂排版、中英混排、小字清晰度</strong></td>
+                        <td>艺术化字体、特定风格化汉字</td>
+                    </tr>
+                    <tr>
+                        <td><strong>照片感</strong></td>
+                        <td><strong>纪实摄影质感、皮肤真实纹理、光影逻辑</strong></td>
+                        <td>时尚街拍感、高饱和度视觉</td>
+                    </tr>
+                    <tr>
+                        <td><strong>UI 生成</strong></td>
+                        <td><strong>逻辑性强、符合现代 App 交互审美</strong></td>
+                        <td>概念感强、设计感前卫</td>
+                    </tr>
+                    <tr>
+                        <td><strong>生成速度</strong></td>
+                        <td><strong>单张约 3 秒，极速反馈</strong></td>
+                        <td>较快，但略逊于 Image-2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>编辑能力</strong></td>
+                        <td><strong>原生局部重绘、品牌逻辑替换</strong></td>
+                        <td>提示词驱动修改</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">1 &#124; 文字与排版：商业设计感的降维打击</h2>
+
+        <p>我们先从 Banana 的传统优势——<strong>文字海报</strong>开始。我设计了一个极具挑战性的国潮茶饮海报需求，测试其对小字、价格、促销层级的处理。</p>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480372187_img_027.png" alt="茶饮海报 GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480582117_img_049.png" alt="茶饮海报 Banana" loading="lazy">
+            </div>
+        </div>
+        <div class="caption"><em>左：GPT-Image-2 &#124; 右：&#127815; Nano Banana</em></div>
+
+        <div class="callout">
+            <span class="callout-icon">&#128220;</span>
+            <div class="callout-content"><strong>测评结论：</strong> 左边的 GPT-Image-2 呈现出一种<strong>真实的品牌感</strong>。它的字体选择（如细衬线体）、留白处理和图标逻辑，完全符合现代奶茶店的审美。相比之下，Banana 的作品 AI 感较重，文字层级显得有些拥挤。</div>
+        </div>
+
+        <p>在接下来的<strong>招聘海报、咖啡科普图、护肤品详情页</strong>中，这种差距进一步扩大：</p>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480424783_img_033.jpg" alt="招聘海报" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480204166_img_014.png" alt="招聘海报对比" loading="lazy">
+            </div>
+        </div>
+        <div class="caption"><em>左图的排版和图标细节更符合求职 App 的真实逻辑</em></div>
+
+        <div class="img-wrapper">
+            <img src="https://upload.maynor1024.live/file/1776480487938_img_040.png" alt="咖啡科普图" loading="lazy">
+        </div>
+        <div class="caption"><em>咖啡科普图中，GPT 的宋体运用和模块化排版极具高级感</em></div>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480570690_img_048.png" alt="护肤品 GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480180588_img_012.png" alt="护肤品 Banana" loading="lazy">
+            </div>
+        </div>
+        <div class="caption"><em>护肤品海报中，GPT 生成的瓶身气泡、赠品形式完全符合电商实拍逻辑</em></div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">2 &#124; 真实世界：告别"塑料感"的纪实摄影</h2>
+
+        <p>这一关拼的是对物理世界、光影、材质的复刻。我设定了一个<strong>商场扶梯口的纪实瞬间</strong>。</p>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480142529_img_008.jpg" alt="商场纪实 GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480459907_img_037.jpg" alt="商场纪实 Banana" loading="lazy">
+            </div>
+        </div>
+        <div class="caption"><em>左：GPT &#124; 右：&#127815;</em></div>
+
+        <div class="callout">
+            <span class="callout-icon">&#128269;</span>
+            <div class="callout-content"><strong>细节控必看：</strong> GPT-Image-2 生成的男性发型、下巴胡茬更具<strong>生活气息</strong>，最离谱的是背景里竟然出现了类似"佳琦直播间"的写实元素。</div>
+        </div>
+
+        <ul>
+            <li><strong>生活切片：</strong> 出现了极其逼真的饮料瓶水珠、地面反射。</li>
+            <li><strong>家庭气息：</strong> GPT 生成的围裙竟然印着"建设银行"，这种<strong>来自真实语料的随机性</strong>让画面极其可信。</li>
+        </ul>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480194215_img_013.png" alt="便利店场景" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480089130_img_003.jpg" alt="家庭厨房" loading="lazy">
+            </div>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">3 &#124; 界面复刻：从概念图到"实机截图"</h2>
+
+        <p>从《黑神话：悟空》的游戏画面到微信聊天记录，再到移动端 App 首页，GPT-Image-2 证明了它懂<strong>交互逻辑</strong>。</p>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480398301_img_029.jpg" alt="黑悟空 GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480546209_img_044.png" alt="黑悟空 Banana" loading="lazy">
+            </div>
+        </div>
+        <div class="caption"><em>GPT 版的黑悟空战斗视角和 UI 元件更接近游戏原生</em></div>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480347969_img_025.png" alt="电商App GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480513320_img_041.png" alt="电商App Banana" loading="lazy">
+            </div>
+        </div>
+        <div class="caption"><em>电商 App PK：GPT 的字体更纤细、图标间距更合理，而 Banana 还是略显臃肿</em></div>
+
+        <p>在<strong>音乐播放器</strong>和<strong>抖音预告图</strong>的测试中，GPT-Image-2 甚至能根据账号属性自动匹配内容设计，这种<strong>智能理解能力</strong>让 Banana 显得有些"笨拙"。</p>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">4 &#124; 人物与风格一致性：表情包战神</h2>
+
+        <p>对于创作者来说，<strong>一致性</strong>就是生命线。我测试了"动漫少女十六宫格"和"哈利波特剧照"。</p>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480562503_img_047.png" alt="表情包 GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480440768_img_035.jpg" alt="表情包 Banana" loading="lazy">
+            </div>
+        </div>
+        <div class="img-wrapper">
+            <img src="https://upload.maynor1024.live/file/1776480154322_img_009.jpg" alt="哈利波特" loading="lazy">
+        </div>
+
+        <div class="callout">
+            <span class="callout-icon">&#128220;</span>
+            <div class="callout-content"><strong>测评结论：</strong> 在十六宫格测试中，GPT 的分格更规范，不会像 Banana 那样出现"耳朵连在一起"的低级错误。但在真实人物（哈利波特）的脸型保持上，双方旗鼓相当。</div>
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">5 &#124; 图片二次编辑：交互体验的颠覆</h2>
+
+        <p>最后是<strong>图片参考与编辑</strong>。我用家里的猫做了一个"猫 X 肯德基"的联名企划，并测试了 GPT 的原生编辑功能。</p>
+
+        <div class="img-row-3">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480357820_img_026.png" alt="���肯德基 原图" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480139049_img_007.jpg" alt="猫肯德基 GPT" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480282909_img_020.png" alt="猫肯德基 Banana" loading="lazy">
+            </div>
+        </div>
+
+        <div class="callout">
+            <span class="callout-icon">&#11088;</span>
+            <div class="callout-content"><strong>重点：</strong> GPT-Image-2 的<strong>局部重绘（Inpainting）</strong>交互极其顺滑。我可以直接在图上操作，把麦当劳风格一键替换为肯德基、汉堡王，甚至爱马仕。底层 Logo、收银机文字全部自动对齐，这种<strong>商业级的一致性</strong>令人赞叹。</div>
+        </div>
+
+        <div class="img-row">
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480099150_img_004.jpg" alt="品牌替换1" loading="lazy">
+            </div>
+            <div class="img-wrapper">
+                <img src="https://upload.maynor1024.live/file/1776480439516_img_034.jpg" alt="品牌替换2" loading="lazy">
+            </div>
+        </div>
+        <div class="img-wrapper">
+            <img src="https://upload.maynor1024.live/file/1776480120546_img_006.jpg" alt="品牌替换3" loading="lazy">
+        </div>
+
+        <hr class="section-divider">
+
+        <h2 class="section-title">&#128221; 测评总结：AI 绘图进入"我全都要"时代</h2>
+
+        <p>回顾 2023 年，我们还在为每个月几十美金的订阅费抠搜，必须在几个模型里"挑个能用的"。但到了 2026 年，GPT-Image-2 的爆发告诉我们：<strong>AI 领域没有永远的王者，只有不断卷出来的上限。</strong></p>
+
+        <div class="conclusion">
+            <h3>最终评价</h3>
+            <ul>
+                <li><strong>GPT-Image-2：</strong> 擅长<strong>真实世界还原、复杂商业排版、极速编辑</strong>，是生产力工具的首选。</li>
+                <li><strong>Nano Banana 2：</strong> 虽然在本次部分细节测试中略逊，但在<strong>艺术风格化、极致氛围感</strong>上依然有其独特��力。</li>
+            </ul>
+        </div>
+
+        <p>这种你追我赶的状态，受益的永远是使用者。模型门槛越来越低，我们的创意上限却在被无限拉高。</p>
+
+        <div class="final-quote">今天，你"开香蕉"还是"开 GPT"？</div>
+
+    </div>
+</div>
+
+<div class="footer">
+    <p>GPT-Image-2 vs Nano Banana 2 Benchmark &mdash; Built with GitHub Pages</p>
+</div>
+
+</body>
+</html>
