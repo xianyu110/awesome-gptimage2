@@ -43,10 +43,14 @@ jobs:
           APIPRO_API_KEY: ${{ secrets.APIPRO_API_KEY }}
           APIPRO_BASE_URL: http://apipro.maynor1024.live/v1
           APIPRO_MODEL: grok-4.1-fast
+          APIPRO_FALLBACK_MODELS: "grok-4.1"
           # Optional model fallback list, comma separated:
           # APIPRO_FALLBACK_MODELS: "grok-4.1, gpt-4o-mini"
-          APIPRO_MAX_RETRIES: "5"
-          APIPRO_RETRY_SECONDS: "10"
+          APIPRO_MAX_RETRIES: "4"
+          APIPRO_RETRY_SECONDS: "5"
+          APIPRO_TIMEOUT_SECONDS: "60"
+          APIPRO_LOOKBACK_HOURS: "12"
+          APIPRO_MAX_ITEMS: "30"
           # Optional overrides:
           # APIPRO_QUERY: '(gptimage2 OR gpt-image-2) (prompt OR 提示词)'
           # APIPRO_LOOKBACK_HOURS: '24'
