@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Awesome GPT-Image-2 - 提示词完全教程</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Noto+Sans+SC:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="pixel-border">
+    <header class="hero">
+        <div class="pixel-stars"></div>
+        <div class="hero-content">
+            <div class="pixel-logo">
+                <span class="logo-icon">&#x1F4F7;</span>
+            </div>
+            <h1 class="pixel-title">AWESOME<br>GPT-IMAGE-2</h1>
+            <p class="subtitle">GPT-Image-2 提示词完全教程</p>
+            <div class="badge-row">
+                <span class="badge badge-green">30+ 提示词</span>
+                <span class="badge badge-blue">10 大场景</span>
+                <span class="badge badge-purple">6 篇实测</span>
+            </div>
+            <div class="stats-bar">
+                <div class="stat">
+                    <span class="stat-num">240+</span>
+                    <span class="stat-label">Arena 领先分</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">8</span>
+                    <span class="stat-label">单次最多图</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">2K</span>
+                    <span class="stat-label">最大分辨率</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-num">3s</span>
+                    <span class="stat-label">生成速度</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="pixel-nav">
+        <div class="nav-inner">
+            <a href="#about" class="nav-btn">关于</a>
+            <a href="#capabilities" class="nav-btn">能力</a>
+            <a href="#prompts" class="nav-btn">提示词</a>
+            <a href="#tips" class="nav-btn">技巧</a>
+            <a href="#limits" class="nav-btn">局限</a>
+            <a href="https://github.com/xianyu110/awesome-gptimage2" class="nav-btn nav-btn-github" target="_blank">GitHub</a>
+        </div>
+    </nav>
+
+    <main class="content">
+
+        <section id="about" class="section">
+            <h2 class="section-title"><span class="pixel-icon">&#x1F4A1;</span> GPT-Image-2 是什么</h2>
+            <div class="card">
+                <p>2026 年 4 月 22 日，OpenAI 正式发布 <strong>ChatGPT Images 2.0</strong>（API 模型名 <code>gpt-image-2</code>），奥特曼称之为「从 GPT-3 到 GPT-5 的飞跃」。</p>
+                <p>它是 OpenAI 首个具备<strong>思考能力</strong>的图像模型，在 Arena 盲测榜单中以断层优势登顶全球第一。</p>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <span class="info-label">知识截止</span>
+                        <span class="info-value">2025.12</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">宽高比</span>
+                        <span class="info-value">3:1 ~ 1:3</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">多语言</span>
+                        <span class="info-value">中/日/韩/...</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">入口</span>
+                        <span class="info-value">ChatGPT/API</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>两种模式</h3>
+                <div class="mode-grid">
+                    <div class="mode-card mode-instant">
+                        <div class="mode-icon">&#x26A1;</div>
+                        <h4>Instant 模式</h4>
+                        <ul>
+                            <li>所有用户可用</li>
+                            <li>约 3 秒/张</li>
+                            <li>适合快速出图</li>
+                        </ul>
+                    </div>
+                    <div class="mode-card mode-thinking">
+                        <div class="mode-icon">&#x1F9E0;</div>
+                        <h4>Thinking 模式</h4>
+                        <ul>
+                            <li>Plus/Pro/Business</li>
+                            <li>联网搜索 + 自我核查</li>
+                            <li>最多 8 张连贯图</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capabilities" class="section">
+            <h2 class="section-title"><span class="pixel-icon">&#x1F4C8;</span> 核心能力</h2>
+            <div class="capability-grid">
+                <div class="cap-card cap-text">
+                    <div class="cap-num">01</div>
+                    <h3>文字渲染</h3>
+                    <p>中文渲染质的飞跃。可默写出师表、生成数学试卷、红楼梦关系图、招聘海报等。</p>
+                </div>
+                <div class="cap-card cap-world">
+                    <div class="cap-num">02</div>
+                    <h3>世界知识</h3>
+                    <p>对真实世界精准理解。能复刻 YouTube/小红书/B 站界面，自动生成专业文案。</p>
+                </div>
+                <div class="cap-card cap-precision">
+                    <div class="cap-num">03</div>
+                    <h3>修改精准</h3>
+                    <p>两句话从手机随拍 → 完整电商详情页。产品精修白底图效果堪比专业摄影师。</p>
+                </div>
+                <div class="cap-card cap-aesthetic">
+                    <div class="cap-num">04</div>
+                    <h3>审美进化</h3>
+                    <p>学会保留「不完美」。胶片颗粒感、闪光灯硬阴影，<code>photorealistic</code> 是万能钥匙。</p>
+                </div>
+                <div class="cap-card cap-ui">
+                    <div class="cap-num">05</div>
+                    <h3>界面复刻</h3>
+                    <p>精准复刻社交媒体、App UI、游戏画面、桌面环境等各种数字界面。</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="prompts" class="section">
+            <h2 class="section-title"><span class="pixel-icon">&#x2728;</span> 提示词合集</h2>
+
+            <div class="prompt-framework">
+                <div class="card">
+                    <h3>提示词框架</h3>
+                    <div class="formula">
+                        <span class="formula-part">任务类型</span>
+                        <span class="formula-plus">+</span>
+                        <span class="formula-part">主体描述</span>
+                        <span class="formula-plus">+</span>
+                        <span class="formula-part">风格定义</span>
+                        <span class="formula-plus">+</span>
+                        <span class="formula-part">技术参数</span>
+                        <span class="formula-plus">+</span>
+                        <span class="formula-part">输出规格</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category tabs -->
+            <div class="category-tabs">
+                <button class="tab-btn active" data-category="ecommerce">电商产品</button>
+                <button class="tab-btn" data-category="poster">品牌海报</button>
+                <button class="tab-btn" data-category="font">创意字体</button>
+                <button class="tab-btn" data-category="infographic">知识科普</button>
+                <button class="tab-btn" data-category="ui">UI 界面</button>
+                <button class="tab-btn" data-category="photo">真实摄影</button>
+                <button class="tab-btn" data-category="character">角色一致</button>
+                <button class="tab-btn" data-category="editing">图片编辑</button>
+                <button class="tab-btn" data-category="art">艺术创作</button>
+                <button class="tab-btn" data-category="fun">趣味玩法</button>
+            </div>
+
+            <!-- Prompt cards -->
+            <div class="prompt-list">
+
+                <!-- 电商产品 -->
+                <div class="prompt-card" data-category="ecommerce">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-commerce">电商</span>
+                        <h4>香水电商详情页</h4>
+                    </div>
+                    <pre class="prompt-code">（有香水垫图）给这个香水产品生成电商中文详情页，9:16，4k</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="ecommerce">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-commerce">电商</span>
+                        <h4>产品精修白底图</h4>
+                    </div>
+                    <pre class="prompt-code">帮我生成一张图片，将该产品进行精修，可重新打光，精修优化，白色的背景。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="ecommerce">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-commerce">电商</span>
+                        <h4>茶饮新品上市海报</h4>
+                    </div>
+                    <pre class="prompt-code">请设计一张 3:4 竖版国潮茶饮新品上市海报，品牌名为 山川茶事。整体风格新中式、轻奢、克制，颜色以墨绿、米白、金色为主，融合宣纸肌理、留白、淡雅山水、现代版式设计。画面主体是一杯高颜值冷泡茶与茶叶、柑橘、冰块、金箔元素，画面必须兼具商业感与审美感。
+
+海报中必须准确呈现以下文字：
+山川茶事 山柚观音 冷泡系列 新品上市
+一口清醒，半城入夏
+限定尝鲜价 中杯 16 元 大杯 19 元
+门店活动 第二杯半价 加 3 元升级轻乳版
+每日前 100 名赠限定杯套
+推荐风味 观音茶底 / 西柚果香 / 轻乳云顶 / 冰感回甘
+活动时间 4月20日 至 5月10日
+扫码点单 SHANCHUAN TEA
+底部小字：图片仅供参考，请以门店实际售卖为准
+
+要求海报具备明显促销信息层级，同时依旧精致，不要做成廉价电商海报。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="ecommerce">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-commerce">电商</span>
+                        <h4>护肤品电商首图</h4>
+                    </div>
+                    <pre class="prompt-code">高端护肤品电商首图海报，产品名为 澄光维稳精华。整体风格干净、轻奢、科学护肤感强，画面中心是一瓶半透明磨砂玻璃精华液，带淡金色液体和水珠反光，背景为奶白到暖灰渐变，局部有液体流动与微观分子结构装饰。要求同时具备品牌感和卖货感。
+
+海报必须包含以下文案：
+澄光 维稳精华
+修护屏障 舒缓泛红 细腻透亮
+第 2 代升级配方
+核心成分 神经酰胺 泛醇 B5 积雪草提取物 微囊脂质体
+适合人群 敏感肌 熬夜肌 换季不稳定肌
+限时到手价 229 元 买 1 送 3
+赠洁面 15ml 赠精华 5ml 赠面霜 10g
+左下角小字：实际效果因人而异，请坚持使用
+
+要求重点测试商品卖点、价格、赠品列表的层级。整体要高级，不能土。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 品牌海报 -->
+                <div class="prompt-card" data-category="poster">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-poster">海报</span>
+                        <h4>品牌入驻宣传</h4>
+                    </div>
+                    <pre class="prompt-code">生成【茶颜悦色】2026.5.1入驻深圳万象天地的宣传海报，3:4，4k</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="poster">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-poster">海报</span>
+                        <h4>书籍封面设计</h4>
+                    </div>
+                    <pre class="prompt-code">书籍封面设计：标题为"阿勒泰的角落"，作者"李娟"。以广袤的绿色草地为主背景，深浅不一的草叶构成自然层次感，远处绘制若隐若现的山脉轮廓。画面中央放置孤立的白羊剪影，上方用简洁白色字体呈现中英文书名"The Corner of Altay"。整体采用清新自然的森系配色，营造出空灵悠远的文学意境</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="poster">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-poster">海报</span>
+                        <h4>K-POP 概念海报</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张 K-POP 女团第三张迷你专辑的概念海报，专辑名 ECLIPSE。所有人都穿黑色系造型，打光是侧逆光加柔焦，整体色调偏冷灰蓝，肢体、影子自然真实，脸部细节、发丝、饰品光泽、布料褶皱质感精致，每个人有不同的 pose 和表情。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="poster">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-poster">海报</span>
+                        <h4>迪特拉姆斯设计十戒</h4>
+                    </div>
+                    <pre class="prompt-code">迪特拉姆斯的设计十戒做一张海报，每条戒律都配上博朗的超级经典的产品。灵感参考奏笙。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 创意字体 -->
+                <div class="prompt-card" data-category="font">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-font">字体</span>
+                        <h4>城市创意字体 — 杭州</h4>
+                    </div>
+                    <pre class="prompt-code">字体设计，创意字体插画，将文字"杭州"作为主体画面，以文字为画布进行深度重构。
+"杭"字内部融合杭州标志性建筑轮廓与场景元素，如西湖断桥、雷峰塔、湖岸柳树与远山轮廓，所有元素顺应笔画走势自然生成，结构一体化，不可拼贴堆砌。
+"州"字内部融合地域文化符号与生活意象，如西湖龙井茶叶、丝绸飘带、水乡屋檐、小桥流水，元素与字体笔画交织生长，形成有机结构。
+整体风格为江南水乡意境，线条柔和流动，辅以西湖水波纹理在笔画间隐约扩散，增强空间层次与韵律感。
+色彩以低饱和东方配色为主（青灰、淡绿、米白、浅墨色），营造温润、诗意、含蓄的视觉氛围。
+背景为干净米白色宣纸质感，带轻微纸张纹理。3:2,4k
+画面要求：高精细插画风格，结构清晰但富有艺术表现力，元素融合自然，无明显边界，避免卡通化与过度装饰，整体具有高级设计感与文化审美。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <span class="tip-text">将"杭州"替换为任意城市</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 知识科普 -->
+                <div class="prompt-card" data-category="infographic">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-info">科普</span>
+                        <h4>科普百科图模板</h4>
+                    </div>
+                    <pre class="prompt-code">请根据【萨摩耶】生成一张高质量竖版「科普百科图」。
+
+这张图不是普通海报，也不是单纯插画，而是一张兼具"图鉴感、百科感、信息结构感、收藏感"的模块化科普信息图。
+
+请让画面包含：
+- 一个清晰漂亮的主题主视觉
+- 若干局部特征放大细节
+- 多个圆角模块化信息分区
+- 清楚的标题层级与重点标签
+- 简洁但丰富的百科内容
+- 可视化评分、要点总结或 Top 5 模块
+
+内容栏目请根据主题自动适配：基础档案、分类信息、外观特征、习性/生态、养护建议、风险注意事项、适用场景、优缺点对比、快速评分卡。
+
+视觉要求：浅色干净背景，柔和配色，轻阴影，精致小图标，圆角信息框，整洁排版，信息密度高但不拥挤。要突出"知识整理 + 模块信息 + 图鉴式展示"的特征。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <span class="tip-text">替换任意主题</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="infographic">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-info">科普</span>
+                        <h4>心肺复苏急救图</h4>
+                    </div>
+                    <pre class="prompt-code">生成 "心肺复苏急救步骤"讲解图，技术词汇用大众词汇替代，中文对白，整体用 Chiikawa 作为形象引导，纯中文，信息要足够详细准确，比例 9:16，4k</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="infographic">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-info">科普</span>
+                        <h4>咖啡科普信息长图</h4>
+                    </div>
+                    <pre class="prompt-code">中文信息图海报，主题为 一杯咖啡如何来到你手里。风格为高级信息设计，兼具科普感与商业视觉感，版式清晰，带有路径箭头、数据框、图标、简洁插画和模块化卡片。色调以咖啡棕、奶白、墨黑、少量铜色点缀。要求图文并重，信息非常多，但仍然好看。
+
+海报必须完整展示以下内容：
+一杯咖啡 如何来到你手里
+01 种植 海拔 1200 至 2200 米 适宜温度 18℃ 至 24℃
+02 处理 日晒 水洗 蜜处理
+03 烘焙 浅烘更明亮 中烘更平衡 深烘更浓郁
+04 研磨 手冲偏粗 意式偏细 冷萃中粗
+05 萃取 粉水比 水温 时间 都会影响风味
+风味关键词 花香 / 柑橘 / 坚果 / 焦糖 / 巧克力 / 烟熏
+
+要让它看起来像高质量展板，不要像课堂PPT。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="infographic">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-info">科普</span>
+                        <h4>历史演示图</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张【五代十国】的历史演示图，保证信息准确清晰，3:4,4k</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- UI 界面 -->
+                <div class="prompt-card" data-category="ui">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-ui">UI</span>
+                        <h4>TikTok 视频截图</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张 TikTok 的妆教视频截图</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="ui">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-ui">UI</span>
+                        <h4>音乐 App 播放页</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张高保真中文音乐 App 播放页界面截图，移动端竖屏，视觉精致，风格接近现代流媒体播放器。整体以深色模式为主，背景来自专辑封面的模糊扩散色，中央是大尺寸方形专辑封面，带微弱阴影和圆角。顶部状态栏时间 18:26。
+
+歌曲名：海边的晚风 歌手：林秋 专辑名：夏夜实验室
+播放进度条，当前时间 01:42，总时长 04:18
+控制按钮包括 随机、上一首、播放暂停、下一首、循环
+下方有 5 到 7 行滚动歌词，当前播放行高亮
+再下方有 喜欢、评论、下载、收藏到歌单、分享 按钮行
+
+整体像可直接上架的产品界面，而不是 Dribbble 概念稿</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="ui">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-ui">UI</span>
+                        <h4>游戏画面复刻</h4>
+                    </div>
+                    <pre class="prompt-code">生成黑悟空神话，被二郎神打飞的游戏画面</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 真实摄影 -->
+                <div class="prompt-card" data-category="photo">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-photo">摄影</span>
+                        <h4>商场纪实抓拍</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张极其真实的商场纪实摄影照片，场景是周末傍晚的大型购物中心扶梯口，一位 30 岁左右的亚洲男性刚从上行扶梯走下来，左手拎着购物袋，右手正在低头回消息，神态自然，没有看镜头。他穿深灰色连帽卫衣外搭黑色薄夹克，下身是宽松卡其裤和轻微磨损的运动鞋，头发略乱，脸上有一点出油感和下巴胡茬。商场灯光是复杂的混合光，顶部暖白灯、品牌橱窗冷白灯、远处广告屏彩色光同时存在，地面是高反光瓷砖，能看到模糊但真实的倒影。要求像摄影师在商场里抓拍的真实瞬间，不能像时尚街拍摆拍，皮肤、衣服、鞋面、购物袋折痕、玻璃反射都要非常真实。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="photo">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-photo">摄影</span>
+                        <h4>四季眼部特写</h4>
+                    </div>
+                    <pre class="prompt-code">超写实眼部特写，macro 极致微距摄影，皮肤纹理清晰可见，睫毛细节真实，虹膜高精度细节，镜头紧贴眼睛，画面极致精致与通透，梦幻光影氛围，电影级打光，浅景深，背景虚化，光斑柔和，四屏竖向分割构图（3:4 比例），从上到下依次为春、夏、秋、冬，每一屏保持同一只眼睛的一致性
+
+春：粉色樱花环绕，花瓣漂浮，蝴蝶点缀，柔和暖光；夏：绿色植物、露珠、水汽，清透高光，阳光穿透感；秋：橙红枫叶，暖金色阳光，落叶环绕，光影浓郁；冬：冰霜、雪花结晶覆盖睫毛与皮肤，冷蓝色调，细腻冰晶结构。
+每一屏加入对应季节英文+中文文字（SPRING 春 / SUMMER 夏 / AUTUMN 秋 / WINTER 冬），高细节 3:4，8K，cinematic lighting，unreal detail，photorealistic，volumetric light</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="photo">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-photo">摄影</span>
+                        <h4>胶片质感抓拍</h4>
+                    </div>
+                    <pre class="prompt-code">一张写实风格的旅行抓拍：阴天清晨，一个人站在海边路旁的观景停车带，用 35mm 胶片拍摄。构图自然、略有瑕疵，颗粒感明显，环境光漫射，色调低饱和，衣物和发丝随风飘动，带着纪录片式的电影质感，像是某段真实生活留下的影像。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 角色一致性 -->
+                <div class="prompt-card" data-category="character">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-char">角色</span>
+                        <h4>八套穿搭一致性</h4>
+                    </div>
+                    <pre class="prompt-code">（上传一张人物照片）请根据这张照片，生成八套夏日穿搭方案</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <span class="tip-text">需要 Thinking 模式</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="character">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-char">角色</span>
+                        <h4>十六宫格表情包</h4>
+                    </div>
+                    <pre class="prompt-code">生成一个有着银色长发和蓝色眼瞳的二次元动漫少女的十六宫格表情图。她的脸型、发型、服装必须在所有格子里保持高度一致。十六个表情需要包含：开心、难过、愤怒、惊讶、害羞、无语、坏笑、沉思、好奇、得意、委屈、鄙视、困惑、害怕、流泪、以及一个爱心的表情。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 图片编辑 -->
+                <div class="prompt-card" data-category="editing">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-edit">编辑</span>
+                        <h4>宠物联名海报</h4>
+                    </div>
+                    <pre class="prompt-code">以「77 X 肯德基」联名企划为主题，围绕同一只宠物（形象、花色等与上传图片绝对一致）生成一张联名海报。让小猫穿肯德基员工制服、带上肯德基员工帽子，佩戴工牌站在柜台前、兜售炸鸡、汉堡和套餐、与炸鸡桶、薯条、汽水等元素互动等。画面风格活泼、有趣、具有商业联名感。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="editing">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-edit">编辑</span>
+                        <h4>海报风格复刻</h4>
+                    </div>
+                    <pre class="prompt-code">（上传一张风格化海报）请参考这张海报的风格，保持排版、字体、构图的一致性，将春天场景改为冬天场景后重新生成</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="editing">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-edit">编辑</span>
+                        <h4>漫画上色翻译</h4>
+                    </div>
+                    <pre class="prompt-code">给这张漫画页上色并翻译成中文放到图中原来的位置，保持构图和图片细节的一致</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty medium">中等</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 艺术创作 -->
+                <div class="prompt-card" data-category="art">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-art">艺术</span>
+                        <h4>海贼王 3D 纸雕</h4>
+                    </div>
+                    <pre class="prompt-code">平视视角，正面直视一个高饱和度 3D 多层纸雕场景。
+整体为灰蓝、奶油白、深森林绿，点缀琥珀色暖光。所有元素必须是实体纸张分层结构，边缘为硬切割效果，并清晰可见厚纸横截面。
+极致丰富构图，一个高能量的海盗群像场景，发生在混乱的海上冒险中。多个风格化海盗角色以夸张动作呈现，中层核心是一位戴草帽的年轻船长向前冲刺，周围是姿态鲜明的船员。
+分层的船只、翻涌海浪和旋转洋流贯穿前中后景。
+前景堆满叙事元素：宝箱、金币、地图、木桶、绳索、灯笼。
+单一方向柔光，形成清晰层间投影。整体为哑光纸张质感，无发光、无柔边、无体积光。
+octane 渲染，8K，细节清晰 3:4</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="art">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-art">艺术</span>
+                        <h4>花卉 Knolling 解构</h4>
+                    </div>
+                    <pre class="prompt-code">Knolling 风格摄影，一朵被完全解构的【蓝花楹】，植物解剖学概念，严格垂直顶视，平铺摆放。花瓣大量铺陈，整体以 Bento Grid 作为排列逻辑，同时带有自然轻微随机性。花瓣从大到小、从深到浅呈渐变规律，局部方向略有偏转。包括雄蕊簇、花萼、叶片、花茎横切面等组件。每一张的右下角用中文行书小字展示鲜花的名称。
+
+光影与质感：从边缘到边缘填满画面，无留白；柔和影棚布光，无硬阴影；8k 超高清、超写实微距质感；纯白背景，比例 3:4。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <span class="tip-text">替换任意花卉</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="art">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-art">艺术</span>
+                        <h4>手绘涂鸦读书笔记</h4>
+                    </div>
+                    <pre class="prompt-code">请根据"【防颓指南】混一天和努力一天看不到任何差别，三天看不到任何变化，七天也可以说看不到任何距离。但是一个月后悔看到话题不同，三个月后悔看到气场不同，半年后会看到一定距离，一年后会看到人生道路不同。"输入内容,生成一张手绘涂鸦风格的读书笔记信息图。
+
+整体风格：充满活力的手绘涂鸦笔记风格，专业知识笔记的学霸风格，不要太卡通。黑色使用深棕、橙黄或海军蓝，轻微水彩进行填色，竖版(3:4)构图。
+配色方案：整张图都应该是彩色的，采用明亮、清新、和谐的色彩组合。颜色填充应模仿彩铅或水彩的质感。
+线条特征：所有轮廓线都必须是不完美、略带抖动的手绘线条。
+字体风格：所有文字都必须是彩色的手写体，绝对不要使用任何电脑字体。</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty hard">高级</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <!-- 趣味玩法 -->
+                <div class="prompt-card" data-category="fun">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-fun">趣味</span>
+                        <h4>中文书法默写</h4>
+                    </div>
+                    <pre class="prompt-code">用普通人的笔迹抄写《定风波·莫听穿林打叶声》</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="fun">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-fun">趣味</span>
+                        <h4>360 度全景图</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张人类登月的 360 度全景图</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="fun">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-fun">趣味</span>
+                        <h4>红楼梦关系图</h4>
+                    </div>
+                    <pre class="prompt-code">生成一张红楼梦人物关系图</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+                <div class="prompt-card" data-category="fun">
+                    <div class="prompt-header">
+                        <span class="prompt-tag tag-fun">趣味</span>
+                        <h4>Sam Altman 微信朋友圈</h4>
+                    </div>
+                    <pre class="prompt-code">生成 OpenAI CEO Sam Altman 在微信朋友圈用中文介绍宣传 ChatGPT Images 2.0，底下马斯克评论发「？？？ 」，Demis Hassabis 评论称：「我觉得不如 Nano Banana Pro」，图片比例为 16:9</pre>
+                    <div class="prompt-footer">
+                        <span class="difficulty easy">简单</span>
+                        <button class="copy-btn" onclick="copyPrompt(this)">复制</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="tips" class="section">
+            <h2 class="section-title"><span class="pixel-icon">&#x1F511;</span> 高级技巧</h2>
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-num">01</div>
+                    <h4>photorealistic 是万能钥匙</h4>
+                    <p>想让输出最自然，最有效的关键词就是 <code>photorealistic</code>。模型会主动规避塑料感。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-num">02</div>
+                    <h4>给文字，不要描述文字</h4>
+                    <p>直接把需要出现在图中的文字写在提示词里，而不是说"生成有促销信息的海报"。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-num">03</div>
+                    <h4>善用 Thinking 模式</h4>
+                    <p>需要联网信息、多张连贯图片时开启。简单出图用 Instant 即可。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-num">04</div>
+                    <h4>指定审美方向</h4>
+                    <p>用风格参考锚定审美：「新中式轻奢」「钢笔淡彩」「像素画风格」等。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-num">05</div>
+                    <h4>垫图 + 编辑</h4>
+                    <p>先上传参考图，生成初稿后点击「编辑」进行精细修改，效果翻倍。</p>
+                </div>
+                <div class="tip-card">
+                    <div class="tip-num">06</div>
+                    <h4>利用世界知识</h4>
+                    <p>模型已知各大 App 界面、品牌视觉、历史知识，直接描述即可。</p>
+                </div>
+            </div>
+
+            <div class="card ratio-card">
+                <h3>比例选择指南</h3>
+                <div class="ratio-grid">
+                    <div class="ratio-item">
+                        <code>1:1</code>
+                        <span>头像 / 产品主图</span>
+                    </div>
+                    <div class="ratio-item">
+                        <code>3:4</code>
+                        <span>海报 / 信息图</span>
+                    </div>
+                    <div class="ratio-item">
+                        <code>9:16</code>
+                        <span>手机壁纸 / 封面</span>
+                    </div>
+                    <div class="ratio-item">
+                        <code>21:9</code>
+                        <span>公众号封面 / 横幅</span>
+                    </div>
+                    <div class="ratio-item">
+                        <code>3:1</code>
+                        <span>全景图 / 长卷</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="limits" class="section">
+            <h2 class="section-title"><span class="pixel-icon">&#x26A0;</span> 局限性</h2>
+            <div class="limits-grid">
+                <div class="limit-item">
+                    <span class="limit-icon">&#x274C;</span>
+                    <strong>三维物理逻辑</strong>
+                    <p>折纸步骤图、魔方复原等严密三维任务容易翻车</p>
+                </div>
+                <div class="limit-item">
+                    <span class="limit-icon">&#x26A0;</span>
+                    <strong>密集纹理</strong>
+                    <p>倾斜表面的微小细节、极度密集重复纹理仍会触碰计算边界</p>
+                </div>
+                <div class="limit-item">
+                    <span class="limit-icon">&#x26A0;</span>
+                    <strong>亚洲人一致性</strong>
+                    <p>对亚洲人面部一致性保持不如欧美面孔</p>
+                </div>
+                <div class="limit-item">
+                    <span class="limit-icon">&#x26A0;</span>
+                    <strong>2K+ 分辨率</strong>
+                    <p>API 端 2K 以上仍在 Beta，偶尔不稳定</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pixel-footer">
+        <p>Made with GPT-Image-2 | Last updated: 2026-04-22</p>
+        <p>内容整合自 6 篇深度实测文章 | 请负责任地使用 AI 图像生成工具</p>
+    </footer>
+</div>
+
+<script>
+// Category tab filtering
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+        document.querySelectorAll('.prompt-card').forEach(card => {
+            if (category === 'all' || card.dataset.category === category) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+});
+
+// Copy prompt
+function copyPrompt(btn) {
+    const code = btn.closest('.prompt-card').querySelector('.prompt-code').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        const originalText = btn.textContent;
+        btn.textContent = '已复制!';
+        btn.classList.add('copied');
+        setTimeout(() => {
+            btn.textContent = originalText;
+            btn.classList.remove('copied');
+        }, 2000);
+    });
+}
+
+// Smooth scroll for nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    });
+});
+</script>
+
+</body>
+</html>
