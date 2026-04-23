@@ -8,6 +8,8 @@
 
 整合自 6 篇深度实测文章 | 30+ 精选提示词 | 覆盖 10 大场景
 
+英文版入口：<https://awesome.gptimage2.asia/en/>
+
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-2ea44f?style=for-the-badge)](https://xianyu110.github.io/awesome-gptimage2/)
 [![GPT-Image-2](https://img.shields.io/badge/Model-GPT--Image--2-blue?style=for-the-badge)](https://chatgpt.com)
 
@@ -24,6 +26,7 @@ GPTImage2 模型五种使用方法：
 - API 使用地址：https://apipro.maynor1024.live/
 - Codex 使用：https://maynorai.jichiyun.sbs/buy/13
 - 国外使用地址：https://gptimage2.asia/
+- 英文版站点：https://awesome.gptimage2.asia/en/
 
 ---
 
