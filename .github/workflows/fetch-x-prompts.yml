@@ -2,8 +2,9 @@ name: Fetch X Prompts Daily
 
 on:
   schedule:
-    # UTC 01:10 = Beijing 09:10
-    - cron: "10 1 * * *"
+    # Retry hourly at minute 10 (UTC). If one run succeeds today (Asia/Shanghai),
+    # later scheduled runs will auto-skip.
+    - cron: "10 * * * *"
   workflow_dispatch:
 
 env:
@@ -12,6 +13,7 @@ env:
 
 permissions:
   contents: write
+  actions: read
 
 concurrency:
   group: fetch-x-prompts
@@ -29,7 +31,75 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Skip if today's scheduled run already succeeded
+        id: gate
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          GH_RUN_ID: ${{ github.run_id }}
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import sys
+          from datetime import datetime
+          from urllib import request
+          from zoneinfo import ZoneInfo
+
+          repo = os.environ["GH_REPO"]
+          run_id = int(os.environ["GH_RUN_ID"])
+          token = os.environ["GH_TOKEN"]
+          tz = ZoneInfo("Asia/Shanghai")
+          today_local = datetime.now(tz).date()
+          out = os.environ["GITHUB_OUTPUT"]
+
+          url = f"https://api.github.com/repos/{repo}/actions/workflows/fetch-x-prompts.yml/runs?event=schedule&status=completed&per_page=100"
+          req = request.Request(
+              url,
+              headers={
+                  "Authorization": f"Bearer {token}",
+                  "Accept": "application/vnd.github+json",
+                  "User-Agent": "awesome-gptimage2-ci-gate/1.0",
+              },
+          )
+
+          try:
+              with request.urlopen(req, timeout=30) as resp:
+                  payload = json.loads(resp.read().decode("utf-8"))
+          except Exception as exc:
+              print(f"Gate check failed, continue run: {exc}")
+              with open(out, "a", encoding="utf-8") as f:
+                  f.write("should_run=true\n")
+              sys.exit(0)
+
+          for run in payload.get("workflow_runs", []):
+              if run.get("id") == run_id:
+                  continue
+              if run.get("conclusion") != "success":
+                  continue
+
+              started_at = run.get("run_started_at") or run.get("created_at")
+              if not started_at:
+                  continue
+
+              dt = datetime.fromisoformat(started_at.replace("Z", "+00:00")).astimezone(tz)
+              if dt.date() == today_local:
+                  print(
+                      "Today's scheduled run already succeeded; "
+                      "skip this retry run."
+                  )
+                  with open(out, "a", encoding="utf-8") as f:
+                      f.write("should_run=false\n")
+                  sys.exit(0)
+
+          print("No successful scheduled run yet today; continue.")
+          with open(out, "a", encoding="utf-8") as f:
+              f.write("should_run=true\n")
+          PY
+
       - name: Preflight secrets check
+        if: github.event_name != 'schedule' || steps.gate.outputs.should_run == 'true'
         env:
           APIPRO_API_KEY: ${{ secrets.APIPRO_API_KEY }}
         run: |
@@ -39,6 +109,7 @@ jobs:
           fi
 
       - name: Fetch latest prompts from X
+        if: github.event_name != 'schedule' || steps.gate.outputs.should_run == 'true'
         env:
           APIPRO_API_KEY: ${{ secrets.APIPRO_API_KEY }}
           APIPRO_BASE_URL: http://apipro.maynor1024.live/v1
@@ -64,6 +135,7 @@ jobs:
           python scripts/fetch_x_prompts.py
 
       - name: Commit and push if changed
+        if: github.event_name != 'schedule' || steps.gate.outputs.should_run == 'true'
         run: |
           if git diff --quiet -- data/latest-prompts.json; then
             echo "No data changes."
