@@ -134,16 +134,21 @@ jobs:
           echo "APIPRO_FALLBACK_MODELS=${APIPRO_FALLBACK_MODELS}"
           python scripts/fetch_x_prompts.py
 
+      - name: Render latest X prompt summary into README
+        if: github.event_name != 'schedule' || steps.gate.outputs.should_run == 'true'
+        run: |
+          python scripts/render_latest_x_section.py
+
       - name: Commit and push if changed
         if: github.event_name != 'schedule' || steps.gate.outputs.should_run == 'true'
         run: |
-          if git diff --quiet -- data/latest-prompts.json; then
+          if git diff --quiet -- data/latest-prompts.json README.md; then
             echo "No data changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/latest-prompts.json
+          git add data/latest-prompts.json README.md
           git commit -m "chore(data): refresh X prompts ($(date -u +'%Y-%m-%d'))"
           git push

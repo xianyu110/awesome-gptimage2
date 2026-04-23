@@ -107,6 +107,7 @@
         <div class="nav-track">
             <a href="#overview" class="nav-link">导览</a>
             <a href="#prompt-gallery" class="nav-link">提示词</a>
+            <a href="#latest-x-prompts" class="nav-link">最新 X</a>
             <a href="#case-study" class="nav-link">补充案例</a>
             <a href="#readme" class="nav-link">完整内容</a>
             <a href="#faq" class="nav-link">FAQ</a>
@@ -155,6 +156,21 @@
             </div>
             <div id="prompt-board-grid" class="prompt-board-grid"></div>
             <p id="prompt-board-empty" class="prompt-board-empty" hidden>没有匹配结果，试试更短关键词。</p>
+        </section>
+
+        <section id="latest-x-prompts" class="section" aria-label="最新 X Prompt">
+            <div class="section-head">
+                <h2 class="section-title">最新 X Prompt</h2>
+                <a class="readme-raw-link" id="latest-x-json-link" href="data/latest-prompts.json" target="_blank" rel="noreferrer">打开 JSON</a>
+            </div>
+            <div class="readme-card latest-x-shell">
+                <div class="readme-meta">
+                    <span class="readme-status" id="latest-x-status">正在加载 data/latest-prompts.json…</span>
+                    <span class="readme-clock" id="latest-x-clock">数据时间：--</span>
+                </div>
+                <div id="latest-x-summary" class="overview-grid latest-x-summary"></div>
+                <div id="latest-x-content" class="latest-x-content"></div>
+            </div>
         </section>
 
         <section id="case-study" class="section" aria-label="补充案例拆解">
@@ -1011,6 +1027,11 @@
     const promptFilterEl = document.getElementById('prompt-filter');
     const promptFilterSummaryEl = document.getElementById('prompt-filter-summary');
     const promptFilterButtonsEl = document.getElementById('prompt-filter-buttons');
+    const latestXStatusEl = document.getElementById('latest-x-status');
+    const latestXClockEl = document.getElementById('latest-x-clock');
+    const latestXSummaryEl = document.getElementById('latest-x-summary');
+    const latestXContentEl = document.getElementById('latest-x-content');
+    const latestXJsonLinkEl = document.getElementById('latest-x-json-link');
     const backToTopBtn = document.getElementById('back-to-top');
     const promptBoardState = {
         all: [],
@@ -1485,6 +1506,14 @@
             .replace(/'/g, '&#39;');
     }
 
+    function formatDateTimeLabel(value) {
+        const text = (value || '').trim();
+        if (!text) return '--';
+        const date = new Date(text);
+        if (Number.isNaN(date.getTime())) return text;
+        return date.toLocaleString('zh-CN', { hour12: false });
+    }
+
     function extractPromptCardsFromMarkdown(markdown) {
         const cards = [];
         const lines = (markdown || '').split(/\r?\n/);
@@ -1700,6 +1729,145 @@
         if (promptBoardSearchEl) promptBoardSearchEl.value = '';
         renderPromptBoardFilters(cards);
         applyPromptBoardFilters();
+    }
+
+    function renderLatestXPrompts(payload) {
+        if (!latestXStatusEl || !latestXSummaryEl || !latestXContentEl) return;
+
+        const meta = payload && typeof payload === 'object' && payload.meta && typeof payload.meta === 'object'
+            ? payload.meta
+            : {};
+        const groups = Array.isArray(payload && payload.dates) ? payload.dates : [];
+        const total = Number(meta.count || 0);
+        const dateCount = Number(meta.date_count || groups.length || 0);
+        const generatedAt = String(meta.generated_at_utc || '').trim();
+        const model = String(meta.model || '--').trim() || '--';
+        const provider = String(meta.provider || '--').trim() || '--';
+
+        latestXStatusEl.textContent = total
+            ? '加载成功：只展示带提示词的 X 数据'
+            : '暂无符合条件的 X Prompt 数据';
+        if (latestXClockEl) {
+            latestXClockEl.textContent = '数据时间：' + formatDateTimeLabel(generatedAt);
+        }
+
+        latestXSummaryEl.innerHTML = [
+            '<article class="overview-card"><h3>有效条目</h3><p>' + escapeHtml(String(total)) + ' 条，仅保留含 prompt 的数据。</p></article>',
+            '<article class="overview-card"><h3>日期分组</h3><p>' + escapeHtml(String(dateCount)) + ' 天，JSON 已按日期分类。</p></article>',
+            '<article class="overview-card"><h3>使用模型</h3><p>' + escapeHtml(model) + '</p></article>',
+            '<article class="overview-card"><h3>数据来源</h3><p>' + escapeHtml(provider) + '</p></article>'
+        ].join('');
+
+        if (!groups.length) {
+            latestXContentEl.innerHTML = '<p class="case-study-desc">当前没有可展示的最新 X Prompt 数据。</p>';
+            return;
+        }
+
+        latestXContentEl.innerHTML = groups.map((group) => {
+            const items = Array.isArray(group.items) ? group.items : [];
+            const cards = items.map((item, idx) => {
+                const title = item.author ? '@' + item.author : '未知作者';
+                const image = item.primary_image_url || (Array.isArray(item.image_urls) && item.image_urls[0]) || '';
+                const imageHtml = image
+                    ? '<img class="prompt-item-image" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="' + escapeHtml(image) + '" alt="' + escapeHtml(title) + '">'
+                    : '<div class="prompt-item-image prompt-item-image-placeholder">无图片直链</div>';
+                const linkParts = [];
+                const xUrl = item.x_url || item.url || '';
+                if (xUrl) {
+                    linkParts.push('<a href="' + escapeHtml(xUrl) + '" target="_blank" rel="noreferrer noopener">查看 X 原帖</a>');
+                }
+                if (Array.isArray(item.image_urls)) {
+                    item.image_urls.slice(0, 3).forEach((url, imageIdx) => {
+                        if (!url) return;
+                        linkParts.push('<a href="' + escapeHtml(url) + '" target="_blank" rel="noreferrer noopener">图片 ' + String(imageIdx + 1) + '</a>');
+                    });
+                }
+                const desc = item.reason || item.text || '来自 X 的最新 prompt 摘要';
+                const stats = [
+                    item.view_count != null ? '浏览 ' + String(item.view_count) : '',
+                    item.retweet_count != null ? '转推 ' + String(item.retweet_count) : '',
+                    item.like_count != null ? '点赞 ' + String(item.like_count) : ''
+                ].filter(Boolean).join(' · ');
+
+                return (
+                    '<article class="prompt-item-card latest-x-card">' +
+                        '<span class="prompt-item-badge">X #' + String(idx + 1) + '</span>' +
+                        '<div class="prompt-item-meta"><span>' + escapeHtml(group.date || '--') + '</span><span>' + escapeHtml(title) + '</span></div>' +
+                        '<h3 class="prompt-item-title latest-x-title">' + escapeHtml(title) + '</h3>' +
+                        imageHtml +
+                        '<p class="prompt-item-desc">' + escapeHtml(desc) + '</p>' +
+                        (stats ? '<p class="latest-x-stats">' + escapeHtml(stats) + '</p>' : '') +
+                        (linkParts.length ? '<p class="latest-x-links">' + linkParts.join(' · ') + '</p>' : '') +
+                        '<div class="prompt-item-code-box">' +
+                            '<div class="prompt-item-code-head"><span>提示词</span><button type="button" class="prompt-item-copy" data-latest-x-prompt="' + escapeHtml(item.prompt || '') + '">复制</button></div>' +
+                            '<pre>' + escapeHtml(item.prompt || '') + '</pre>' +
+                        '</div>' +
+                    '</article>'
+                );
+            }).join('');
+
+            return (
+                '<section class="latest-x-group">' +
+                    '<div class="latest-x-group-head">' +
+                        '<h3 class="latest-x-group-title">' + escapeHtml(group.date || '--') + '</h3>' +
+                        '<span class="case-category-tag latest-x-group-count">' + escapeHtml(String(group.count || items.length || 0)) + ' 条</span>' +
+                    '</div>' +
+                    '<div class="prompt-board-grid latest-x-grid">' + cards + '</div>' +
+                '</section>'
+            );
+        }).join('');
+
+        latestXContentEl.querySelectorAll('[data-latest-x-prompt]').forEach((button) => {
+            button.addEventListener('click', async () => {
+                const prompt = button.getAttribute('data-latest-x-prompt') || '';
+                if (!prompt) return;
+                try {
+                    await copyTextToClipboard(prompt);
+                    button.textContent = '已复制';
+                    setTimeout(() => {
+                        button.textContent = '复制';
+                    }, 1200);
+                } catch (error) {
+                    button.textContent = '失败';
+                    setTimeout(() => {
+                        button.textContent = '复制';
+                    }, 1200);
+                }
+            });
+        });
+    }
+
+    async function loadLatestXPrompts() {
+        if (!latestXStatusEl || !latestXContentEl) return;
+        latestXStatusEl.textContent = '正在加载 data/latest-prompts.json…';
+        latestXContentEl.innerHTML = '';
+        if (latestXSummaryEl) latestXSummaryEl.innerHTML = '';
+
+        const rawJsonUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/latest-prompts.json';
+        const candidates = ['data/latest-prompts.json', './data/latest-prompts.json', rawJsonUrl];
+        let payload = null;
+        let lastError = null;
+
+        for (const url of candidates) {
+            try {
+                const response = await fetch(url, { cache: 'no-store' });
+                if (!response.ok) throw new Error(String(response.status));
+                payload = await response.json();
+                if (latestXJsonLinkEl) latestXJsonLinkEl.href = url;
+                break;
+            } catch (error) {
+                lastError = error;
+            }
+        }
+
+        if (!payload) {
+            const errorMsg = lastError && lastError.message ? lastError.message : String(lastError || 'JSON 获取失败');
+            latestXStatusEl.textContent = '加载失败：' + errorMsg;
+            latestXContentEl.innerHTML = '<p class="case-study-desc">最新 X Prompt 数据加载失败，请直接打开 JSON 查看。</p>';
+            return;
+        }
+
+        renderLatestXPrompts(payload);
     }
 
     function extractPromptCategoriesFromMarkdown(markdown) {
@@ -1940,6 +2108,7 @@
                 loadReadme();
             });
         }
+        loadLatestXPrompts();
         loadReadme();
     }
 

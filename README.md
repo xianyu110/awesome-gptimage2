@@ -47,10 +47,42 @@ GPTImage2 模型五种使用方法：
   - [图片编辑与参考](#八图片编辑与参考)
   - [艺术创作](#九艺术创作)
   - [趣味玩法](#十趣味玩法)
+- [最新 X Prompt](#最新-x-prompt)
 - [高级技巧](#高级技巧)
 - [局限性](#局限性)
 - [API 定价](#api-定价)
 - [补充案例拆解](#补充案例拆解)
+
+---
+
+<!-- latest-x-prompts:start -->
+
+## 最新 X Prompt
+
+> 这个区块由 GitHub Action 根据 `data/latest-prompts.json` 自动生成，只展示带提示词的 X 帖子摘要。
+
+- 更新时间：`2026-04-23T13:50:08Z`
+- 模型：`grok-4`
+- 条目数：`2` · 日期分组：`1`
+- 原始数据：[`data/latest-prompts.json`](data/latest-prompts.json)
+
+### 2026-04-23
+
+#### 1. @Amira Zairi
+- 2026-04-23T09:02:57Z | [X 原帖](https://x.com/azed_ai/status/2047239794741411993)
+- 备注：Post shares direct usage of GPT Image 2.0 with a simple usable prompt; meets view threshold and demonstrates prompt application.
+```text
+a comedic manga about the Iranian American conflict
+```
+
+#### 2. @𝐌
+- 2026-04-23T05:14:40Z | [X 原帖](https://x.com/Strength04_X/status/2047182346034778387)
+- 备注：Directly shares a reusable crayon-style prompt template used with GPT Image 2; good engagement and explicit prompt content.
+```text
+[subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background
+```
+
+<!-- latest-x-prompts:end -->
 
 ---
 

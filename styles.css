@@ -594,6 +594,74 @@ body {
     font-weight: 700;
 }
 
+.latest-x-shell {
+    display: grid;
+    gap: 14px;
+}
+
+.latest-x-summary {
+    margin-top: -4px;
+}
+
+.latest-x-content {
+    display: grid;
+    gap: 16px;
+}
+
+.latest-x-group {
+    display: grid;
+    gap: 12px;
+}
+
+.latest-x-group-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.latest-x-group-title {
+    margin: 0;
+    color: var(--accent-gold);
+    font-family: var(--font-retro);
+    font-size: 28px;
+    line-height: 1.1;
+}
+
+.latest-x-group-count {
+    min-height: 28px;
+}
+
+.latest-x-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.latest-x-card {
+    background: #f0f0f0;
+}
+
+.latest-x-title {
+    font-size: 20px;
+}
+
+.latest-x-stats,
+.latest-x-links {
+    margin: 10px 0 0;
+    color: #3e4757;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.latest-x-links a {
+    color: #1f4e8c;
+    font-weight: 700;
+}
+
+.latest-x-links a:hover {
+    color: #0d2d57;
+}
+
 .overview-grid {
     display: grid;
     gap: 12px;
@@ -1250,6 +1318,10 @@ body {
 
     .prompt-board-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .latest-x-grid {
+        grid-template-columns: 1fr;
     }
 }
 

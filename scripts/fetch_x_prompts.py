@@ -60,12 +60,14 @@ def post_chat_completion(
         f"Min retweets: {min_retweets}\n"
         "Rules:\n"
         "1) Deduplicate by URL or text similarity.\n"
-        "2) Keep only posts with usable prompt content.\n"
+        "2) Keep only posts with reusable, non-empty prompt content.\n"
         "3) Must satisfy both: view_count >= min_views and retweet_count >= min_retweets.\n"
         "4) Exclude spam/ads/giveaway-only/unrelated model content.\n"
         "5) Rank by high engagement first, then newer first.\n"
-        "6) For each item include prompt when available.\n"
-        "7) Do not fabricate metrics. If unknown, set null.\n"
+        "6) Every item must include a non-empty prompt string.\n"
+        "7) Include x_url for every item. Include image_urls when the post visibly contains image links or media URLs.\n"
+        "8) If a post has no prompt, exclude it entirely.\n"
+        "9) Do not fabricate metrics or image links. If unknown, set null or [] as appropriate.\n"
         "Output strictly as JSON object:\n"
         "{"
         "\"meta\":{"
@@ -77,12 +79,15 @@ def post_chat_completion(
         "},"
         "\"items\":["
         "{"
+        "\"x_url\":\"\","
         "\"url\":\"\","
         "\"author\":\"\","
         "\"created_at\":\"\","
         "\"text\":\"\","
         "\"prompt\":\"\","
         "\"reason\":\"\","
+        "\"image_urls\":[],"
+        "\"primary_image_url\":\"\","
         "\"view_count\":0,"
         "\"retweet_count\":0,"
         "\"like_count\":0,"
@@ -187,7 +192,6 @@ def call_with_retry_and_fallback(
                 time.sleep(delay)
                 continue
 
-            # stop trying this model if error is non-retryable or retries exhausted
             print(
                 f"Model failed: {model}; reason={msg[:180]}; trying next fallback if available.",
                 file=sys.stderr,
@@ -204,7 +208,6 @@ def extract_message_content(resp: Dict[str, Any]) -> str:
     message = choices[0].get("message", {})
     content = message.get("content", "")
     if isinstance(content, list):
-        # Some providers return structured message parts.
         text_parts = []
         for part in content:
             if isinstance(part, dict):
@@ -233,7 +236,6 @@ def strip_code_fence(content: str) -> str:
 def parse_json_flexible(content: str) -> Dict[str, Any]:
     candidates: List[str] = [strip_code_fence(content)]
 
-    # Try extracting the first JSON object block if model wraps extra text.
     match = re.search(r"\{[\s\S]*\}", content)
     if match:
         candidates.append(match.group(0).strip())
@@ -272,20 +274,91 @@ def to_int_or_none(value: Any) -> int | None:
     return None
 
 
+def normalize_string_list(value: Any) -> List[str]:
+    if isinstance(value, str):
+        text = value.strip()
+        return [text] if text else []
+    if not isinstance(value, list):
+        return []
+
+    items: List[str] = []
+    for raw in value:
+        if not isinstance(raw, str):
+            continue
+        text = raw.strip()
+        if text and text not in items:
+            items.append(text)
+    return items
+
+
 def normalize_item(item: Dict[str, Any]) -> Dict[str, Any]:
+    x_url = str(item.get("x_url") or item.get("url") or "").strip()
+    image_urls = normalize_string_list(item.get("image_urls"))
+    primary_image_url = str(item.get("primary_image_url") or "").strip()
+    if primary_image_url and primary_image_url not in image_urls:
+        image_urls.insert(0, primary_image_url)
+    if not primary_image_url and image_urls:
+        primary_image_url = image_urls[0]
+
     return {
-        "url": str(item.get("url", "")).strip(),
+        "x_url": x_url,
+        "url": x_url,
         "author": str(item.get("author", "")).strip(),
         "created_at": str(item.get("created_at", "")).strip(),
         "text": str(item.get("text", "")).strip(),
         "prompt": str(item.get("prompt", "")).strip(),
         "reason": str(item.get("reason", "")).strip(),
+        "image_urls": image_urls,
+        "primary_image_url": primary_image_url,
         "view_count": to_int_or_none(item.get("view_count")),
         "retweet_count": to_int_or_none(item.get("retweet_count")),
         "like_count": to_int_or_none(item.get("like_count")),
         "reply_count": to_int_or_none(item.get("reply_count")),
         "engagement_score": to_int_or_none(item.get("engagement_score")),
     }
+
+
+def item_has_required_fields(item: Dict[str, Any]) -> bool:
+    if not item.get("prompt"):
+        return False
+    if item.get("primary_image_url"):
+        return True
+    if item.get("image_urls"):
+        return True
+    return bool(item.get("x_url"))
+
+
+def item_sort_key(item: Dict[str, Any]) -> Tuple[int, str, str]:
+    engagement = item.get("engagement_score")
+    created_at = str(item.get("created_at") or "")
+    prompt = str(item.get("prompt") or "")
+    return (engagement or -1, created_at, prompt)
+
+
+def resolve_date_key(created_at: str, fallback_date: str) -> str:
+    text = (created_at or "").strip()
+    if len(text) >= 10 and re.match(r"^\d{4}-\d{2}-\d{2}", text):
+        return text[:10]
+    return fallback_date
+
+
+def group_items_by_date(items: List[Dict[str, Any]], fallback_date: str) -> List[Dict[str, Any]]:
+    grouped: Dict[str, List[Dict[str, Any]]] = {}
+    for item in items:
+        key = resolve_date_key(str(item.get("created_at") or ""), fallback_date)
+        grouped.setdefault(key, []).append(item)
+
+    groups: List[Dict[str, Any]] = []
+    for date_key in sorted(grouped.keys(), reverse=True):
+        date_items = sorted(grouped[date_key], key=item_sort_key, reverse=True)
+        groups.append(
+            {
+                "date": date_key,
+                "count": len(date_items),
+                "items": date_items,
+            }
+        )
+    return groups
 
 
 def normalize_output(
@@ -298,20 +371,29 @@ def normalize_output(
     min_retweets: int,
 ) -> Dict[str, Any]:
     raw_items = parsed.get("items", [])
-    items: List[Dict[str, Any]] = []
+    normalized_items: List[Dict[str, Any]] = []
     if isinstance(raw_items, list):
         for obj in raw_items:
             if isinstance(obj, dict):
-                items.append(normalize_item(obj))
+                normalized_items.append(normalize_item(obj))
+
+    filtered_items = [item for item in normalized_items if item_has_required_fields(item)]
+    filtered_items.sort(key=item_sort_key, reverse=True)
 
     meta_raw = parsed.get("meta", {})
+    generated_at = iso_utc_now()
+    fallback_date = generated_at[:10]
+    date_groups = group_items_by_date(filtered_items, fallback_date)
+
     output = {
         "meta": {
-            "generated_at_utc": iso_utc_now(),
+            "generated_at_utc": generated_at,
             "source": str(meta_raw.get("source", "x")),
             "query": str(meta_raw.get("query", query)),
             "lookback_hours": int(meta_raw.get("lookback_hours", lookback_hours)),
-            "count": len(items),
+            "count": len(filtered_items),
+            "date_count": len(date_groups),
+            "dropped_count": max(0, len(normalized_items) - len(filtered_items)),
             "provider": "apipro.maynor1024.live",
             "base_url": base_url,
             "model": model,
@@ -320,7 +402,8 @@ def normalize_output(
                 "min_retweets": min_retweets,
             },
         },
-        "items": items,
+        "dates": date_groups,
+        "items": filtered_items,
     }
     return output
 
@@ -400,7 +483,10 @@ def main() -> int:
         min_retweets=min_retweets,
     )
     write_json(output_file, output)
-    print(f"Saved {output['meta']['count']} items to {output_file}")
+    print(
+        f"Saved {output['meta']['count']} prompt items across {output['meta']['date_count']} dates to {output_file}",
+        file=sys.stderr,
+    )
     return 0
 
 

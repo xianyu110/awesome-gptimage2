@@ -1,10 +1,12 @@
 {
   "meta": {
-    "generated_at_utc": "2026-04-23T11:35:56Z",
+    "generated_at_utc": "2026-04-23T13:50:08Z",
     "source": "x",
     "query": "(gptimage2 OR gpt-image-2 OR \"gpt image 2\") (prompt OR 提示词)",
     "lookback_hours": 12,
-    "count": 5,
+    "count": 2,
+    "date_count": 1,
+    "dropped_count": 3,
     "provider": "apipro.maynor1024.live",
     "base_url": "http://apipro.maynor1024.live/v1",
     "model": "grok-4",
@@ -13,40 +15,57 @@
       "min_retweets": 20
     }
   },
+  "dates": [
+    {
+      "date": "2026-04-23",
+      "count": 2,
+      "items": [
+        {
+          "x_url": "https://x.com/azed_ai/status/2047239794741411993",
+          "url": "https://x.com/azed_ai/status/2047239794741411993",
+          "author": "Amira Zairi",
+          "created_at": "2026-04-23T09:02:57Z",
+          "text": "GPT Image 2.0 is on Leonardo. I used simple prompt: a comedic manga about the Iranian American conflict 😂",
+          "prompt": "a comedic manga about the Iranian American conflict",
+          "reason": "Post shares direct usage of GPT Image 2.0 with a simple usable prompt; meets view threshold and demonstrates prompt application.",
+          "image_urls": [],
+          "primary_image_url": "",
+          "view_count": 1941,
+          "retweet_count": 2,
+          "like_count": 30,
+          "reply_count": 12,
+          "engagement_score": 1941
+        },
+        {
+          "x_url": "https://x.com/Strength04_X/status/2047182346034778387",
+          "url": "https://x.com/Strength04_X/status/2047182346034778387",
+          "author": "𝐌",
+          "created_at": "2026-04-23T05:14:40Z",
+          "text": "Crayon-style illustration, soft wax texture, playful imperfect strokes. Made with GPT Image 2. Prompt- [subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background",
+          "prompt": "[subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background",
+          "reason": "Directly shares a reusable crayon-style prompt template used with GPT Image 2; good engagement and explicit prompt content.",
+          "image_urls": [],
+          "primary_image_url": "",
+          "view_count": 1478,
+          "retweet_count": 1,
+          "like_count": 43,
+          "reply_count": 21,
+          "engagement_score": 1478
+        }
+      ]
+    }
+  ],
   "items": [
     {
-      "url": "https://x.com/RoundtableSpace/status/2047114479855603850",
-      "author": "0xMarioNawfal",
-      "created_at": "2026-04-23T00:45:00Z",
-      "text": "GPT IMAGE 2 LAUNCHED 48 HOURS AGO, AND PEOPLE ARE ALREADY USING IT TO BUILD THINGS THAT DIDN’T FEEL POSSIBLE BEFORE. From one prompt to full 3D worlds, the pace of image generation just changed fast.",
-      "prompt": "",
-      "reason": "High engagement post discussing GPT Image 2 capabilities and real-world usage; no specific usable prompt shared in the main text (video content only).",
-      "view_count": 188655,
-      "retweet_count": 11,
-      "like_count": 95,
-      "reply_count": 17,
-      "engagement_score": 188655
-    },
-    {
-      "url": "https://x.com/cyrilXBT/status/2047179222746316903",
-      "author": "CyrilXBT",
-      "created_at": "2026-04-23T05:02:16Z",
-      "text": "GPT IMAGE 2 DROPPED 48 HOURS AGO. The internet is already building things that did not feel possible last week. Full 3D worlds from a single prompt. ... Screenshot this and come back in 30 days.",
-      "prompt": "",
-      "reason": "High engagement post highlighting rapid adoption and advanced capabilities of GPT Image 2; no specific prompt extracted.",
-      "view_count": 6901,
-      "retweet_count": 14,
-      "like_count": 58,
-      "reply_count": 17,
-      "engagement_score": 6901
-    },
-    {
+      "x_url": "https://x.com/azed_ai/status/2047239794741411993",
       "url": "https://x.com/azed_ai/status/2047239794741411993",
       "author": "Amira Zairi",
       "created_at": "2026-04-23T09:02:57Z",
       "text": "GPT Image 2.0 is on Leonardo. I used simple prompt: a comedic manga about the Iranian American conflict 😂",
       "prompt": "a comedic manga about the Iranian American conflict",
       "reason": "Post shares direct usage of GPT Image 2.0 with a simple usable prompt; meets view threshold and demonstrates prompt application.",
+      "image_urls": [],
+      "primary_image_url": "",
       "view_count": 1941,
       "retweet_count": 2,
       "like_count": 30,
@@ -54,25 +73,15 @@
       "engagement_score": 1941
     },
     {
-      "url": "https://x.com/rovvmut_/status/2047245211517256054",
-      "author": "Heisenberg",
-      "created_at": "2026-04-23T09:24:29Z",
-      "text": "The prompt adherence in GPT Image 2 is too good.",
-      "prompt": "",
-      "reason": "Highlights strong prompt adherence of GPT Image 2; no specific full prompt shared in text.",
-      "view_count": 1553,
-      "retweet_count": 4,
-      "like_count": 52,
-      "reply_count": 19,
-      "engagement_score": 1553
-    },
-    {
+      "x_url": "https://x.com/Strength04_X/status/2047182346034778387",
       "url": "https://x.com/Strength04_X/status/2047182346034778387",
       "author": "𝐌",
       "created_at": "2026-04-23T05:14:40Z",
       "text": "Crayon-style illustration, soft wax texture, playful imperfect strokes. Made with GPT Image 2. Prompt- [subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background",
       "prompt": "[subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background",
       "reason": "Directly shares a reusable crayon-style prompt template used with GPT Image 2; good engagement and explicit prompt content.",
+      "image_urls": [],
+      "primary_image_url": "",
       "view_count": 1478,
       "retweet_count": 1,
       "like_count": 43,
