@@ -106,6 +106,7 @@
         <div class="nav-track">
             <a href="#overview" class="nav-link">导览</a>
             <a href="#prompt-gallery" class="nav-link">提示词</a>
+            <a href="#case-study" class="nav-link">补充案例</a>
             <a href="#readme" class="nav-link">完整内容</a>
             <a href="#faq" class="nav-link">FAQ</a>
             <a href="https://github.com/xianyu110/awesome-gptimage2" class="nav-link nav-link-github" target="_blank" rel="noreferrer">GitHub</a>
@@ -128,6 +129,10 @@
                     <h3>实战避坑</h3>
                     <p>覆盖常见失败原因、结构化修复策略和可复现优化路径。</p>
                 </article>
+                <article class="overview-card">
+                    <h3>补充案例库</h3>
+                    <p>AI新榜与 APPSO 的补充案例已并入下方搜索面板，可按来源、分类和关键词快速检索。</p>
+                </article>
             </div>
         </section>
 
@@ -148,6 +153,485 @@
             </div>
             <div id="prompt-board-grid" class="prompt-board-grid"></div>
             <p id="prompt-board-empty" class="prompt-board-empty" hidden>没有匹配结果，试试更短关键词。</p>
+        </section>
+
+        <section id="case-study" class="section" aria-label="补充案例拆解">
+            <div class="section-head">
+                <h2 class="section-title">补充案例拆解</h2>
+                <a class="readme-raw-link" href="README.md" target="_blank" rel="noreferrer">打开 README</a>
+            </div>
+
+            <div class="readme-card case-study-shell">
+                <div class="case-study-intro">
+                    <p class="case-study-kicker">AI新榜 · GPT Image 2刷屏一天了，我们总结了8个最热玩法</p>
+                    <h3 class="case-study-title">从文章里明确写出的 5 条提示词，拆成 5 类可复用玩法</h3>
+                    <p class="case-study-desc">这里补充的是一篇独立公众号文章的实战样本：保留原文链接、提取明确出现的提示词，并把正文图片统一迁移到图床，方便做二次整理与对外分发。</p>
+                </div>
+
+                <div class="overview-grid case-study-stats">
+                    <article class="overview-card">
+                        <h3>来源文章</h3>
+                        <p>AI新榜文章《GPT Image 2刷屏一天了，我们总结了8个最热玩法》。</p>
+                    </article>
+                    <article class="overview-card">
+                        <h3>本次提取</h3>
+                        <p>共提取 37 张正文图片，全部已替换成可外链图床地址。</p>
+                    </article>
+                    <article class="overview-card">
+                        <h3>分类方式</h3>
+                        <p>按玩法类型拆成 5 类：信息图、IP 设计、商业物料、手账编排、角色一致性。</p>
+                    </article>
+                </div>
+
+                <div class="case-category-grid">
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">信息图</span>
+                            <span class="case-category-index">#15</span>
+                        </div>
+                        <h3>知识科普与信息可视化</h3>
+                        <p>适合把长文本、百科材料、媒体资料包压缩成一张可传播的模块化海报。</p>
+                        <blockquote class="case-prompt-quote">提示词：请生成一张高质量竖版科普百科图，介绍GPT image 2。这是一张兼具“图鉴感、百科感、信息结构感、收藏感”的模块化科普信息图。整体风格参考高级博物图鉴、现代百科书页、生活方式知识卡和社交媒体高传播信息图的结合，全中文。</blockquote>
+                        <div class="case-gallery-grid">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925334708_15.png" alt="GPT Image 2 科普信息图案例">
+                                <figcaption>#15 科普信息图</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">IP 设计</span>
+                            <span class="case-category-index">#19-#21</span>
+                        </div>
+                        <h3>角色设定与商业延展</h3>
+                        <p>先生成核心形象，再继续做周边视觉、联名设定和整套商品化表达。</p>
+                        <blockquote class="case-prompt-quote">提示词：围绕上面的形象，设计一个IP</blockquote>
+                        <div class="case-gallery-grid case-gallery-grid-3">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925353853_19.png" alt="IP 设计设定图">
+                                <figcaption>#19 角色设定</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925357817_20.png" alt="IP 设计商业延展图">
+                                <figcaption>#20 商业延展</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925357814_21.png" alt="IP 设计联名物料图">
+                                <figcaption>#21 联名物料</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">商业物料</span>
+                            <span class="case-category-index">#22</span>
+                        </div>
+                        <h3>中英双语商业视觉</h3>
+                        <p>适合做菜单板、门店视觉、海报牌面等“文字必须能看”的双语商业素材。</p>
+                        <blockquote class="case-prompt-quote">提示词：一块中英双语咖啡馆菜单黑板，上面有中文今日特调和英文Daily Special</blockquote>
+                        <div class="case-gallery-grid">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925357255_22.png" alt="中英双语咖啡馆菜单黑板">
+                                <figcaption>#22 中英双语菜单</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">手账编排</span>
+                            <span class="case-category-index">#23</span>
+                        </div>
+                        <h3>手绘笔记与行程排版</h3>
+                        <p>适合旅游手账、课程笔记、学习地图、生活记录等高信息密度但要求审美在线的场景。</p>
+                        <blockquote class="case-prompt-quote">提示词：生成一张手绘子弹笔记风格的记录去上海旅游3天的手账。</blockquote>
+                        <div class="case-gallery-grid">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925368474_23.png" alt="上海旅游子弹笔记手账">
+                                <figcaption>#23 上海旅游手账</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">角色一致性</span>
+                            <span class="case-category-index">#24-#27</span>
+                        </div>
+                        <h3>多图参考与人物一致性</h3>
+                        <p>更适合“参考多张图 + 迁移到另一种风格/角色关系”的玩法，突出关系保留和画面重组能力。</p>
+                        <blockquote class="case-prompt-quote">提示词：图1、图2、图3的人物仿照图4的三只猫拍vlog图片</blockquote>
+                        <div class="case-gallery-grid case-gallery-grid-4">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925378190_24.png" alt="参考三只猫拍vlog的拼图输入">
+                                <figcaption>#24 多图输入</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925380623_25.png" alt="三人 vlog 成片案例一">
+                                <figcaption>#25 成片一</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925378939_26.png" alt="三人 vlog 成片案例二">
+                                <figcaption>#26 成片二</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776925385609_27.png" alt="三人 vlog 成片案例三">
+                                <figcaption>#27 成片三</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="faq-list case-archive-list">
+                    <details>
+                        <summary>图床链接归档：开篇截图与产品案例（#01-#14）</summary>
+                        <p>#01-#14 主要是文章头图、社交界面、电商页、产品图和示意案例。</p>
+                        <ol class="case-link-list">
+                            <li><a href="https://upload.maynor1024.live/file/1776925266347_01.png" target="_blank" rel="noreferrer">#01</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925269246_02.png" target="_blank" rel="noreferrer">#02</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925279235_03.jpg" target="_blank" rel="noreferrer">#03</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925283819_04.png" target="_blank" rel="noreferrer">#04</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925286078_05.jpg" target="_blank" rel="noreferrer">#05</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925289291_06.jpg" target="_blank" rel="noreferrer">#06</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925296390_07.png" target="_blank" rel="noreferrer">#07</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925297066_08.png" target="_blank" rel="noreferrer">#08</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925301157_09.jpg" target="_blank" rel="noreferrer">#09</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925310552_10.jpg" target="_blank" rel="noreferrer">#10</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925310152_11.jpg" target="_blank" rel="noreferrer">#11</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925316827_12.png" target="_blank" rel="noreferrer">#12</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925318940_13.png" target="_blank" rel="noreferrer">#13</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925333171_14.png" target="_blank" rel="noreferrer">#14</a></li>
+                        </ol>
+                    </details>
+
+                    <details>
+                        <summary>图床链接归档：5 个 Prompt 玩法案例（#15-#27）</summary>
+                        <p>#15-#27 是本文最值得复用的一组玩法图，覆盖信息图、IP 设计、双语物料、手账和多图参考生成。</p>
+                        <ol class="case-link-list">
+                            <li><a href="https://upload.maynor1024.live/file/1776925334708_15.png" target="_blank" rel="noreferrer">#15</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925338855_16.png" target="_blank" rel="noreferrer">#16</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925344987_17.png" target="_blank" rel="noreferrer">#17</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925341940_18.jpg" target="_blank" rel="noreferrer">#18</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925353853_19.png" target="_blank" rel="noreferrer">#19</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925357817_20.png" target="_blank" rel="noreferrer">#20</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925357814_21.png" target="_blank" rel="noreferrer">#21</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925357255_22.png" target="_blank" rel="noreferrer">#22</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925368474_23.png" target="_blank" rel="noreferrer">#23</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925378190_24.png" target="_blank" rel="noreferrer">#24</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925380623_25.png" target="_blank" rel="noreferrer">#25</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925378939_26.png" target="_blank" rel="noreferrer">#26</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925385609_27.png" target="_blank" rel="noreferrer">#27</a></li>
+                        </ol>
+                    </details>
+
+                    <details>
+                        <summary>图床链接归档：榜单、作者卡与文末素材（#28-#37）</summary>
+                        <p>#28-#37 主要是其他案例补充、榜单、作者名片和文末推广素材。</p>
+                        <ol class="case-link-list">
+                            <li><a href="https://upload.maynor1024.live/file/1776925387762_28.jpg" target="_blank" rel="noreferrer">#28</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925397007_29.jpg" target="_blank" rel="noreferrer">#29</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925401156_30.jpg" target="_blank" rel="noreferrer">#30</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925402976_31.png" target="_blank" rel="noreferrer">#31</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925408233_32.png" target="_blank" rel="noreferrer">#32</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925415365_33.png" target="_blank" rel="noreferrer">#33</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925423994_34.png" target="_blank" rel="noreferrer">#34</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925420251_35.png" target="_blank" rel="noreferrer">#35</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925421997_36.jpg" target="_blank" rel="noreferrer">#36</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776925432902_37.jpg" target="_blank" rel="noreferrer">#37</a></li>
+                        </ol>
+                    </details>
+                </div>
+
+                <div class="case-infer-box">
+                    <h3 class="case-infer-title">根据图片反推的提示词（推测版）</h3>
+                    <p class="case-study-desc">这部分不是原文逐字给出的 prompt，而是结合图片内容和文章上下文反推出来的复用写法，适合继续扩写成你自己的版本。</p>
+                    <ul class="case-infer-list">
+                        <li><strong>社交媒体截图：</strong> 生成一张“罗永浩接任 Apple CEO”的中文人物海报；或生成 Sam Altman、Elon Musk 中文直播带货截图；或生成 Tim Cook 加入华为的微博热搜图；或生成芙莉莲朋友圈、五条悟 X 主页这类角色社媒界面。</li>
+                        <li><strong>电商与品牌设计：</strong> 根据服装平铺图生成模特上身图；假如鸡毛掸子是 Apple 产品，请做一张 Apple 官网风格 Landing Page；再生成一个更本土化的 618 电商详情页。</li>
+                        <li><strong>信息图 / 游戏 / 漫画：</strong> 生成一张 GPT Image 2 中文百科信息图；生成一张特朗普变成《原神》Boss 的实机 UI 截图；生成一页全中文漫画分镜。</li>
+                        <li><strong>IP 与文字渲染：</strong> 参考桌面上的周边随手拍，设计完整 IP 角色，再分别扩展成星巴克联名、泡泡玛特联名、中英双语菜单和旅行手账。</li>
+                        <li><strong>多图融合与娱乐玩法：</strong> 上传 3 张单人照 + 1 张参考合照，让前 3 个人物模仿第 4 张的 pose 拍 vlog；再做麻将合照、猫咪武侠电影海报、追星直拍和专属漫画拼贴。</li>
+                        <li><strong>非 prompt 素材：</strong> #32-#37 是作者卡、二维码和文末推广图，不建议强行补 prompt。</li>
+                    </ul>
+                </div>
+
+                <details class="case-gallery-details" open>
+                    <summary>完整图片墙（37 张，不省略）</summary>
+                    <div class="case-full-gallery">
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925266347_01.png" alt="发布会视频截图"><figcaption>#01 发布会视频截图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925269246_02.png" alt="GPT Image 2 中文科普海报"><figcaption>#02 GPT Image 2 中文科普海报</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925279235_03.jpg" alt="多场景能力拼图"><figcaption>#03 多场景能力拼图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925283819_04.png" alt="社交动态界面图"><figcaption>#04 社交动态界面图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925286078_05.jpg" alt="罗永浩接任 Apple CEO 海报"><figcaption>#05 罗永浩接任 Apple CEO 海报</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925289291_06.jpg" alt="Sam Altman 和马斯克直播带货"><figcaption>#06 Sam Altman 和马斯克直播带货</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925296390_07.png" alt="马斯克直播带货特斯拉周边"><figcaption>#07 马斯克直播带货特斯拉周边</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925297066_08.png" alt="Tim Cook 加入华为热搜图"><figcaption>#08 Tim Cook 加入华为热搜图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925301157_09.jpg" alt="芙莉莲朋友圈截图"><figcaption>#09 芙莉莲朋友圈截图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925310552_10.jpg" alt="五条悟 X 账号主页"><figcaption>#10 五条悟 X 账号主页</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925310152_11.jpg" alt="服装换装编辑界面"><figcaption>#11 服装换装编辑界面</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925316827_12.png" alt="写真人像穿搭照"><figcaption>#12 写真人像穿搭照</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925318940_13.png" alt="鸡毛掸子 Apple 风 Landing Page"><figcaption>#13 鸡毛掸子 Apple 风 Landing Page</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925333171_14.png" alt="618 电商详情长图"><figcaption>#14 618 电商详情长图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925334708_15.png" alt="GPT Image 2 科普信息图"><figcaption>#15 GPT Image 2 科普信息图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925338855_16.png" alt="原神 Boss 战 UI"><figcaption>#16 原神 Boss 战 UI</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925344987_17.png" alt="中文漫画分镜"><figcaption>#17 中文漫画分镜</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925341940_18.jpg" alt="桌面周边随手拍"><figcaption>#18 桌面周边随手拍</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925353853_19.png" alt="IP 角色设定图"><figcaption>#19 IP 角色设定图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925357817_20.png" alt="星巴克联名设计"><figcaption>#20 星巴克联名设计</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925357814_21.png" alt="泡泡玛特联名设计"><figcaption>#21 泡泡玛特联名设计</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925357255_22.png" alt="中英双语菜单黑板"><figcaption>#22 中英双语菜单黑板</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925368474_23.png" alt="上海旅行手账"><figcaption>#23 上海旅行手账</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925378190_24.png" alt="多图参考输入拼图"><figcaption>#24 多图参考输入拼图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925380623_25.png" alt="三人 vlog 成片"><figcaption>#25 三人 vlog 成片</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925378939_26.png" alt="第二组人物参考图"><figcaption>#26 第二组人物参考图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925385609_27.png" alt="麻将场景成片"><figcaption>#27 麻将场景成片</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925387762_28.jpg" alt="猫咪武侠电影海报"><figcaption>#28 猫咪武侠电影海报</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925397007_29.jpg" alt="追星直拍海报"><figcaption>#29 追星直拍海报</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925401156_30.jpg" alt="专属漫画拼贴"><figcaption>#30 专属漫画拼贴</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925402976_31.png" alt="Arena 榜单走势图"><figcaption>#31 Arena 榜单走势图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925408233_32.png" alt="作者名片"><figcaption>#32 作者名片</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925415365_33.png" alt="合作作者卡"><figcaption>#33 合作作者卡</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925423994_34.png" alt="文末横幅 1"><figcaption>#34 文末横幅 1</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925420251_35.png" alt="文末横幅 2"><figcaption>#35 文末横幅 2</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925421997_36.jpg" alt="新榜矩阵通二维码"><figcaption>#36 新榜矩阵通二维码</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776925432902_37.jpg" alt="新榜声量通二维码"><figcaption>#37 新榜声量通二维码</figcaption></figure>
+                    </div>
+                </details>
+
+                <div class="case-study-divider" aria-hidden="true"></div>
+
+                <div class="case-study-intro">
+                    <p class="case-study-kicker">APPSO · 刚刚，实测完 GPT-Image-2：设计师没完蛋，但我被 AI 骗麻了</p>
+                    <h3 class="case-study-title">这篇没有显式“提示词：”，但有 5 类很值得复用的案例指令</h3>
+                    <p class="case-study-desc">和上面的 AI新榜文章不同，这篇更像一篇发布会与实测综述。文中没有系统列出 prompt，但给出了不少可以直接迁移到自己项目里的描述句、关键词和应用场景。</p>
+                </div>
+
+                <div class="overview-grid case-study-stats">
+                    <article class="overview-card">
+                        <h3>来源文章</h3>
+                        <p>APPSO 文章《刚刚，实测完 GPT-Image-2：设计师没完蛋，但我被 AI 骗麻了》。</p>
+                    </article>
+                    <article class="overview-card">
+                        <h3>本次提取</h3>
+                        <p>共提取 24 张正文图片，全部已上传到图床并替换成外链。</p>
+                    </article>
+                    <article class="overview-card">
+                        <h3>整理方式</h3>
+                        <p>按可复用案例拆成 5 类：桌面 UI、写实摄影、中文排版、真实质感、社媒整活。</p>
+                    </article>
+                </div>
+
+                <div class="case-category-grid">
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">桌面 UI</span>
+                            <span class="case-category-index">#05</span>
+                        </div>
+                        <h3>桌面截图与界面复刻</h3>
+                        <p>适合做“产品截图 + 杂乱桌面 + 聊天窗口”这类强调真实使用痕迹的界面图。</p>
+                        <blockquote class="case-prompt-quote">macOS 浏览器中 ChatGPT 的截图。用户输入「draw me a dog」，ChatGPT 画了一只 ASCII 艺术风格的狗。前景窗口是 ChatGPT，桌面很乱，后台开着一堆随机窗口（比如终端）。</blockquote>
+                        <div class="case-gallery-grid">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927572727_05.other" alt="macOS 桌面 ChatGPT ASCII 狗截图">
+                                <figcaption>#05 桌面 UI 复刻</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">写实摄影</span>
+                            <span class="case-category-index">#09-#11</span>
+                        </div>
+                        <h3>胶片抓拍与教育信息图</h3>
+                        <p>一边是写实纪实摄影，一边是高知识密度信息图，这篇文章展示了模型在“摄影感”和“结构感”两头都很强。</p>
+                        <blockquote class="case-prompt-quote">一张写实风格的旅行抓拍：阴天清晨，一个人站在海边路旁的观景停车带，用35mm胶片拍摄。构图自然、略有瑕疵，颗粒感明显，环境光漫射，色调低饱和，衣物和发丝随风飘动，带着纪录片式的电影质感，像是某段真实生活留下的影像。</blockquote>
+                        <div class="case-gallery-grid case-gallery-grid-3">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927584894_09.other" alt="旅行胶片抓拍">
+                                <figcaption>#09 胶片抓拍</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927590918_10.webp" alt="数学信息图">
+                                <figcaption>#10 数学信息图</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927602380_11.jpg" alt="篮球信息图">
+                                <figcaption>#11 体育信息图</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">中文排版</span>
+                            <span class="case-category-index">#12-#17</span>
+                        </div>
+                        <h3>角色一致性与中文文字能力</h3>
+                        <p>这一组最适合拿来验证“同一人物多视角”“中文手写”“多语言排版”和细小文字是否稳定。</p>
+                        <blockquote class="case-prompt-quote">用普通人的笔迹抄写《定风波·莫听穿林打叶声》</blockquote>
+                        <div class="case-gallery-grid case-gallery-grid-4">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927598909_12.png" alt="角色一致性穿搭图一">
+                                <figcaption>#12 角色一致性</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927610992_13.png" alt="角色一致性穿搭图二">
+                                <figcaption>#13 角色延展</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927610651_14.png" alt="中文手写诗词">
+                                <figcaption>#14 中文手写</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927619323_15.png" alt="多语言排版">
+                                <figcaption>#15 多语言排版</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927624690_16.png" alt="中文趣味排版">
+                                <figcaption>#16 中文玩梗</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927623579_17.png" alt="大米微小文字">
+                                <figcaption>#17 极小文字</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">真实质感</span>
+                            <span class="case-category-index">#18-#20</span>
+                        </div>
+                        <h3>photorealistic 与真实光影</h3>
+                        <p>如果你想让画面少一点“AI 塑料感”，这组案例最值得参考，重点在真实瑕疵、颗粒感和光影逻辑。</p>
+                        <blockquote class="case-prompt-quote">关键词：photorealistic</blockquote>
+                        <div class="case-gallery-grid case-gallery-grid-3">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927634216_18.png" alt="真实人像风格">
+                                <figcaption>#18 真实人像</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927637870_19.png" alt="真实质感摄影">
+                                <figcaption>#19 真实质感</figcaption>
+                            </figure>
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927643952_20.png" alt="月球 360 光影">
+                                <figcaption>#20 360 光影</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+
+                    <article class="case-category-card">
+                        <div class="case-category-meta">
+                            <span class="case-category-tag">社媒整活</span>
+                            <span class="case-category-index">#22</span>
+                        </div>
+                        <h3>中文社交媒体梗图</h3>
+                        <p>适合做微信朋友圈、中文评论区、社交平台截图这类需要世界知识、人物关系和中文排版一起工作的场景。</p>
+                        <blockquote class="case-prompt-quote">生成 OpenAI CEO Sam Altman 在微信朋友圈用中文介绍宣传 ChatGPT Images 2.0，底下马斯克评论发「？？？」，Demis Hassabis 评论称：「我觉得不如 Nano Banana Pro」，图片比例为 16:9</blockquote>
+                        <div class="case-gallery-grid">
+                            <figure class="case-gallery-item">
+                                <img src="https://upload.maynor1024.live/file/1776927657894_22.png" alt="Sam Altman 微信朋友圈中文整活图">
+                                <figcaption>#22 微信朋友圈整活图</figcaption>
+                            </figure>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="faq-list case-archive-list">
+                    <details>
+                        <summary>图床链接归档：发布会与基础案例（#01-#08）</summary>
+                        <p>#01-#08 主要是发布会截图、榜单、Anthropic 示例和游戏场景案例。</p>
+                        <ol class="case-link-list">
+                            <li><a href="https://upload.maynor1024.live/file/1776927544187_01.png" target="_blank" rel="noreferrer">#01</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927556901_02.png" target="_blank" rel="noreferrer">#02</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927556202_03.jpg" target="_blank" rel="noreferrer">#03</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927562675_04.png" target="_blank" rel="noreferrer">#04</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927572727_05.other" target="_blank" rel="noreferrer">#05</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927576065_06.png" target="_blank" rel="noreferrer">#06</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927573344_07.png" target="_blank" rel="noreferrer">#07</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927588440_08.jpg" target="_blank" rel="noreferrer">#08</a></li>
+                        </ol>
+                    </details>
+
+                    <details>
+                        <summary>图床链接归档：可复用实战案例（#09-#22）</summary>
+                        <p>#09-#22 覆盖胶片摄影、信息图、角色一致性、中文排版、真实质感和社交媒体整活。</p>
+                        <ol class="case-link-list">
+                            <li><a href="https://upload.maynor1024.live/file/1776927584894_09.other" target="_blank" rel="noreferrer">#09</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927590918_10.webp" target="_blank" rel="noreferrer">#10</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927602380_11.jpg" target="_blank" rel="noreferrer">#11</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927598909_12.png" target="_blank" rel="noreferrer">#12</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927610992_13.png" target="_blank" rel="noreferrer">#13</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927610651_14.png" target="_blank" rel="noreferrer">#14</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927619323_15.png" target="_blank" rel="noreferrer">#15</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927624690_16.png" target="_blank" rel="noreferrer">#16</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927623579_17.png" target="_blank" rel="noreferrer">#17</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927634216_18.png" target="_blank" rel="noreferrer">#18</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927637870_19.png" target="_blank" rel="noreferrer">#19</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927643952_20.png" target="_blank" rel="noreferrer">#20</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927655003_21.webp" target="_blank" rel="noreferrer">#21</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927657894_22.png" target="_blank" rel="noreferrer">#22</a></li>
+                        </ol>
+                    </details>
+
+                    <details>
+                        <summary>图床链接归档：文末素材（#23-#24）</summary>
+                        <p>#23-#24 是文末二维码和 AI 方向编辑卡片。</p>
+                        <ol class="case-link-list">
+                            <li><a href="https://upload.maynor1024.live/file/1776927661494_23.png" target="_blank" rel="noreferrer">#23</a></li>
+                            <li><a href="https://upload.maynor1024.live/file/1776927662893_24.other" target="_blank" rel="noreferrer">#24</a></li>
+                        </ol>
+                    </details>
+                </div>
+
+                <div class="case-infer-box">
+                    <h3 class="case-infer-title">根据图片反推的提示词（推测版）</h3>
+                    <p class="case-study-desc">下面这些不是 APPSO 原文逐字给出的 prompt，而是结合文章描述和成图效果整理出的复用写法。</p>
+                    <ul class="case-infer-list">
+                        <li><strong>桌面 UI：</strong> 生成一张 macOS 桌面截图，前景窗口是 ChatGPT，用户输入 <code>draw me a dog</code>，输出 ASCII 艺术风格的小狗，后台开着终端和多个杂乱窗口。</li>
+                        <li><strong>写实摄影与信息图：</strong> 生成一张 35mm 胶片旅行抓拍；或生成数学原理信息图、体育信息图，要求结构清晰、标题和标签准确。</li>
+                        <li><strong>角色一致性与中文排版：</strong> 上传一张人物图，延展多套穿搭和多角度；用普通人的笔迹抄写《定风波》；再生成多语言排版和中文玩梗视觉。</li>
+                        <li><strong>真实质感：</strong> 使用关键词 <code>photorealistic</code>，要求颗粒、阴影、轻微失焦和真实光影关系都更像照片。</li>
+                        <li><strong>教学图与社媒整活：</strong> 生成鞋带系法教学图；或生成 Sam Altman 微信朋友圈中文整活图，带马斯克和 Demis 的评论。</li>
+                        <li><strong>非 prompt 素材：</strong> #01-#04 偏发布会和榜单图，#23-#24 偏二维码和编辑卡片，不建议强行补 prompt。</li>
+                    </ul>
+                </div>
+
+                <details class="case-gallery-details" open>
+                    <summary>完整图片墙（24 张，不省略）</summary>
+                    <div class="case-full-gallery">
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927544187_01.png" alt="发布会主讲截图"><figcaption>#01 发布会主讲截图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927556901_02.png" alt="AI 困境广告牌画面"><figcaption>#02 AI 困境广告牌画面</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927556202_03.jpg" alt="Arena 排行榜"><figcaption>#03 Arena 排行榜</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927562675_04.png" alt="OpenAI 团队圆桌"><figcaption>#04 OpenAI 团队圆桌</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927572727_05.other" alt="macOS 桌面 ChatGPT ASCII 狗"><figcaption>#05 macOS 桌面 ChatGPT ASCII 狗</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927576065_06.png" alt="Anthropic 对话截图"><figcaption>#06 Anthropic 对话截图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927573344_07.png" alt="API 价格/参数表"><figcaption>#07 API 价格/参数表</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927588440_08.jpg" alt="游戏实机画面"><figcaption>#08 游戏实机画面</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927584894_09.other" alt="35mm 胶片旅行抓拍"><figcaption>#09 35mm 胶片旅行抓拍</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927590918_10.webp" alt="康托尔对角线信息图"><figcaption>#10 康托尔对角线信息图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927602380_11.jpg" alt="篮球信息图"><figcaption>#11 篮球信息图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927598909_12.png" alt="角色一致性穿搭图"><figcaption>#12 角色一致性穿搭图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927610992_13.png" alt="角色一致性延展图"><figcaption>#13 角色一致性延展图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927610651_14.png" alt="中文手写诗词"><figcaption>#14 中文手写诗词</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927619323_15.png" alt="多语言排版海报"><figcaption>#15 多语言排版海报</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927624690_16.png" alt="中文玩梗视觉"><figcaption>#16 中文玩梗视觉</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927623579_17.png" alt="极小文字演示"><figcaption>#17 极小文字演示</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927634216_18.png" alt="真实人像风格"><figcaption>#18 真实人像风格</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927637870_19.png" alt="真实质感摄影"><figcaption>#19 真实质感摄影</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927643952_20.png" alt="月球 360 光影"><figcaption>#20 月球 360 光影</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927655003_21.webp" alt="鞋带教学图"><figcaption>#21 鞋带教学图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927657894_22.png" alt="微信朋友圈整活图"><figcaption>#22 微信朋友圈整活图</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927661494_23.png" alt="二维码海报"><figcaption>#23 二维码海报</figcaption></figure>
+                        <figure class="case-full-gallery-item"><img src="https://upload.maynor1024.live/file/1776927662893_24.other" alt="AI 方向编辑卡片"><figcaption>#24 AI 方向编辑卡片</figcaption></figure>
+                    </div>
+                </details>
+            </div>
         </section>
 
         <section id="readme" class="section">
@@ -247,6 +731,213 @@
         activeCategory: 'all',
         keyword: ''
     };
+
+    const SUPPLEMENT_PROMPT_CARDS = [
+        {
+            id: 'supp-ai-01',
+            title: 'AI新榜｜社交媒体截图与假新闻玩法',
+            category: 'UI 界面复刻',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925286078_05.jpg',
+            description: '罗永浩 Apple CEO、抖音直播带货、Tim Cook 华为热搜、芙莉莲朋友圈、五条悟 X 主页这一组都适合用来做高拟真中文界面截图。',
+            promptText: [
+                '生成一张“罗永浩接任 Apple CEO”的中文人物海报，科技发布会视觉，人物半身特写，舞台灯光，带 Apple 风格标题与社交媒体传播感。',
+                '生成一张抖音直播间截图，Sam Altman 和 Elon Musk 正在中文直播带货，画面里要有主播头像、弹幕、商品卡片、点赞评论和平台 UI。',
+                '生成一张“Tim Cook 加入华为”的微博官宣图和热搜图，包含多个衍生热搜词条，看起来像真实中文互联网截图。',
+                '生成一张《葬送的芙莉莲》角色的微信朋友圈截图，头像、配图、文案、评论都符合人物设定。',
+                '生成一张五条悟的 X 账号主页截图，头像、简介、置顶内容和时间线风格贴近角色气质。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-ai-02',
+            title: 'AI新榜｜服装换装与品牌落地页',
+            category: '电商与产品',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925316827_12.png',
+            description: '适合把服装平铺图、电商详情页和品牌官网风格页统一纳入商业设计测试。',
+            promptText: [
+                '根据服装平铺图生成模特上身图，服饰细节 1:1 还原，场景自然，像真实棚拍或街拍。',
+                '假如鸡毛掸子是 Apple 的产品，请生成一张 Apple 官网风格的 Landing Page，极简排版，大面积留白，带幽默文案。',
+                '生成一张更本土化的 618 电商商品详情页，带价格、优惠券、卖点模块和中文电商视觉层级。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-ai-03',
+            title: 'AI新榜｜GPT Image 2 科普信息图',
+            category: '知识科普与信息图',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925334708_15.png',
+            description: '原文明确给出的高质量信息图 prompt，适合百科图、模块化知识卡和可收藏海报。',
+            promptText: '请生成一张高质量竖版科普百科图，介绍GPT image 2。这是一张兼具“图鉴感、百科感、信息结构感、收藏感”的模块化科普信息图。整体风格参考高级博物图鉴、现代百科书页、生活方式知识卡和社交媒体高传播信息图的结合，全中文。'
+        },
+        {
+            id: 'supp-ai-04',
+            title: 'AI新榜｜原神 Boss 战 UI 拟真',
+            category: 'UI 界面复刻',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925338855_16.png',
+            description: '用熟悉的游戏画面做 UI 拟真测试，尤其适合小地图、角色栏、技能图标和 HUD 细节。',
+            promptText: '生成一张特朗普变成《原神》大 Boss 的实机演示截图，完整复刻战斗 UI、小地图、角色栏、血条、技能图标和 UID。'
+        },
+        {
+            id: 'supp-ai-05',
+            title: 'AI新榜｜中文漫画分镜',
+            category: '艺术创作',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925344987_17.png',
+            description: '适合测试长图叙事、多格分镜、角色一致性和中文气泡文字。',
+            promptText: '生成一页全中文漫画分镜，主题是“哆啦A梦被夜神月威胁利用”，要求角色一致、剧情连贯、气泡和分镜完整。'
+        },
+        {
+            id: 'supp-ai-06',
+            title: 'AI新榜｜IP 联名设计',
+            category: '角色与一致性',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925353853_19.png',
+            description: '从桌面周边随手拍开始，延展成完整 IP，再继续做星巴克与泡泡玛特联名。',
+            promptText: [
+                '围绕上面的形象，设计一个IP。',
+                '参考一张办公桌上的周边随手拍，为它设计一个完整 IP：三视图、表情、角色设定和衍生周边。',
+                '围绕这个 IP 再设计星巴克联名和泡泡玛特联名，分别输出饮品、杯子、挂件、盲盒和海报物料。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-ai-07',
+            title: 'AI新榜｜菜单与旅行手账',
+            category: '创意字体',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925357255_22.png',
+            description: '这组重点看中英双语排版、手写信息编排和长文字内容的自然融入。',
+            promptText: [
+                '一块中英双语咖啡馆菜单黑板，上面有中文今日特调和英文 Daily Special。',
+                '生成一张手绘子弹笔记风格的记录去上海旅游 3 天的手账。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-ai-08',
+            title: 'AI新榜｜多图融合与 vlog 合照',
+            category: '图片编辑与参考',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925380623_25.png',
+            description: '适合拿多张人物参考图做姿势迁移、场景合成和人物一致性测试。',
+            promptText: '图1、图2、图3的人物仿照图4的三只猫拍vlog图片。'
+        },
+        {
+            id: 'supp-ai-09',
+            title: 'AI新榜｜玩梗电影海报与追星直拍',
+            category: '趣味玩法',
+            source: 'AI新榜',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776925387762_28.jpg',
+            description: '适合猫咪江湖片、追星应援海报、角色拼贴和各种互联网整活视觉。',
+            promptText: [
+                '生成一张猫咪主演的武侠电影海报，老港片 / 江湖片质感，标题夸张，人物关系复杂。',
+                '生成一组追星直拍 / 偶像应援海报，拼贴构图，强舞台灯光，中文应援字样。',
+                '根据人物设定生成一页专属漫画拼贴或角色故事板，带多格内容和统一美术风格。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-appso-01',
+            title: 'APPSO｜桌面 UI 与产品界面',
+            category: 'UI 界面复刻',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927572727_05.other',
+            description: '从 macOS 桌面到对话截图，这一组很适合拿来做产品演示和真实使用痕迹的界面图。',
+            promptText: [
+                '生成一张 macOS 桌面截图，前景窗口是 ChatGPT，用户输入 draw me a dog，输出 ASCII 艺术风格的小狗，后台开着终端和多个杂乱窗口。',
+                '生成一张对话截图或产品演示图，界面要像真实 SaaS / AI 工具，保留输入框、消息气泡、边栏和系统窗口细节。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-appso-02',
+            title: 'APPSO｜35mm 胶片旅行抓拍',
+            category: '真实摄影',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927584894_09.other',
+            description: '典型的写实摄影测试：低饱和、颗粒、纪录片感和真实生活痕迹。',
+            promptText: '一张写实风格的旅行抓拍：阴天清晨，一个人站在海边路旁的观景停车带，用 35mm 胶片拍摄。构图自然、略有瑕疵，颗粒感明显，环境光漫射，色调低饱和，衣物和发丝随风飘动，带着纪录片式的电影质感，像是某段真实生活留下的影像。'
+        },
+        {
+            id: 'supp-appso-03',
+            title: 'APPSO｜数学与体育信息图',
+            category: '知识科普与信息图',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927590918_10.webp',
+            description: '适合做原理图、课堂讲义、评分卡和可视化教学材料。',
+            promptText: [
+                '生成一张数学原理信息图，要求结构清晰、标题和标签准确、排版干净。',
+                '生成一张体育数据信息图，像真实数据可视化海报一样完整，保留标题、分项说明和图示。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-appso-04',
+            title: 'APPSO｜角色一致性穿搭延展',
+            category: '角色与一致性',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927598909_12.png',
+            description: '一张人物参考图延展出多套穿搭和不同角度，是典型的一致性测试场景。',
+            promptText: '上传一张人物照片，生成多套穿搭和多个角度，保持人物脸部特征一致。'
+        },
+        {
+            id: 'supp-appso-05',
+            title: 'APPSO｜中文手写与多语言排版',
+            category: '创意字体',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927610651_14.png',
+            description: '适合测手写中文、海报级多语言文字排版和小字号内容稳定性。',
+            promptText: [
+                '用普通人的笔迹抄写《定风波·莫听穿林打叶声》。',
+                '生成一张多语言排版海报，要求中文、英文和其他语言都自然融入版式。',
+                '生成一张中文玩梗视觉，小字号文字也尽量清晰稳定。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-appso-06',
+            title: 'APPSO｜photorealistic 与真实光影',
+            category: '真实摄影',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927637870_19.png',
+            description: '如果想压掉“AI 塑料感”，这一组非常适合拿来做真实光影和摄影感校准。',
+            promptText: [
+                '关键词：photorealistic。',
+                '生成一张具有真实光影逻辑的场景图，例如月球 360 全景，太阳方向与地面阴影必须一致。'
+            ].join('\n\n')
+        },
+        {
+            id: 'supp-appso-07',
+            title: 'APPSO｜鞋带教学图',
+            category: '知识科普与信息图',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927655003_21.webp',
+            description: '教学图是信息结构与箭头逻辑的典型高难度场景，适合单独搜索和复盘。',
+            promptText: '生成一张鞋带系法教学图，强调步骤清晰、箭头合理、布局像真实教材。'
+        },
+        {
+            id: 'supp-appso-08',
+            title: 'APPSO｜微信朋友圈整活图',
+            category: '趣味玩法',
+            source: 'APPSO',
+            badge: '补充',
+            image: 'https://upload.maynor1024.live/file/1776927657894_22.png',
+            description: '中文社交媒体梗图，适合拿世界知识、人物关系和评论区一起做测试。',
+            promptText: '生成 OpenAI CEO Sam Altman 在微信朋友圈用中文介绍宣传 ChatGPT Images 2.0，底下马斯克评论“？？？”，Demis Hassabis 评论“我觉得不如 Nano Banana Pro”，图片比例为 16:9。'
+        }
+    ];
 
     function setupAnchorScroll() {
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -455,6 +1146,8 @@
                 id: 'prompt-' + (cards.length + 1),
                 title: currentPrompt.title,
                 category: currentPrompt.category || '未分类',
+                source: '主教程',
+                badge: '教程',
                 image: imageMatch ? imageMatch[1] : '',
                 description: description || '暂无说明',
                 promptText: previewText,
@@ -517,8 +1210,8 @@
 
             return (
                 '<article class="prompt-item-card">' +
-                    '<span class="prompt-item-badge">精选</span>' +
-                    '<div class="prompt-item-meta"><span>分类 ' + escapeHtml(item.category) + '</span><span>#' + String(idx + 1) + '</span></div>' +
+                    '<span class="prompt-item-badge">' + escapeHtml(item.badge || '精选') + '</span>' +
+                    '<div class="prompt-item-meta"><span>分类 ' + escapeHtml(item.category) + '</span><span>' + escapeHtml(item.source || '主教程') + ' · #' + String(idx + 1) + '</span></div>' +
                     '<h3 class="prompt-item-title">' + escapeHtml(item.title) + '</h3>' +
                     imageHtml +
                     '<p class="prompt-item-desc">' + escapeHtml(item.description) + '</p>' +
@@ -595,7 +1288,7 @@
             const matchCategory = category === 'all' || item.category === category;
             if (!matchCategory) return false;
             if (!keyword) return true;
-            const source = [item.title, item.category, item.description, item.promptText].join(' ').toLowerCase();
+            const source = [item.title, item.category, item.source || '', item.description, item.promptText].join(' ').toLowerCase();
             return source.includes(keyword);
         });
 
@@ -631,7 +1324,7 @@
     }
 
     function renderPromptBoardFromMarkdown(markdown) {
-        const cards = extractPromptCardsFromMarkdown(markdown);
+        const cards = extractPromptCardsFromMarkdown(markdown).concat(SUPPLEMENT_PROMPT_CARDS);
         promptBoardState.all = cards;
         promptBoardState.activeCategory = 'all';
         promptBoardState.keyword = '';

@@ -47,6 +47,7 @@ GPTImage2 模型五种使用方法：
 - [高级技巧](#高级技巧)
 - [局限性](#局限性)
 - [API 定价](#api-定价)
+- [补充案例拆解](#补充案例拆解)
 
 ---
 
@@ -927,6 +928,326 @@ GPT-Image-2 虽然强大，但仍有以下局限：
 ![全日语少年漫画](https://upload.maynor1024.live/file/1776831694503_wx_106_6ac2dcf700.png)
 ![多语言书店封面](https://upload.maynor1024.live/file/1776831718180_wx_107_30d146f1e5.png)
 ![韩语韩屋广告](https://upload.maynor1024.live/file/1776831716035_wx_108_e12e784741.png)
+
+## 补充案例拆解
+
+### AI新榜《GPT Image 2刷屏一天了，我们总结了8个最热玩法》
+
+- 原文链接：https://mp.weixin.qq.com/s/PKO6EVXRarRe4ToP7srgxA
+- 公众号：AI新榜
+- 作者：Kino 懒人
+- 本次补充提取：37 张正文图片，5 条文中明确出现的提示词
+- 说明：这里只收录正文里明确写出“提示词：”的内容，不对作者未明写的 prompt 做猜测补全
+
+#### 提示词摘录
+
+1. 提示词：请生成一张高质量竖版科普百科图，介绍GPT image 2。这是一张兼具“图鉴感、百科感、信息结构感、收藏感”的模块化科普信息图。整体风格参考高级博物图鉴、现代百科书页、生活方式知识卡和社交媒体高传播信息图的结合，全中文。
+2. 提示词：围绕上面的形象，设计一个IP
+3. 提示词：一块中英双语咖啡馆菜单黑板，上面有中文今日特调和英文Daily Special
+4. 提示词：生成一张手绘子弹笔记风格的记录去上海旅游3天的手账。
+5. 提示词：图1、图2、图3的人物仿照图4的三只猫拍vlog图片
+
+#### 根据图片反推的提示词（推测版）
+
+> 下面这些不是原文明确给出的 prompt，而是结合正文语境和成图效果反推出来的“可复用写法”。
+
+1. 社交媒体截图与假新闻玩法（#05-#10）
+   - 生成一张“罗永浩接任 Apple CEO”的中文人物海报，科技发布会视觉，人物半身特写，舞台灯光，带 Apple 风格标题与社交媒体传播感。
+   - 生成一张抖音直播间截图，Sam Altman 和 Elon Musk 正在中文直播带货，画面里要有主播头像、弹幕、商品卡片、点赞评论和平台 UI。
+   - 生成一张“Tim Cook 加入华为”的微博官宣图和热搜图，包含多个衍生热搜词条，看起来像真实中文互联网截图。
+   - 生成一张《葬送的芙莉莲》角色的微信朋友圈截图，头像、配图、文案、评论都符合人物设定。
+   - 生成一张五条悟的 X 账号主页截图，头像、简介、置顶内容和时间线风格贴近角色气质。
+2. 电商与品牌设计（#11-#14）
+   - 根据服装平铺图生成模特上身图，服饰细节 1:1 还原，场景自然，像真实棚拍或街拍。
+   - 假如鸡毛掸子是 Apple 的产品，请生成一张 Apple 官网风格的 Landing Page，极简排版，大面积留白，带幽默文案。
+   - 生成一张更本土化的 618 电商商品详情页，带价格、优惠券、卖点模块和中文电商视觉层级。
+3. 信息图、游戏 UI 与漫画分镜（#15-#17）
+   - 生成一张介绍 GPT Image 2 核心能力的中文百科/信息图海报，模块化布局，图鉴感强。
+   - 生成一张特朗普变成《原神》大 Boss 的实机演示截图，完整复刻战斗 UI、小地图、角色栏、血条和 UID。
+   - 生成一页全中文漫画分镜，主题是“哆啦A梦被夜神月威胁利用”，要求角色一致、剧情连贯、气泡和分镜完整。
+4. IP 联名与文字渲染（#18-#23）
+   - 参考一张办公桌上的周边随手拍，为它设计一个完整 IP：三视图、表情、角色设定和衍生周边。
+   - 围绕这个 IP 再设计星巴克联名和泡泡玛特联名，分别输出饮品、杯子、挂件、盲盒和海报物料。
+   - 生成一块中英双语咖啡馆菜单黑板，中文今日特调和英文 Daily Special 要自然融入排版。
+   - 生成一张手绘子弹笔记风格的上海 3 日旅行手账，包含路线、美食、照片、花费和心情记录。
+5. 多图融合与娱乐化创作（#24-#31）
+   - 上传三张人物单人照和一张参考合照，让前三个人物模仿参考图里的姿势，一起拍 vlog 合照。
+   - 保留一个核心人物，换另外三位不同肤色或性别的人物参考，生成中国元素更强的麻将场景合照。
+   - 生成一张猫咪主演的武侠电影海报，老港片/江湖片质感，标题夸张，人物关系复杂。
+   - 生成一组追星直拍/偶像应援海报，拼贴构图，强舞台灯光，中文应援字样。
+   - 根据人物设定生成一页专属漫画拼贴或角色故事板，带多格内容和统一美术风格。
+   - 生成一张 Arena 榜单或模型对比走势图，适合做 AI 产品成绩单展示。
+6. 说明
+   - #01-#04 更偏文章头图、概览图或导流图，适合按“发布会截图 / GPT Image 2 能力概览 / 社交动态界面”去写。
+   - #32-#37 是作者卡、二维码和文末推广素材，不建议强行补 prompt。
+
+#### 对应案例图
+
+- 科普信息图：#15
+- IP 设计延展：#19、#20、#21
+- 中英双语咖啡馆菜单：#22
+- 上海旅游手账：#23
+- 仿三只猫拍 vlog：#24、#25、#26、#27
+
+![AI新榜案例-15-科普信息图](https://upload.maynor1024.live/file/1776925334708_15.png)
+![AI新榜案例-19-IP设计](https://upload.maynor1024.live/file/1776925353853_19.png)
+![AI新榜案例-22-双语菜单](https://upload.maynor1024.live/file/1776925357255_22.png)
+![AI新榜案例-23-上海旅游手账](https://upload.maynor1024.live/file/1776925368474_23.png)
+![AI新榜案例-25-vlog案例](https://upload.maynor1024.live/file/1776925380623_25.png)
+
+<details open>
+<summary>查看全部图片（37 张，不省略）</summary>
+
+<table>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925266347_01.png" alt="发布会视频截图" width="220" /><br><sub>#01 发布会视频截图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925269246_02.png" alt="GPT Image 2 中文科普海报" width="220" /><br><sub>#02 GPT Image 2 中文科普海报</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925279235_03.jpg" alt="多场景能力拼图" width="220" /><br><sub>#03 多场景能力拼图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925283819_04.png" alt="社交动态界面图" width="220" /><br><sub>#04 社交动态界面图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925286078_05.jpg" alt="罗永浩接任 Apple CEO 海报" width="220" /><br><sub>#05 罗永浩接任 Apple CEO 海报</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925289291_06.jpg" alt="Sam Altman 和马斯克直播带货" width="220" /><br><sub>#06 Sam Altman 和马斯克直播带货</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925296390_07.png" alt="马斯克直播带货特斯拉周边" width="220" /><br><sub>#07 马斯克直播带货特斯拉周边</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925297066_08.png" alt="Tim Cook 加入华为热搜图" width="220" /><br><sub>#08 Tim Cook 加入华为热搜图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925301157_09.jpg" alt="芙莉莲朋友圈截图" width="220" /><br><sub>#09 芙莉莲朋友圈截图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925310552_10.jpg" alt="五条悟 X 账号主页" width="220" /><br><sub>#10 五条悟 X 账号主页</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925310152_11.jpg" alt="服装换装编辑界面" width="220" /><br><sub>#11 服装换装编辑界面</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925316827_12.png" alt="写真人像穿搭照" width="220" /><br><sub>#12 写真人像穿搭照</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925318940_13.png" alt="鸡毛掸子 Apple 风 Landing Page" width="220" /><br><sub>#13 鸡毛掸子 Apple 风 Landing Page</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925333171_14.png" alt="618 电商详情长图" width="220" /><br><sub>#14 618 电商详情长图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925334708_15.png" alt="GPT Image 2 科普信息图" width="220" /><br><sub>#15 GPT Image 2 科普信息图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925338855_16.png" alt="原神 Boss 战 UI" width="220" /><br><sub>#16 原神 Boss 战 UI</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925344987_17.png" alt="中文漫画分镜" width="220" /><br><sub>#17 中文漫画分镜</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925341940_18.jpg" alt="桌面周边随手拍" width="220" /><br><sub>#18 桌面周边随手拍</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925353853_19.png" alt="IP 角色设定图" width="220" /><br><sub>#19 IP 角色设定图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925357817_20.png" alt="星巴克联名设计" width="220" /><br><sub>#20 星巴克联名设计</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925357814_21.png" alt="泡泡玛特联名设计" width="220" /><br><sub>#21 泡泡玛特联名设计</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925357255_22.png" alt="中英双语菜单黑板" width="220" /><br><sub>#22 中英双语菜单黑板</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925368474_23.png" alt="上海旅行手账" width="220" /><br><sub>#23 上海旅行手账</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925378190_24.png" alt="多图参考输入拼图" width="220" /><br><sub>#24 多图参考输入拼图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925380623_25.png" alt="三人 vlog 成片" width="220" /><br><sub>#25 三人 vlog 成片</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925378939_26.png" alt="第二组人物参考图" width="220" /><br><sub>#26 第二组人物参考图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925385609_27.png" alt="麻将场景成片" width="220" /><br><sub>#27 麻将场景成片</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925387762_28.jpg" alt="猫咪武侠电影海报" width="220" /><br><sub>#28 猫咪武侠电影海报</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925397007_29.jpg" alt="追星直拍海报" width="220" /><br><sub>#29 追星直拍海报</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925401156_30.jpg" alt="专属漫画拼贴" width="220" /><br><sub>#30 专属漫画拼贴</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925402976_31.png" alt="Arena 榜单走势图" width="220" /><br><sub>#31 Arena 榜单走势图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925408233_32.png" alt="作者名片" width="220" /><br><sub>#32 作者名片</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925415365_33.png" alt="合作作者卡" width="220" /><br><sub>#33 合作作者卡</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925423994_34.png" alt="文末横幅 1" width="220" /><br><sub>#34 文末横幅 1</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925420251_35.png" alt="文末横幅 2" width="220" /><br><sub>#35 文末横幅 2</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925421997_36.jpg" alt="新榜矩阵通二维码" width="220" /><br><sub>#36 新榜矩阵通二维码</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776925432902_37.jpg" alt="新榜声量通二维码" width="220" /><br><sub>#37 新榜声量通二维码</sub></td>
+<td></td>
+<td></td>
+</tr>
+</table>
+
+</details>
+
+<details>
+<summary>查看全部图床链接（37 张）</summary>
+
+1. `https://upload.maynor1024.live/file/1776925266347_01.png`
+2. `https://upload.maynor1024.live/file/1776925269246_02.png`
+3. `https://upload.maynor1024.live/file/1776925279235_03.jpg`
+4. `https://upload.maynor1024.live/file/1776925283819_04.png`
+5. `https://upload.maynor1024.live/file/1776925286078_05.jpg`
+6. `https://upload.maynor1024.live/file/1776925289291_06.jpg`
+7. `https://upload.maynor1024.live/file/1776925296390_07.png`
+8. `https://upload.maynor1024.live/file/1776925297066_08.png`
+9. `https://upload.maynor1024.live/file/1776925301157_09.jpg`
+10. `https://upload.maynor1024.live/file/1776925310552_10.jpg`
+11. `https://upload.maynor1024.live/file/1776925310152_11.jpg`
+12. `https://upload.maynor1024.live/file/1776925316827_12.png`
+13. `https://upload.maynor1024.live/file/1776925318940_13.png`
+14. `https://upload.maynor1024.live/file/1776925333171_14.png`
+15. `https://upload.maynor1024.live/file/1776925334708_15.png`
+16. `https://upload.maynor1024.live/file/1776925338855_16.png`
+17. `https://upload.maynor1024.live/file/1776925344987_17.png`
+18. `https://upload.maynor1024.live/file/1776925341940_18.jpg`
+19. `https://upload.maynor1024.live/file/1776925353853_19.png`
+20. `https://upload.maynor1024.live/file/1776925357817_20.png`
+21. `https://upload.maynor1024.live/file/1776925357814_21.png`
+22. `https://upload.maynor1024.live/file/1776925357255_22.png`
+23. `https://upload.maynor1024.live/file/1776925368474_23.png`
+24. `https://upload.maynor1024.live/file/1776925378190_24.png`
+25. `https://upload.maynor1024.live/file/1776925380623_25.png`
+26. `https://upload.maynor1024.live/file/1776925378939_26.png`
+27. `https://upload.maynor1024.live/file/1776925385609_27.png`
+28. `https://upload.maynor1024.live/file/1776925387762_28.jpg`
+29. `https://upload.maynor1024.live/file/1776925397007_29.jpg`
+30. `https://upload.maynor1024.live/file/1776925401156_30.jpg`
+31. `https://upload.maynor1024.live/file/1776925402976_31.png`
+32. `https://upload.maynor1024.live/file/1776925408233_32.png`
+33. `https://upload.maynor1024.live/file/1776925415365_33.png`
+34. `https://upload.maynor1024.live/file/1776925423994_34.png`
+35. `https://upload.maynor1024.live/file/1776925420251_35.png`
+36. `https://upload.maynor1024.live/file/1776925421997_36.jpg`
+37. `https://upload.maynor1024.live/file/1776925432902_37.jpg`
+
+</details>
+
+### APPSO《刚刚，实测完 GPT-Image-2：设计师没完蛋，但我被 AI 骗麻了》
+
+- 原文链接：https://mp.weixin.qq.com/s/sUAB-XiTTJF2MY8ghagUZg
+- 公众号：APPSO
+- 作者：发现明日产品的
+- 本次补充提取：24 张正文图片
+- 说明：这篇文章里没有像上文那样明确单列“提示词：”，下面只整理文中可直接复用的指令、描述和关键词，不补造不存在的 prompt
+
+#### 可直接复用的指令/关键词摘录
+
+1. macOS 浏览器中 ChatGPT 的截图。用户输入「draw me a dog」，ChatGPT 画了一只 ASCII 艺术风格的狗。前景窗口是 ChatGPT，桌面很乱，后台开着一堆随机窗口（比如终端）。
+2. 一张写实风格的旅行抓拍：阴天清晨，一个人站在海边路旁的观景停车带，用35mm胶片拍摄。构图自然、略有瑕疵，颗粒感明显，环境光漫射，色调低饱和，衣物和发丝随风飘动，带着纪录片式的电影质感，像是某段真实生活留下的影像。
+3. 用普通人的笔迹抄写《定风波·莫听穿林打叶声》
+4. 关键词：`photorealistic`
+5. 生成 OpenAI CEO Sam Altman 在微信朋友圈用中文介绍宣传 ChatGPT Images 2.0，底下马斯克评论发「？？？」，Demis Hassabis 评论称：「我觉得不如 Nano Banana Pro」，图片比例为 16:9
+
+#### 根据图片反推的提示词（推测版）
+
+> 下面这些不是 APPSO 原文逐字给出的 prompt，而是结合正文描述和成图效果整理出的可复用写法。
+
+1. 桌面 UI 与产品界面（#05-#08）
+   - 生成一张 macOS 桌面截图，前景窗口是 ChatGPT，用户输入 `draw me a dog`，输出是一只 ASCII 艺术风格的狗，后台开着终端和一堆杂乱窗口。
+   - 生成一张对话截图或产品演示图，界面要像真实 SaaS / AI 工具，保留输入框、消息气泡、边栏和系统窗口细节。
+   - 生成一张游戏实机画面或发布会现场演示图，突出界面 HUD、透视和真实屏摄感。
+2. 写实摄影与知识信息图（#09-#11）
+   - 生成一张 35mm 胶片旅行抓拍：阴天海边公路、人物回头、低饱和、颗粒感、纪录片质感。
+   - 生成一张数学原理信息图或体育数据图，要求结构清晰、标题和标签准确、排版干净。
+3. 角色一致性与中文文字（#12-#17）
+   - 上传一张人物照片，生成多套穿搭和多个角度，保持人物脸部特征一致。
+   - 用普通人的笔迹抄写《定风波·莫听穿林打叶声》，手写感自然，不要贴图感。
+   - 生成一张多语言排版海报或中文玩梗视觉，要求小字号文字也尽量清晰稳定。
+4. 真实质感与光影逻辑（#18-#21）
+   - 关键词使用 `photorealistic`，要求保留真实摄影中的瑕疵、颗粒、阴影和轻微失焦。
+   - 生成一张具有真实光影逻辑的场景图，例如月球 360 全景，太阳方向与地面阴影必须一致。
+   - 生成一张教学信息图，例如鞋带系法教程，强调步骤清晰、箭头合理、布局像真实教材。
+5. 社交媒体整活（#22）
+   - 生成 OpenAI CEO Sam Altman 在微信朋友圈用中文宣传 ChatGPT Images 2.0，底下马斯克评论“？？？”，Demis Hassabis 评论“我觉得不如 Nano Banana Pro”，比例 16:9。
+6. 说明
+   - #01-#04 偏发布会、榜单和概览类图片，适合作为“发布会截图 / 榜单图 / OpenAI 团队圆桌”的说明图，不建议强行补复杂 prompt。
+   - #23-#24 是二维码海报和编辑卡片，属于文末导流素材，不建议补 prompt。
+
+#### 对应案例图
+
+- 桌面 UI 与 ASCII 狗：#05
+- 胶片抓拍与写实摄影：#09
+- 数学信息图：#10、#11
+- 角色一致性与穿搭延展：#12、#13
+- 中文排版与手写文字：#14、#15、#16、#17
+- photorealistic 与真实光影：#18、#19、#20
+- 微信朋友圈整活图：#22
+
+![APPSO案例-05-桌面UI](https://upload.maynor1024.live/file/1776927572727_05.other)
+![APPSO案例-09-胶片抓拍](https://upload.maynor1024.live/file/1776927584894_09.other)
+![APPSO案例-10-数学信息图](https://upload.maynor1024.live/file/1776927590918_10.webp)
+![APPSO案例-12-角色一致性](https://upload.maynor1024.live/file/1776927598909_12.png)
+![APPSO案例-14-中文手写](https://upload.maynor1024.live/file/1776927610651_14.png)
+![APPSO案例-20-360光影](https://upload.maynor1024.live/file/1776927643952_20.png)
+![APPSO案例-22-微信朋友圈](https://upload.maynor1024.live/file/1776927657894_22.png)
+
+<details open>
+<summary>查看全部图片（24 张，不省略）</summary>
+
+<table>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927544187_01.png" alt="发布会主讲截图" width="220" /><br><sub>#01 发布会主讲截图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927556901_02.png" alt="AI 困境广告牌画面" width="220" /><br><sub>#02 AI 困境广告牌画面</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927556202_03.jpg" alt="Arena 排行榜" width="220" /><br><sub>#03 Arena 排行榜</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927562675_04.png" alt="OpenAI 团队圆桌" width="220" /><br><sub>#04 OpenAI 团队圆桌</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927572727_05.other" alt="macOS 桌面 ChatGPT ASCII 狗" width="220" /><br><sub>#05 macOS 桌面 ChatGPT ASCII 狗</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927576065_06.png" alt="Anthropic 对话截图" width="220" /><br><sub>#06 Anthropic 对话截图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927573344_07.png" alt="API 价格/参数表" width="220" /><br><sub>#07 API 价格/参数表</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927588440_08.jpg" alt="游戏实机画面" width="220" /><br><sub>#08 游戏实机画面</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927584894_09.other" alt="35mm 胶片旅行抓拍" width="220" /><br><sub>#09 35mm 胶片旅行抓拍</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927590918_10.webp" alt="康托尔对角线信息图" width="220" /><br><sub>#10 康托尔对角线信息图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927602380_11.jpg" alt="篮球信息图" width="220" /><br><sub>#11 篮球信息图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927598909_12.png" alt="角色一致性穿搭图" width="220" /><br><sub>#12 角色一致性穿搭图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927610992_13.png" alt="角色一致性延展图" width="220" /><br><sub>#13 角色一致性延展图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927610651_14.png" alt="中文手写诗词" width="220" /><br><sub>#14 中文手写诗词</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927619323_15.png" alt="多语言排版海报" width="220" /><br><sub>#15 多语言排版海报</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927624690_16.png" alt="中文玩梗视觉" width="220" /><br><sub>#16 中文玩梗视觉</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927623579_17.png" alt="极小文字演示" width="220" /><br><sub>#17 极小文字演示</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927634216_18.png" alt="真实人像风格" width="220" /><br><sub>#18 真实人像风格</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927637870_19.png" alt="真实质感摄影" width="220" /><br><sub>#19 真实质感摄影</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927643952_20.png" alt="月球 360 光影" width="220" /><br><sub>#20 月球 360 光影</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927655003_21.webp" alt="鞋带教学图" width="220" /><br><sub>#21 鞋带教学图</sub></td>
+</tr>
+<tr>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927657894_22.png" alt="微信朋友圈整活图" width="220" /><br><sub>#22 微信朋友圈整活图</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927661494_23.png" alt="二维码海报" width="220" /><br><sub>#23 二维码海报</sub></td>
+<td align="center" valign="top"><img src="https://upload.maynor1024.live/file/1776927662893_24.other" alt="AI 方向编辑卡片" width="220" /><br><sub>#24 AI 方向编辑卡片</sub></td>
+</tr>
+</table>
+
+</details>
+
+<details>
+<summary>查看全部图床链接（24 张）</summary>
+
+1. `https://upload.maynor1024.live/file/1776927544187_01.png`
+2. `https://upload.maynor1024.live/file/1776927556901_02.png`
+3. `https://upload.maynor1024.live/file/1776927556202_03.jpg`
+4. `https://upload.maynor1024.live/file/1776927562675_04.png`
+5. `https://upload.maynor1024.live/file/1776927572727_05.other`
+6. `https://upload.maynor1024.live/file/1776927576065_06.png`
+7. `https://upload.maynor1024.live/file/1776927573344_07.png`
+8. `https://upload.maynor1024.live/file/1776927588440_08.jpg`
+9. `https://upload.maynor1024.live/file/1776927584894_09.other`
+10. `https://upload.maynor1024.live/file/1776927590918_10.webp`
+11. `https://upload.maynor1024.live/file/1776927602380_11.jpg`
+12. `https://upload.maynor1024.live/file/1776927598909_12.png`
+13. `https://upload.maynor1024.live/file/1776927610992_13.png`
+14. `https://upload.maynor1024.live/file/1776927610651_14.png`
+15. `https://upload.maynor1024.live/file/1776927619323_15.png`
+16. `https://upload.maynor1024.live/file/1776927624690_16.png`
+17. `https://upload.maynor1024.live/file/1776927623579_17.png`
+18. `https://upload.maynor1024.live/file/1776927634216_18.png`
+19. `https://upload.maynor1024.live/file/1776927637870_19.png`
+20. `https://upload.maynor1024.live/file/1776927643952_20.png`
+21. `https://upload.maynor1024.live/file/1776927655003_21.webp`
+22. `https://upload.maynor1024.live/file/1776927657894_22.png`
+23. `https://upload.maynor1024.live/file/1776927661494_23.png`
+24. `https://upload.maynor1024.live/file/1776927662893_24.other`
+
+</details>
+
 ## 免责声明
 
 - GPT-Image-2 确实能生成以假乱真的内容，但这也意味着边界更重要
