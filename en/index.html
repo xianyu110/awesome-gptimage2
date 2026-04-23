@@ -645,7 +645,7 @@
         promptBoardGridEl.innerHTML = cards.map((item, idx) => {
             const imageHtml = item.image
                 ? '<img class="prompt-item-image" loading="lazy" decoding="async" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '">'
-                : '<div class="prompt-item-image prompt-item-image-placeholder">No preview image</div>';
+                : '';
             return (
                 '<article class="prompt-item-card">' +
                     '<span class="prompt-item-badge">' + escapeHtml(item.badge || 'Curated') + '</span>' +

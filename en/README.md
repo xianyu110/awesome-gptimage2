@@ -82,6 +82,8 @@ Create a premium ecommerce hero banner for a skincare serum called "Radiance Bar
 
 A good base prompt for product ads, ecommerce covers, and landing-page hero visuals.
 
+![Premium skincare hero banner](https://upload.maynor1024.live/file/1776480570690_img_048.png)
+
 #### Product retouch on white background
 
 ```text
@@ -89,6 +91,8 @@ Retouch this product image for ecommerce. Keep the product shape accurate, impro
 ```
 
 Useful for clean catalog assets and marketplace-ready product images.
+
+![Product retouch on white background](https://upload.maynor1024.live/file/1776831501923_wx_058_991727c87e.png)
 
 ### Brand Poster Design
 
@@ -100,6 +104,8 @@ Design a launch poster for a coffee brand called "Mountain & Sea Coffee". Premiu
 
 Works well for brand campaigns, product launches, and premium poster design.
 
+![Coffee brand launch poster](https://upload.maynor1024.live/file/1776936225028_23.jpg)
+
 #### Multi-platform campaign visual
 
 ```text
@@ -107,6 +113,8 @@ Create a visual campaign system for a shampoo brand across multiple platforms: m
 ```
 
 Good for testing brand consistency across formats.
+
+![Multi-platform campaign visual](https://upload.maynor1024.live/file/1776936155777_07.jpg)
 
 ### Creative Typography
 
@@ -118,6 +126,8 @@ Create a typography poster around the word "HANGZHOU". Integrate iconic city ele
 
 Useful for tourism visuals, city branding, and type-driven campaigns.
 
+![City letterform poster](https://upload.maynor1024.live/file/1776831289910_wx_006_765d19045a.jpg)
+
 ### Knowledge Graphics & Infographics
 
 #### Modular infographic
@@ -128,6 +138,8 @@ Create a high-quality vertical infographic explaining GPT-Image-2. Make it feel 
 
 A strong pattern for educational graphics and knowledge cards.
 
+![Modular infographic](https://upload.maynor1024.live/file/1776925334708_15.png)
+
 #### Textbook-style diagram
 
 ```text
@@ -135,6 +147,8 @@ Create a clean educational infographic explaining a scientific topic with modula
 ```
 
 Useful for explainers, classroom visuals, and professional diagrams.
+
+![Textbook-style diagram](https://upload.maynor1024.live/file/1776831293062_wx_008_64263de1fa.png)
 
 ### UI Recreation
 
@@ -146,6 +160,8 @@ Generate a highly realistic mobile ecommerce app homepage screenshot. Include th
 
 Best for UI realism, layout testing, and product storytelling.
 
+![Ecommerce app home screen](https://upload.maynor1024.live/file/1776480347969_img_025.png)
+
 #### Social post screenshot
 
 ```text
@@ -153,6 +169,8 @@ Generate a realistic social media screenshot with believable profile details, ti
 ```
 
 Great for social UI recreation and fake interface testing.
+
+![Social post screenshot](https://upload.maynor1024.live/file/1776831565116_wx_073_1bf5c77bf8.jpg)
 
 ### Realistic Photography
 
@@ -164,6 +182,8 @@ Create an extremely realistic documentary-style photo inside a shopping mall at 
 
 A solid realism test for mixed light and candid human behavior.
 
+![Mall documentary photo](https://upload.maynor1024.live/file/1776480142529_img_008.jpg)
+
 #### Convenience store street scene
 
 ```text
@@ -171,6 +191,8 @@ Create a hyper-realistic street photo outside a convenience store at night. Seve
 ```
 
 Good for testing group realism and everyday urban scenes.
+
+![Convenience store street scene](https://upload.maynor1024.live/file/1776480162164_img_010.jpg)
 
 ### Character Consistency
 
@@ -182,6 +204,8 @@ Use one character reference image and generate multiple outfit variations while 
 
 Useful for lookbooks, avatar systems, and character iteration.
 
+![Fashion variation from one character](https://upload.maynor1024.live/file/1776927598909_12.png)
+
 ### Image Editing & Reference
 
 #### Brand collaboration with pet reference
@@ -192,6 +216,8 @@ Using the uploaded cat as the exact visual reference, create a playful commercia
 
 Good for reference-based editing, brand mashups, and poster generation.
 
+![Brand collaboration with pet reference](https://upload.maynor1024.live/file/1776480357820_img_026.png)
+
 #### Style transfer with layout preservation
 
 ```text
@@ -199,6 +225,8 @@ Use the uploaded poster as a layout and style reference. Keep the composition, t
 ```
 
 Useful when you need editing with structure preservation.
+
+![Style transfer with layout preservation](https://upload.maynor1024.live/file/1776480461550_img_036.jpg)
 
 ### Art & Illustration
 
@@ -210,6 +238,8 @@ Create a high-saturation 3D layered papercraft scene with rich depth, clean edge
 
 Great for stylized illustration and visual experimentation.
 
+![Multi-layer paper art scene](https://upload.maynor1024.live/file/1776831295947_wx_009_83a98eb04d.jpg)
+
 ### Fun Experiments
 
 #### Cinematic parody poster
@@ -219,6 +249,8 @@ Create a cinematic parody movie poster with bold title typography, dramatic char
 ```
 
 Useful for viral visual experiments and entertainment graphics.
+
+![Cinematic parody poster](https://upload.maynor1024.live/file/1776936250593_30.jpg)
 
 ---
 
