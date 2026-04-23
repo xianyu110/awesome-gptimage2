@@ -1,94 +1,83 @@
 {
   "meta": {
-    "generated_at_utc": "2026-04-22T15:43:22Z",
+    "generated_at_utc": "2026-04-23T11:35:56Z",
     "source": "x",
     "query": "(gptimage2 OR gpt-image-2 OR \"gpt image 2\") (prompt OR 提示词)",
     "lookback_hours": 12,
-    "count": 10,
+    "count": 5,
     "provider": "apipro.maynor1024.live",
     "base_url": "http://apipro.maynor1024.live/v1",
-    "model": "grok-4.1-fast"
+    "model": "grok-4",
+    "filters": {
+      "min_views": 1000,
+      "min_retweets": 20
+    }
   },
   "items": [
     {
-      "url": "https://x.com/nopuppet/status/2046977837316616332",
-      "author": "NoPuppet (@nopuppet)",
-      "created_at": "2026-04-22T15:42:02Z",
-      "text": "More playing with GPT Image 2. The difference in quality from 1.5 to 2 is impressive to say the least👏",
-      "prompt": "Ultra-detailed photorealistic action shot of Tifa Lockhart from Final Fantasy VII in a powerful mid-air side kick. Tifa is captured at the peak of a dynamic leap, executing a fierce, high side kick with her right leg fully extended. Her left leg is tucked for balance, and both fists are clenched tightly in a ready fighting stance. Her long, dark hair flows dramatically behind her from the motion, with strands whipping across her face. She wears her iconic outfit: a white cropped tank top that exposes her toned midriff and generous cleavage, black suspenders, a short black pleated leather skirt, black thigh-high stockings, and red combat boots. Her black gloves with red accents are visible on her clenched fists. Her expression is fierce, focused, and alluring, intense eyes locked forward, brows slightly furrowed, with a determined yet confident look that radiates strength and quiet sensuality. The background emphasizes height and scale: she is high above the city, with blurred building rooftops and a bright daytime sky behind her, giving a strong sense of elevation and power. Lighting is bright and cinematic: natural daylight with strong highlights on her skin, hair, and clothing, creating dynamic motion and depth. Subtle motion blur on her hair and skirt edges enhances the sense of speed and power. Style: hyper-realistic digital rendering with photorealistic detail, excellent muscle definition, fabric movement, and skin texture, cinematic composition, ultra-high-resolution 8k quality. Mood: fierce, powerful, and alluring . Tifa Lockhart at her most badass and captivating, mid-combat in an epic aerial strike.",
-      "reason": "Explicit full prompt for GPT Image 2 provided with generated image"
-    },
-    {
-      "url": "https://x.com/CHAO2U_AI/status/2046977717925814353",
-      "author": "CHAO2U AI (@CHAO2U_AI)",
-      "created_at": "2026-04-22T15:41:33Z",
-      "text": "このゲームは、まだ存在しない。でも、もう予告編を観ている。 this game doesn’t exist. yet you’re already watching the trailer. from a prompt. GPT Image 2.0 × Seedance 2.0 on Higgsfield",
+      "url": "https://x.com/RoundtableSpace/status/2047114479855603850",
+      "author": "0xMarioNawfal",
+      "created_at": "2026-04-23T00:45:00Z",
+      "text": "GPT IMAGE 2 LAUNCHED 48 HOURS AGO, AND PEOPLE ARE ALREADY USING IT TO BUILD THINGS THAT DIDN’T FEEL POSSIBLE BEFORE. From one prompt to full 3D worlds, the pace of image generation just changed fast.",
       "prompt": "",
-      "reason": "Mentions 'from a prompt' with GPT Image 2 but no actual prompt text shared"
+      "reason": "High engagement post discussing GPT Image 2 capabilities and real-world usage; no specific usable prompt shared in the main text (video content only).",
+      "view_count": 188655,
+      "retweet_count": 11,
+      "like_count": 95,
+      "reply_count": 17,
+      "engagement_score": 188655
     },
     {
-      "url": "https://x.com/endr4_/status/2046977483497496871",
-      "author": "endra (@endr4_)",
-      "created_at": "2026-04-22T15:40:37Z",
-      "text": "Viajei no tempo e fiz essa foto 360º diretamente da Copa de 1970. Pelé e Jairzinho em \"O ABRAÇO\". Um simples prompt e o GPT Image 2 fez isso. Vai dar para fazer HDRi para 3D de qualquer lugar com a luz que desejar...Insano!!!! prompt e img ref. abaixo 👇",
+      "url": "https://x.com/cyrilXBT/status/2047179222746316903",
+      "author": "CyrilXBT",
+      "created_at": "2026-04-23T05:02:16Z",
+      "text": "GPT IMAGE 2 DROPPED 48 HOURS AGO. The internet is already building things that did not feel possible last week. Full 3D worlds from a single prompt. ... Screenshot this and come back in 30 days.",
       "prompt": "",
-      "reason": "Mentions 'um simples prompt' and 'prompt e img ref. abaixo' but prompt not included in post text"
+      "reason": "High engagement post highlighting rapid adoption and advanced capabilities of GPT Image 2; no specific prompt extracted.",
+      "view_count": 6901,
+      "retweet_count": 14,
+      "like_count": 58,
+      "reply_count": 17,
+      "engagement_score": 6901
     },
     {
-      "url": "https://x.com/behavior_ai/status/2046977249065255279",
-      "author": "BehaviorAI (@behavior_ai)",
-      "created_at": "2026-04-22T15:39:41Z",
-      "text": "I tested the viral brand kit prompt with @OpenAI's new GPT Image 2, and I think I'll stick with designing myself. ...",
-      "prompt": "viral brand kit prompt",
-      "reason": "References a specific 'viral brand kit prompt' used with GPT Image 2 but does not quote the full prompt text"
+      "url": "https://x.com/azed_ai/status/2047239794741411993",
+      "author": "Amira Zairi",
+      "created_at": "2026-04-23T09:02:57Z",
+      "text": "GPT Image 2.0 is on Leonardo. I used simple prompt: a comedic manga about the Iranian American conflict 😂",
+      "prompt": "a comedic manga about the Iranian American conflict",
+      "reason": "Post shares direct usage of GPT Image 2.0 with a simple usable prompt; meets view threshold and demonstrates prompt application.",
+      "view_count": 1941,
+      "retweet_count": 2,
+      "like_count": 30,
+      "reply_count": 12,
+      "engagement_score": 1941
     },
     {
-      "url": "https://x.com/zeng_wt/status/2046976862422000063",
-      "author": "𝐙𝐞𝐧𝐠 💜 (@zeng_wt)",
-      "created_at": "2026-04-22T15:38:09Z",
-      "text": "GPT Image 2 is live on @AdobeFirefly I just generated Isometric \"Future of Work\"",
-      "prompt": "A detailed 3D isometric cutaway of a \"floating green office\" city in the clouds. Miniature tiny people working on holograms, lush vertical gardens, sleek white architecture. Soft clay-render style with vibrant corporate colors (teal and orange), high detail.",
-      "reason": "Explicit prompt shared for GPT Image 2 generation"
-    },
-    {
-      "url": "https://x.com/IqraSaifiii/status/2046976513707483300",
-      "author": "Iqra Saifi (@IqraSaifiii)",
-      "created_at": "2026-04-22T15:36:46Z",
-      "text": "GPT Image 2.0 + Seedance 2.0 on Higgsfield is kind of a cheat code for AI video making. Create cinematic visuals with sharp text... From one prompt to full scenes.",
+      "url": "https://x.com/rovvmut_/status/2047245211517256054",
+      "author": "Heisenberg",
+      "created_at": "2026-04-23T09:24:29Z",
+      "text": "The prompt adherence in GPT Image 2 is too good.",
       "prompt": "",
-      "reason": "Mentions using 'one prompt' with GPT Image 2.0 but no specific prompt text provided"
+      "reason": "Highlights strong prompt adherence of GPT Image 2; no specific full prompt shared in text.",
+      "view_count": 1553,
+      "retweet_count": 4,
+      "like_count": 52,
+      "reply_count": 19,
+      "engagement_score": 1553
     },
     {
-      "url": "https://x.com/ElevenCreative/status/2046973776923881678",
-      "author": "ElevenCreative (@ElevenCreative)",
-      "created_at": "2026-04-22T15:25:54Z",
-      "text": "Turn text into a 360° panorama with GPT Image 2 in ElevenCreative. Like this tweet to get the full prompt and method.",
-      "prompt": "",
-      "reason": "Offers full prompt via like but does not include it in the post itself"
-    },
-    {
-      "url": "https://x.com/MustafyOf/status/2046973610284245418",
-      "author": "Mustafy | AI Video Creator (@MustafyOf)",
-      "created_at": "2026-04-22T15:25:14Z",
-      "text": "Images 2.0 (also called gpt-image-2) is now live...",
-      "prompt": "",
-      "reason": "Announcement about GPT Image 2 availability, no prompt example"
-    },
-    {
-      "url": "https://x.com/Creaa_ai/status/2046973433104232683",
-      "author": "Creaa (@Creaa_ai)",
-      "created_at": "2026-04-22T15:24:32Z",
-      "text": "GPT Image-2 is now live on Creaa AI. ... Stronger prompt understanding.",
-      "prompt": "",
-      "reason": "Mentions stronger prompt understanding but shares no specific prompt"
-    },
-    {
-      "url": "https://x.com/Deepvideoeditor/status/2046972859332100102",
-      "author": "Deep__Singh (@Deepvideoeditor)",
-      "created_at": "2026-04-22T15:22:15Z",
-      "text": "Tried the new GPT Image 2.0… Asked it to generate a “declassified” Manhattan Project dossier 👇 Prompt in comment below 👇",
-      "prompt": "",
-      "reason": "Mentions generating with GPT Image 2.0 and says prompt in comment (not visible in main post)"
+      "url": "https://x.com/Strength04_X/status/2047182346034778387",
+      "author": "𝐌",
+      "created_at": "2026-04-23T05:14:40Z",
+      "text": "Crayon-style illustration, soft wax texture, playful imperfect strokes. Made with GPT Image 2. Prompt- [subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background",
+      "prompt": "[subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background",
+      "reason": "Directly shares a reusable crayon-style prompt template used with GPT Image 2; good engagement and explicit prompt content.",
+      "view_count": 1478,
+      "retweet_count": 1,
+      "like_count": 43,
+      "reply_count": 21,
+      "engagement_score": 1478
     }
   ]
 }
