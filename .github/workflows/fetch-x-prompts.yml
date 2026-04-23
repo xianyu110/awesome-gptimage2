@@ -120,13 +120,13 @@ jobs:
           APIPRO_MAX_RETRIES: "4"
           APIPRO_RETRY_SECONDS: "5"
           APIPRO_TIMEOUT_SECONDS: "60"
-          APIPRO_LOOKBACK_HOURS: "12"
-          APIPRO_MAX_ITEMS: "30"
-          APIPRO_MIN_VIEWS: "1000"
-          APIPRO_MIN_RETWEETS: "20"
+          APIPRO_LOOKBACK_HOURS: "72"
+          APIPRO_MAX_ITEMS: "80"
+          APIPRO_MIN_VIEWS: "200"
+          APIPRO_MIN_RETWEETS: "1"
+          APIPRO_QUERY: '(gptimage2 OR gpt-image-2 OR "gpt image 2" OR "gpt image 2.0" OR "gpt-image-2.0" OR "chatgpt image 2" OR "chatgpt images 2.0") (prompt OR 提示词 OR "made with GPT Image 2")'
           # Optional overrides:
-          # APIPRO_QUERY: '(gptimage2 OR gpt-image-2) (prompt OR 提示词)'
-          # APIPRO_LOOKBACK_HOURS: '24'
+          # APIPRO_LOOKBACK_HOURS: '48'
           # APIPRO_MAX_ITEMS: '60'
           APIPRO_OUTPUT_FILE: data/latest-prompts.json
         run: |
