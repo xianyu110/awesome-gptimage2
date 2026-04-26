@@ -1,21 +1,229 @@
 {
   "meta": {
-    "generated_at_utc": "2026-04-23T13:50:08Z",
+    "generated_at_utc": "2026-04-26T17:01:20Z",
     "source": "x",
-    "query": "(gptimage2 OR gpt-image-2 OR \"gpt image 2\") (prompt OR 提示词)",
-    "lookback_hours": 12,
-    "count": 2,
-    "date_count": 1,
-    "dropped_count": 3,
+    "query": "(gptimage2 OR gpt-image-2 OR \"gpt image 2\" OR \"gpt image 2.0\" OR \"gpt-image-2.0\" OR \"chatgpt image 2\" OR \"chatgpt images 2.0\" OR \"GPT Image 2\" OR \"Images 2.0\") (prompt OR prompts OR 提示词 OR \"Prompt-\" OR \"prompt:\" OR \"made with\") since:2026-04-19",
+    "lookback_hours": 168,
+    "count": 13,
+    "date_count": 2,
+    "dropped_count": 0,
     "provider": "apipro.maynor1024.live",
     "base_url": "http://apipro.maynor1024.live/v1",
-    "model": "grok-4",
+    "model": "grok-4.1-fast",
     "filters": {
-      "min_views": 1000,
-      "min_retweets": 20
-    }
+      "min_views": 0,
+      "min_retweets": 0
+    },
+    "history_count": 4,
+    "new_count": 22
   },
   "dates": [
+    {
+      "date": "2026-04-26",
+      "count": 11,
+      "items": [
+        {
+          "x_url": "https://x.com/ZaraIrahh/status/2048429244632408300",
+          "url": "https://x.com/ZaraIrahh/status/2048429244632408300",
+          "author": "Zara - @ZaraIrahh",
+          "created_at": "Sun, 26 Apr 2026 15:49:24 GMT",
+          "text": "Created with GPT Image 2 Prompt: [full]",
+          "prompt": "A stylized Pixar-style 3D portrait of a young person with smooth skin, large expressive blue eyes, soft facial features, wearing round transparent glasses, modern hairstyle (short styled hair / soft bob cut), casual outfit (hoodie or minimal sweater), slight head tilt and warm smile, friendly and approachable expression, ultra-clean character design, vibrant orange-to-pink gradient background, soft studio lighting with subtle rim light, cinematic depth of field, ultra-detailed, 8K render, octane render style.",
+          "reason": "Reusable Pixar-style 3D character portrait prompt",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG17h2kboAAm0Ck.jpg",
+            "https://pbs.twimg.com/media/HG17h5uaoAAWEKy.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG17h2kboAAm0Ck.jpg",
+          "view_count": null,
+          "retweet_count": 0,
+          "like_count": 35,
+          "reply_count": 21,
+          "engagement_score": 56
+        },
+        {
+          "x_url": "https://x.com/im_shahid7/status/2048432604291240275",
+          "url": "https://x.com/im_shahid7/status/2048432604291240275",
+          "author": "Al-Shamus - @im_shahid7",
+          "created_at": "Sun, 26 Apr 2026 16:02:45 GMT",
+          "text": "Omg this is sharp image from GPT Image 2 Prompt: [full]",
+          "prompt": "a cute orange and white cat, he looks like hes thinking. taking a selfie inside a dramatically lit room dark room. the cat has big eyes, a chubby face, and a happy expression. the image is a wide-angle shot with sharp focus and high resolution, resulting in a high-definition photograph.",
+          "reason": "Reusable cute animal selfie prompt",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG1-l98bQAAD2Of.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG1-l98bQAAD2Of.jpg",
+          "view_count": null,
+          "retweet_count": 1,
+          "like_count": 33,
+          "reply_count": 5,
+          "engagement_score": 39
+        },
+        {
+          "x_url": "https://x.com/saniaspeaks_/status/2048431408318705733",
+          "url": "https://x.com/saniaspeaks_/status/2048431408318705733",
+          "author": "𝗦𝗮𝗻𝗶𝗮 - @saniaspeaks_",
+          "created_at": "Sun, 26 Apr 2026 15:58:00 GMT",
+          "text": "GPT image 2 on Chatgpt Prompt: [full]",
+          "prompt": "portrait of a young woman with short curly black hair and fair skin, wearing transparent safety goggles and a blue ribbed turtleneck sweater, seated in front of a solid azure blue background, double-exposure motion blur effect to the left side of the face, subtle soft reflections on the glasses, cold ambient lighting, high sharpness on facial features with dreamlike blur trail overlaying second face, fashion editorial studio setup, icy color palette, futuristic retro mood.",
+          "reason": "Reusable fashion editorial portrait prompt with effects",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG19f15bwAAf-hh.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG19f15bwAAf-hh.jpg",
+          "view_count": null,
+          "retweet_count": 1,
+          "like_count": 19,
+          "reply_count": 14,
+          "engagement_score": 34
+        },
+        {
+          "x_url": "https://x.com/Just_sharon7/status/2048440567605190853",
+          "url": "https://x.com/Just_sharon7/status/2048440567605190853",
+          "author": "Sharon Riley - @Just_sharon7",
+          "created_at": "Sun, 26 Apr 2026 16:34:24 GMT",
+          "text": "Watch her become sculpture without losing motion GPT Image 2 Prompt [full]",
+          "prompt": "Artistic progression in five vertical panels: from realistic sketch to modern abstract sculpture of a ballerina in arabesque pose. 1. Detailed pencil sketch of ballerina on pointe, elegant extended leg and arms. 2. Refined mid-stage sketch. 3. Strongly stylized flowing lines. 4. Angular geometric abstraction. 5. Final sleek, ribbon-twisted contemporary metal sculpture with beautiful curves and tension. Black ink and charcoal style on white background, high-contrast artistic study, luxury sculpture aesthetic --ar 3:2",
+          "reason": "Reusable artistic progression/multi-panel prompt",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG2F1Gqa8AAnoYJ.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG2F1Gqa8AAnoYJ.jpg",
+          "view_count": null,
+          "retweet_count": 1,
+          "like_count": 16,
+          "reply_count": 11,
+          "engagement_score": 28
+        },
+        {
+          "x_url": "https://x.com/Tegadesigns/status/2048429483879796831",
+          "url": "https://x.com/Tegadesigns/status/2048429483879796831",
+          "author": "UxUi Tega (Design & Ai) - @Tegadesigns",
+          "created_at": "Sun, 26 Apr 2026 15:50:21 GMT",
+          "text": "Created these with a single prompt within 20 seconds using ChatGPT images 2.0",
+          "prompt": "[Single prompt used to generate the two design variations shown; exact text not expanded in post but confirmed as GPT Images 2.0 usage]",
+          "reason": "Reusable single-prompt design generation example",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG17mdQbcAAIW-M.jpg",
+            "https://pbs.twimg.com/media/HG17mdIaYAATrdb.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG17mdQbcAAIW-M.jpg",
+          "view_count": null,
+          "retweet_count": 3,
+          "like_count": 15,
+          "reply_count": 4,
+          "engagement_score": 22
+        },
+        {
+          "x_url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
+          "url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
+          "author": "Aijaz - @iamsofiaijaz",
+          "created_at": "Sun, 26 Apr 2026 16:19:15 GMT",
+          "text": "GPT Image 2 on chatgpt Prompt 👇 [full]",
+          "prompt": "A cinematic, ultra-realistic close-up portrait of a young woman with wet, tousled dark hair and luminous skin, staring directly into the camera with an intense, introspective expression. Glowing cyan handwritten text and symbols are projected across her face, neck, and shoulders, resembling poetic phrases, equations, and abstract handwriting. The light reflections shimmer on her damp skin, creating a futuristic, cyber-poetry aesthetic. Dark, moody background with soft shadows, shallow depth of field, sharp focus on the eyes, high contrast lighting, teal and blue color palette, hyper-detailed skin texture, photorealistic, dramatic atmosphere, cyberpunk meets fine-art portrait photography, 8K quality, cinematic lighting",
+          "reason": "Reusable cyber-poetry portrait prompt with text projection",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG2CX-oaUAAPanb.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG2CX-oaUAAPanb.jpg",
+          "view_count": null,
+          "retweet_count": 0,
+          "like_count": 9,
+          "reply_count": 7,
+          "engagement_score": 16
+        },
+        {
+          "x_url": "https://x.com/MrDasOnX/status/2048432301445644740",
+          "url": "https://x.com/MrDasOnX/status/2048432301445644740",
+          "author": "Mr Das - @MrDasOnX",
+          "created_at": "Sun, 26 Apr 2026 16:01:33 GMT",
+          "text": "GPT Image 2 on ChatGpt app Prompt: [full]",
+          "prompt": "Avant-garde luxury watch fashion ad, sophisticated female model in sleek black evening attire dramatically posing with an oversized glowing mechanical watch as the centerpiece, intricate gears and sparkling diamonds visible, bold metallic typography ‘TIMELESS’ floating in the foreground, reflective dark studio floor with scattered gold accents and subtle light beams, high-end editorial photography, dramatic cinematic lighting, luxurious atmosphere –ar 1:1 –stylize 750",
+          "reason": "Reusable luxury fashion ad prompt with text",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG1-TmvbEAAesYf.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG1-TmvbEAAesYf.jpg",
+          "view_count": null,
+          "retweet_count": 1,
+          "like_count": 8,
+          "reply_count": 5,
+          "engagement_score": 14
+        },
+        {
+          "x_url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
+          "url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
+          "author": "K - @ChillaiKalan__",
+          "created_at": "Sun, 26 Apr 2026 16:15:37 GMT",
+          "text": "GPT IMAGE 2 on @SocialSight Prompt: [full]",
+          "prompt": "Edit this photo (keep the face unchanged), portrait. Cinematic close-up of a young woman at night in a moody urban setting with neon lighting. She looks back over her shoulder with a soft yet intense expression. Long dark wavy hair with wispy bangs, slightly wind-swept. Natural dewy makeup, minimal styling, wearing a dark oversized leather jacket. Background: blurred city bokeh with streetlights and car lights. Shot on Sony A7S III, 85mm lens, shallow depth of field. Off-center composition. Dramatic split lighting: cool blue on one side, warm red on the other. Teal-and-red color grade, high contrast, subtle film grain and glow.",
+          "reason": "Reusable cinematic urban portrait prompt",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG2BhPSbUAAsIyJ.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG2BhPSbUAAsIyJ.jpg",
+          "view_count": null,
+          "retweet_count": 0,
+          "like_count": 7,
+          "reply_count": 5,
+          "engagement_score": 12
+        },
+        {
+          "x_url": "https://x.com/Taaruk_/status/2048438203611533367",
+          "url": "https://x.com/Taaruk_/status/2048438203611533367",
+          "author": "Taaruk - @Taaruk_",
+          "created_at": "Sun, 26 Apr 2026 16:25:00 GMT",
+          "text": "GPT IMAGE 2.0 on CHATGPT Prompt: [full]",
+          "prompt": "A dramatic sports editorial scene featuring a professional male footballer wearing an all-black kit, reclining confidently on top of an oversized soccer ball. The ball is hyper-detailed with realistic panels and branding, placed on a glossy reflective floor. The athlete’s pose is relaxed yet powerful, with one arm hanging down and legs extended, showcasing strength and elegance. The background is a bold deep blue studio with massive “GOAL” typography in large, subtle shadowed letters. High-contrast studio lighting with sharp highlights and deep shadows sculpting the body. Clean, minimal composition with a luxury sports campaign aesthetic. Shot with an 85mm lens, ultra-realistic, cinematic lighting, crisp details, 8K resolution, Nike/Adidas-style commercial photography.",
+          "reason": "Reusable luxury sports editorial prompt",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG2Drv6bYAAyTSD.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG2Drv6bYAAyTSD.jpg",
+          "view_count": null,
+          "retweet_count": 1,
+          "like_count": 5,
+          "reply_count": 3,
+          "engagement_score": 9
+        },
+        {
+          "x_url": "https://x.com/iamrealsnow/status/2048444370844807555",
+          "url": "https://x.com/iamrealsnow/status/2048444370844807555",
+          "author": "Snow - @iamrealsnow",
+          "created_at": "Sun, 26 Apr 2026 16:49:30 GMT",
+          "text": "GPT image 2.0 on Chat GPT . Prompt: [full prompt]",
+          "prompt": "A powerful young man standing in front of a matte black Hummer H2 on a snowy night, heavy snowfall, dark cinematic atmosphere. The Hummer has a glowing icy number plate with a frosted texture. The subject wears a long black trench coat, leather gloves, and boots, slightly messy hair, intense expression, looking straight into the camera. Low-angle shot to make him look dominant. Cold blue and deep shadow lighting, high contrast, sharp details, foggy breath visible, luxury criminal aura, ultra-realistic, 4K, dramatic tension.",
+          "reason": "Reusable cinematic character prompt with environment details",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG2JSwGaUAA5vea.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG2JSwGaUAA5vea.jpg",
+          "view_count": null,
+          "retweet_count": 0,
+          "like_count": 2,
+          "reply_count": 1,
+          "engagement_score": 3
+        },
+        {
+          "x_url": "https://x.com/kingofdairyque/status/2048447045640544549",
+          "url": "https://x.com/kingofdairyque/status/2048447045640544549",
+          "author": "simply - @kingofdairyque",
+          "created_at": "Sun, 26 Apr 2026 17:00:08 GMT",
+          "text": "PROMPT FOR GPT IMAGE 2 ON CHAT GPT: [full prompt text]",
+          "prompt": "A high-end cinematic transformation artwork displayed in five vertical panels, showing a luxury perfume evolving from raw essence into a sculptural masterpiece, each panel separated by thin black dividers. Panel 1 (Origin): A premium glass perfume bottle resting on a dark reflective surface, surrounded by raw ingredients like rose petals, oud wood, citrus peel, and mist, soft studio lighting, elegant shadows. Panel 2 (Release): The perfume begins to diffuse into the air, visible fragrant mist swirling upward in fluid motion, forming soft organic shapes, glowing particles and vapor trails. Panel 3 (Transformation): The mist starts shaping into a semi-formed silhouette (abstract human figure or flowing fabric), blending liquid, vapor, and light, luminous and dreamy. Panel 4 (Abstraction): The form becomes fully abstract — flowing ribbons of scent turning into sleek glass-like curves and fluid geometry, dynamic motion frozen mid-air. Panel 5 (Transcendence): Final form — a luxurious sculptural perfume bottle or abstract glass statue inspired by the scent’s essence, polished, reflective, with glowing highlights, sitting on a minimal pedestal. Style: ultra-detailed, photorealistic to abstract progression, deep black background, gold and silver accents, soft glow, high contrast lighting, glossy reflections, cinematic luxury aesthetic, perfume ad style, 4K quality, sharp focus.",
+          "reason": "Reusable detailed multi-panel transformation prompt for GPT Image 2",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG2LuwnbcAA0ncX.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG2LuwnbcAA0ncX.jpg",
+          "view_count": null,
+          "retweet_count": 0,
+          "like_count": 1,
+          "reply_count": 1,
+          "engagement_score": 2
+        }
+      ]
+    },
     {
       "date": "2026-04-23",
       "count": 2,
@@ -87,6 +295,206 @@
       "like_count": 43,
       "reply_count": 21,
       "engagement_score": 1478
+    },
+    {
+      "x_url": "https://x.com/ZaraIrahh/status/2048429244632408300",
+      "url": "https://x.com/ZaraIrahh/status/2048429244632408300",
+      "author": "Zara - @ZaraIrahh",
+      "created_at": "Sun, 26 Apr 2026 15:49:24 GMT",
+      "text": "Created with GPT Image 2 Prompt: [full]",
+      "prompt": "A stylized Pixar-style 3D portrait of a young person with smooth skin, large expressive blue eyes, soft facial features, wearing round transparent glasses, modern hairstyle (short styled hair / soft bob cut), casual outfit (hoodie or minimal sweater), slight head tilt and warm smile, friendly and approachable expression, ultra-clean character design, vibrant orange-to-pink gradient background, soft studio lighting with subtle rim light, cinematic depth of field, ultra-detailed, 8K render, octane render style.",
+      "reason": "Reusable Pixar-style 3D character portrait prompt",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG17h2kboAAm0Ck.jpg",
+        "https://pbs.twimg.com/media/HG17h5uaoAAWEKy.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG17h2kboAAm0Ck.jpg",
+      "view_count": null,
+      "retweet_count": 0,
+      "like_count": 35,
+      "reply_count": 21,
+      "engagement_score": 56
+    },
+    {
+      "x_url": "https://x.com/im_shahid7/status/2048432604291240275",
+      "url": "https://x.com/im_shahid7/status/2048432604291240275",
+      "author": "Al-Shamus - @im_shahid7",
+      "created_at": "Sun, 26 Apr 2026 16:02:45 GMT",
+      "text": "Omg this is sharp image from GPT Image 2 Prompt: [full]",
+      "prompt": "a cute orange and white cat, he looks like hes thinking. taking a selfie inside a dramatically lit room dark room. the cat has big eyes, a chubby face, and a happy expression. the image is a wide-angle shot with sharp focus and high resolution, resulting in a high-definition photograph.",
+      "reason": "Reusable cute animal selfie prompt",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG1-l98bQAAD2Of.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG1-l98bQAAD2Of.jpg",
+      "view_count": null,
+      "retweet_count": 1,
+      "like_count": 33,
+      "reply_count": 5,
+      "engagement_score": 39
+    },
+    {
+      "x_url": "https://x.com/saniaspeaks_/status/2048431408318705733",
+      "url": "https://x.com/saniaspeaks_/status/2048431408318705733",
+      "author": "𝗦𝗮𝗻𝗶𝗮 - @saniaspeaks_",
+      "created_at": "Sun, 26 Apr 2026 15:58:00 GMT",
+      "text": "GPT image 2 on Chatgpt Prompt: [full]",
+      "prompt": "portrait of a young woman with short curly black hair and fair skin, wearing transparent safety goggles and a blue ribbed turtleneck sweater, seated in front of a solid azure blue background, double-exposure motion blur effect to the left side of the face, subtle soft reflections on the glasses, cold ambient lighting, high sharpness on facial features with dreamlike blur trail overlaying second face, fashion editorial studio setup, icy color palette, futuristic retro mood.",
+      "reason": "Reusable fashion editorial portrait prompt with effects",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG19f15bwAAf-hh.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG19f15bwAAf-hh.jpg",
+      "view_count": null,
+      "retweet_count": 1,
+      "like_count": 19,
+      "reply_count": 14,
+      "engagement_score": 34
+    },
+    {
+      "x_url": "https://x.com/Just_sharon7/status/2048440567605190853",
+      "url": "https://x.com/Just_sharon7/status/2048440567605190853",
+      "author": "Sharon Riley - @Just_sharon7",
+      "created_at": "Sun, 26 Apr 2026 16:34:24 GMT",
+      "text": "Watch her become sculpture without losing motion GPT Image 2 Prompt [full]",
+      "prompt": "Artistic progression in five vertical panels: from realistic sketch to modern abstract sculpture of a ballerina in arabesque pose. 1. Detailed pencil sketch of ballerina on pointe, elegant extended leg and arms. 2. Refined mid-stage sketch. 3. Strongly stylized flowing lines. 4. Angular geometric abstraction. 5. Final sleek, ribbon-twisted contemporary metal sculpture with beautiful curves and tension. Black ink and charcoal style on white background, high-contrast artistic study, luxury sculpture aesthetic --ar 3:2",
+      "reason": "Reusable artistic progression/multi-panel prompt",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG2F1Gqa8AAnoYJ.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG2F1Gqa8AAnoYJ.jpg",
+      "view_count": null,
+      "retweet_count": 1,
+      "like_count": 16,
+      "reply_count": 11,
+      "engagement_score": 28
+    },
+    {
+      "x_url": "https://x.com/Tegadesigns/status/2048429483879796831",
+      "url": "https://x.com/Tegadesigns/status/2048429483879796831",
+      "author": "UxUi Tega (Design & Ai) - @Tegadesigns",
+      "created_at": "Sun, 26 Apr 2026 15:50:21 GMT",
+      "text": "Created these with a single prompt within 20 seconds using ChatGPT images 2.0",
+      "prompt": "[Single prompt used to generate the two design variations shown; exact text not expanded in post but confirmed as GPT Images 2.0 usage]",
+      "reason": "Reusable single-prompt design generation example",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG17mdQbcAAIW-M.jpg",
+        "https://pbs.twimg.com/media/HG17mdIaYAATrdb.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG17mdQbcAAIW-M.jpg",
+      "view_count": null,
+      "retweet_count": 3,
+      "like_count": 15,
+      "reply_count": 4,
+      "engagement_score": 22
+    },
+    {
+      "x_url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
+      "url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
+      "author": "Aijaz - @iamsofiaijaz",
+      "created_at": "Sun, 26 Apr 2026 16:19:15 GMT",
+      "text": "GPT Image 2 on chatgpt Prompt 👇 [full]",
+      "prompt": "A cinematic, ultra-realistic close-up portrait of a young woman with wet, tousled dark hair and luminous skin, staring directly into the camera with an intense, introspective expression. Glowing cyan handwritten text and symbols are projected across her face, neck, and shoulders, resembling poetic phrases, equations, and abstract handwriting. The light reflections shimmer on her damp skin, creating a futuristic, cyber-poetry aesthetic. Dark, moody background with soft shadows, shallow depth of field, sharp focus on the eyes, high contrast lighting, teal and blue color palette, hyper-detailed skin texture, photorealistic, dramatic atmosphere, cyberpunk meets fine-art portrait photography, 8K quality, cinematic lighting",
+      "reason": "Reusable cyber-poetry portrait prompt with text projection",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG2CX-oaUAAPanb.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG2CX-oaUAAPanb.jpg",
+      "view_count": null,
+      "retweet_count": 0,
+      "like_count": 9,
+      "reply_count": 7,
+      "engagement_score": 16
+    },
+    {
+      "x_url": "https://x.com/MrDasOnX/status/2048432301445644740",
+      "url": "https://x.com/MrDasOnX/status/2048432301445644740",
+      "author": "Mr Das - @MrDasOnX",
+      "created_at": "Sun, 26 Apr 2026 16:01:33 GMT",
+      "text": "GPT Image 2 on ChatGpt app Prompt: [full]",
+      "prompt": "Avant-garde luxury watch fashion ad, sophisticated female model in sleek black evening attire dramatically posing with an oversized glowing mechanical watch as the centerpiece, intricate gears and sparkling diamonds visible, bold metallic typography ‘TIMELESS’ floating in the foreground, reflective dark studio floor with scattered gold accents and subtle light beams, high-end editorial photography, dramatic cinematic lighting, luxurious atmosphere –ar 1:1 –stylize 750",
+      "reason": "Reusable luxury fashion ad prompt with text",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG1-TmvbEAAesYf.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG1-TmvbEAAesYf.jpg",
+      "view_count": null,
+      "retweet_count": 1,
+      "like_count": 8,
+      "reply_count": 5,
+      "engagement_score": 14
+    },
+    {
+      "x_url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
+      "url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
+      "author": "K - @ChillaiKalan__",
+      "created_at": "Sun, 26 Apr 2026 16:15:37 GMT",
+      "text": "GPT IMAGE 2 on @SocialSight Prompt: [full]",
+      "prompt": "Edit this photo (keep the face unchanged), portrait. Cinematic close-up of a young woman at night in a moody urban setting with neon lighting. She looks back over her shoulder with a soft yet intense expression. Long dark wavy hair with wispy bangs, slightly wind-swept. Natural dewy makeup, minimal styling, wearing a dark oversized leather jacket. Background: blurred city bokeh with streetlights and car lights. Shot on Sony A7S III, 85mm lens, shallow depth of field. Off-center composition. Dramatic split lighting: cool blue on one side, warm red on the other. Teal-and-red color grade, high contrast, subtle film grain and glow.",
+      "reason": "Reusable cinematic urban portrait prompt",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG2BhPSbUAAsIyJ.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG2BhPSbUAAsIyJ.jpg",
+      "view_count": null,
+      "retweet_count": 0,
+      "like_count": 7,
+      "reply_count": 5,
+      "engagement_score": 12
+    },
+    {
+      "x_url": "https://x.com/Taaruk_/status/2048438203611533367",
+      "url": "https://x.com/Taaruk_/status/2048438203611533367",
+      "author": "Taaruk - @Taaruk_",
+      "created_at": "Sun, 26 Apr 2026 16:25:00 GMT",
+      "text": "GPT IMAGE 2.0 on CHATGPT Prompt: [full]",
+      "prompt": "A dramatic sports editorial scene featuring a professional male footballer wearing an all-black kit, reclining confidently on top of an oversized soccer ball. The ball is hyper-detailed with realistic panels and branding, placed on a glossy reflective floor. The athlete’s pose is relaxed yet powerful, with one arm hanging down and legs extended, showcasing strength and elegance. The background is a bold deep blue studio with massive “GOAL” typography in large, subtle shadowed letters. High-contrast studio lighting with sharp highlights and deep shadows sculpting the body. Clean, minimal composition with a luxury sports campaign aesthetic. Shot with an 85mm lens, ultra-realistic, cinematic lighting, crisp details, 8K resolution, Nike/Adidas-style commercial photography.",
+      "reason": "Reusable luxury sports editorial prompt",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG2Drv6bYAAyTSD.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG2Drv6bYAAyTSD.jpg",
+      "view_count": null,
+      "retweet_count": 1,
+      "like_count": 5,
+      "reply_count": 3,
+      "engagement_score": 9
+    },
+    {
+      "x_url": "https://x.com/iamrealsnow/status/2048444370844807555",
+      "url": "https://x.com/iamrealsnow/status/2048444370844807555",
+      "author": "Snow - @iamrealsnow",
+      "created_at": "Sun, 26 Apr 2026 16:49:30 GMT",
+      "text": "GPT image 2.0 on Chat GPT . Prompt: [full prompt]",
+      "prompt": "A powerful young man standing in front of a matte black Hummer H2 on a snowy night, heavy snowfall, dark cinematic atmosphere. The Hummer has a glowing icy number plate with a frosted texture. The subject wears a long black trench coat, leather gloves, and boots, slightly messy hair, intense expression, looking straight into the camera. Low-angle shot to make him look dominant. Cold blue and deep shadow lighting, high contrast, sharp details, foggy breath visible, luxury criminal aura, ultra-realistic, 4K, dramatic tension.",
+      "reason": "Reusable cinematic character prompt with environment details",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG2JSwGaUAA5vea.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG2JSwGaUAA5vea.jpg",
+      "view_count": null,
+      "retweet_count": 0,
+      "like_count": 2,
+      "reply_count": 1,
+      "engagement_score": 3
+    },
+    {
+      "x_url": "https://x.com/kingofdairyque/status/2048447045640544549",
+      "url": "https://x.com/kingofdairyque/status/2048447045640544549",
+      "author": "simply - @kingofdairyque",
+      "created_at": "Sun, 26 Apr 2026 17:00:08 GMT",
+      "text": "PROMPT FOR GPT IMAGE 2 ON CHAT GPT: [full prompt text]",
+      "prompt": "A high-end cinematic transformation artwork displayed in five vertical panels, showing a luxury perfume evolving from raw essence into a sculptural masterpiece, each panel separated by thin black dividers. Panel 1 (Origin): A premium glass perfume bottle resting on a dark reflective surface, surrounded by raw ingredients like rose petals, oud wood, citrus peel, and mist, soft studio lighting, elegant shadows. Panel 2 (Release): The perfume begins to diffuse into the air, visible fragrant mist swirling upward in fluid motion, forming soft organic shapes, glowing particles and vapor trails. Panel 3 (Transformation): The mist starts shaping into a semi-formed silhouette (abstract human figure or flowing fabric), blending liquid, vapor, and light, luminous and dreamy. Panel 4 (Abstraction): The form becomes fully abstract — flowing ribbons of scent turning into sleek glass-like curves and fluid geometry, dynamic motion frozen mid-air. Panel 5 (Transcendence): Final form — a luxurious sculptural perfume bottle or abstract glass statue inspired by the scent’s essence, polished, reflective, with glowing highlights, sitting on a minimal pedestal. Style: ultra-detailed, photorealistic to abstract progression, deep black background, gold and silver accents, soft glow, high contrast lighting, glossy reflections, cinematic luxury aesthetic, perfume ad style, 4K quality, sharp focus.",
+      "reason": "Reusable detailed multi-panel transformation prompt for GPT Image 2",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG2LuwnbcAA0ncX.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG2LuwnbcAA0ncX.jpg",
+      "view_count": null,
+      "retweet_count": 0,
+      "like_count": 1,
+      "reply_count": 1,
+      "engagement_score": 2
     }
   ]
 }
