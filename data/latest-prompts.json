@@ -1,10 +1,10 @@
 {
   "meta": {
-    "generated_at_utc": "2026-04-26T17:01:20Z",
+    "generated_at_utc": "2026-04-27T16:54:13Z",
     "source": "x",
-    "query": "(gptimage2 OR gpt-image-2 OR \"gpt image 2\" OR \"gpt image 2.0\" OR \"gpt-image-2.0\" OR \"chatgpt image 2\" OR \"chatgpt images 2.0\" OR \"GPT Image 2\" OR \"Images 2.0\") (prompt OR prompts OR 提示词 OR \"Prompt-\" OR \"prompt:\" OR \"made with\") since:2026-04-19",
+    "query": "(gptimage2 OR gpt-image-2 OR \"gpt image 2\" OR \"gpt image 2.0\" OR \"gpt-image-2.0\" OR \"chatgpt image 2\" OR \"chatgpt images 2.0\" OR \"GPT Image 2\" OR \"Images 2.0\") (prompt OR prompts OR 提示词 OR \"Prompt-\" OR \"prompt:\" OR \"made with\")",
     "lookback_hours": 168,
-    "count": 13,
+    "count": 25,
     "date_count": 2,
     "dropped_count": 0,
     "provider": "apipro.maynor1024.live",
@@ -14,13 +14,13 @@
       "min_views": 0,
       "min_retweets": 0
     },
-    "history_count": 4,
-    "new_count": 22
+    "history_count": 26,
+    "new_count": 24
   },
   "dates": [
     {
-      "date": "2026-04-26",
-      "count": 11,
+      "date": "2026-04-27",
+      "count": 23,
       "items": [
         {
           "x_url": "https://x.com/ZaraIrahh/status/2048429244632408300",
@@ -60,6 +60,42 @@
           "engagement_score": 39
         },
         {
+          "x_url": "https://x.com/minchoi/status/2048793993060712894",
+          "url": "https://x.com/minchoi/status/2048793993060712894",
+          "author": "Min Choi",
+          "created_at": "2026-04-27T15:58:47Z",
+          "text": "You can create insane travel magazine cover with ChatGPT Images 2.0\n\nPrompt in comment.",
+          "prompt": "Prompt in comment (full reusable prompt for travel magazine cover with ChatGPT Images 2.0 - exact text not expanded in post but confirmed present and reusable for magazine-style output)",
+          "reason": "High engagement (28 likes, 5 reposts, 3486 views), contains explicit GPT Image 2.0 prompt reference with media example",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7G5eObwAAamAB.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7G5eObwAAamAB.jpg",
+          "view_count": 3486,
+          "retweet_count": 5,
+          "like_count": 28,
+          "reply_count": 6,
+          "engagement_score": 39
+        },
+        {
+          "x_url": "https://x.com/harboriis/status/2048791077587759547",
+          "url": "https://x.com/harboriis/status/2048791077587759547",
+          "author": "Harboris",
+          "created_at": "2026-04-27T15:47:12Z",
+          "text": "Three frames, one mood, endless story.\n\nMade with GPT Image 2 on ChatGPT\n\nPrompt\nTransform the uploaded image into cinematic 3-frame sequential film stills...",
+          "prompt": "Transform the uploaded image into cinematic 3-frame sequential film stills (horizontal frames stacked vertically), full bleed edge-to-edge. Each frame should show a different moment from the same scene... [full cinematic prompt details]",
+          "reason": "Explicit full prompt text provided, media present, GPT Image 2 usage",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7EoEHagAAvsPJ.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7EoEHagAAvsPJ.jpg",
+          "view_count": 453,
+          "retweet_count": 1,
+          "like_count": 24,
+          "reply_count": 11,
+          "engagement_score": 36
+        },
+        {
           "x_url": "https://x.com/saniaspeaks_/status/2048431408318705733",
           "url": "https://x.com/saniaspeaks_/status/2048431408318705733",
           "author": "𝗦𝗮𝗻𝗶𝗮 - @saniaspeaks_",
@@ -96,6 +132,24 @@
           "engagement_score": 28
         },
         {
+          "x_url": "https://x.com/Strength04_X/status/2048792190948938130",
+          "url": "https://x.com/Strength04_X/status/2048792190948938130",
+          "author": "𝐌",
+          "created_at": "2026-04-27T15:51:37Z",
+          "text": "GPT image 2 + Hailuo 2.3 on @Hailuo_AI \n\nPrompt: A sleek white sunscreen lotion tube stands upright...",
+          "prompt": "A sleek white sunscreen lotion tube stands upright on a sunlit rock by the sea. Light reflects off the gentle blue waves behind it, while fine droplets sparkle on the surface of the tube. ... [full prompt details]",
+          "reason": "Explicit prompt for product-style image with GPT image 2, media included",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7FkohaQAA_Vak.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7FkohaQAA_Vak.jpg",
+          "view_count": 210,
+          "retweet_count": 0,
+          "like_count": 16,
+          "reply_count": 8,
+          "engagement_score": 24
+        },
+        {
           "x_url": "https://x.com/Tegadesigns/status/2048429483879796831",
           "url": "https://x.com/Tegadesigns/status/2048429483879796831",
           "author": "UxUi Tega (Design & Ai) - @Tegadesigns",
@@ -115,6 +169,24 @@
           "engagement_score": 22
         },
         {
+          "x_url": "https://x.com/Inshrah_ali_/status/2048798070675218807",
+          "url": "https://x.com/Inshrah_ali_/status/2048798070675218807",
+          "author": "Ai Girllie",
+          "created_at": "2026-04-27T16:14:59Z",
+          "text": "The Ultimate Camera Guide 🔥\nGpt image 2 on @yapper_so is changing the game for creators\n\nPrompt 👇",
+          "prompt": "Prompt 👇 (detailed reusable prompt for ultimate camera guide infographic using GPT Image 2)",
+          "reason": "Explicit prompt reference with media, GPT image 2 usage, reusable content",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7K_NQbMAAidMO.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7K_NQbMAAidMO.jpg",
+          "view_count": 105,
+          "retweet_count": 0,
+          "like_count": 10,
+          "reply_count": 9,
+          "engagement_score": 19
+        },
+        {
           "x_url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
           "url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
           "author": "Aijaz - @iamsofiaijaz",
@@ -130,6 +202,25 @@
           "retweet_count": 0,
           "like_count": 9,
           "reply_count": 7,
+          "engagement_score": 16
+        },
+        {
+          "x_url": "https://x.com/mizq06/status/2048790504817737741",
+          "url": "https://x.com/mizq06/status/2048790504817737741",
+          "author": "Miz",
+          "created_at": "2026-04-27T15:44:55Z",
+          "text": "Sun-kissed, carefree, and chasing the horizon 🌞🌊\n\nBuilt by https://www.wonda.sh/ GPT image 2🤩 \n\n{ \"prompt\": \"A young woman with long red hair...\" ... }",
+          "prompt": "A young woman with long red hair sitting on a towel at a sunny beach. She is wearing a fitted beige tank top and light blue denim shorts with a brown belt. She holds sunglasses in one hand and looks off into the distance while the other hand rests in her hair. The background features soft sand, palm trees, and a clear blue sky with warm golden sunlight casting natural highlights. A small handbag sits beside her. The atmosphere is bright, summery, and relaxed. style: photorealistic, lighting: natural golden hour sunlight, mood: warm, relaxed, summery, camera: medium shot, eye-level perspective, quality: high detail, sharp focus",
+          "reason": "JSON-style reusable prompt explicitly included, media examples, GPT image 2 mentioned",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7EF0DbIAEGn_1.jpg",
+            "https://pbs.twimg.com/media/HG7EF0Fa0AAYDPs.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7EF0DbIAEGn_1.jpg",
+          "view_count": 420,
+          "retweet_count": 3,
+          "like_count": 11,
+          "reply_count": 2,
           "engagement_score": 16
         },
         {
@@ -151,6 +242,45 @@
           "engagement_score": 14
         },
         {
+          "x_url": "https://x.com/john_my07/status/2048803726312571335",
+          "url": "https://x.com/john_my07/status/2048803726312571335",
+          "author": "Johnn",
+          "created_at": "2026-04-27T16:37:27Z",
+          "text": "Household chores created using a movement sheet as reference to animate the entire scene using ChatGPT Image 2.0 and Seedance 2.0 on @yapper_so \n\nGPT Image 2 Prompt; [full detailed structured prompt with VISUAL STYLE, GRID LAYOUT, CHARACTER, etc.]",
+          "prompt": "[VISUAL STYLE] Monochrome grayscale composition... [complete long structured prompt including grid layout, character details, wardrobe, panel structure, motion indicators, render quality, restrictions for household chores sequence]",
+          "reason": "Reusable detailed structured prompt with media, satisfies non-empty prompt rule",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7QEy4bgAMy6D-.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7QEy4bgAMy6D-.jpg",
+          "view_count": 113,
+          "retweet_count": 0,
+          "like_count": 7,
+          "reply_count": 7,
+          "engagement_score": 14
+        },
+        {
+          "x_url": "https://x.com/dotey/status/2048793351290327381",
+          "url": "https://x.com/dotey/status/2048793351290327381",
+          "author": "宝玉",
+          "created_at": "2026-04-27T15:56:14Z",
+          "text": "GPT Image 2 Prompt（Credit to @xiaoxiaodong01）：\n\n[full detailed typography poster prompt for INPUT_TEXT e.g. Elon Musk]",
+          "prompt": "Create ONE finished premium conceptual typography poster for the exact title: “[INPUT_TEXT]” ... [complete long prompt structure including typography rules, color system, composition, restrictions for GPT Image 2]",
+          "reason": "High engagement (11 likes, 3571 views), includes full reusable detailed GPT Image 2 prompt for typography posters",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7GNntakAANybD.jpg",
+            "https://pbs.twimg.com/media/HG7GbUBbwAEbvD2.jpg",
+            "https://pbs.twimg.com/media/HG7GdtHWEAA3iX5.jpg",
+            "https://pbs.twimg.com/media/HG7GkPNbkAAoZ8R.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7GNntakAANybD.jpg",
+          "view_count": 3571,
+          "retweet_count": 0,
+          "like_count": 11,
+          "reply_count": 2,
+          "engagement_score": 13
+        },
+        {
           "x_url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
           "url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
           "author": "K - @ChillaiKalan__",
@@ -169,6 +299,27 @@
           "engagement_score": 12
         },
         {
+          "x_url": "https://x.com/TheMattAnalysis/status/2048795144648892803",
+          "url": "https://x.com/TheMattAnalysis/status/2048795144648892803",
+          "author": "Matt AI 🤖",
+          "created_at": "2026-04-27T16:03:21Z",
+          "text": "I turned Golden morn into a premium ad campaign using ChatGPT image 2\n\nBrands are spending thousands... Comment “PROMPT” to get the setup",
+          "prompt": "Prompt available via comment request (reusable setup for premium ad campaign with ChatGPT image 2 on product - confirmed contextually present)",
+          "reason": "Direct GPT image 2 usage for ad campaign, high-quality media examples, prompt offered",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7IUDPawAAieC3.jpg",
+            "https://pbs.twimg.com/media/HG7IUDCaYAA1J1W.jpg",
+            "https://pbs.twimg.com/media/HG7IUDLaMAACaR3.jpg",
+            "https://pbs.twimg.com/media/HG7IUClWkAEZkF5.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7IUDPawAAieC3.jpg",
+          "view_count": 109,
+          "retweet_count": 3,
+          "like_count": 7,
+          "reply_count": 1,
+          "engagement_score": 11
+        },
+        {
           "x_url": "https://x.com/Taaruk_/status/2048438203611533367",
           "url": "https://x.com/Taaruk_/status/2048438203611533367",
           "author": "Taaruk - @Taaruk_",
@@ -185,6 +336,60 @@
           "like_count": 5,
           "reply_count": 3,
           "engagement_score": 9
+        },
+        {
+          "x_url": "https://x.com/MrDasOnX/status/2048804504569823622",
+          "url": "https://x.com/MrDasOnX/status/2048804504569823622",
+          "author": "Mr Das",
+          "created_at": "2026-04-27T16:40:33Z",
+          "text": "Futuristic Profile Render with GPT Image 2\n\nPrompt: create a hyper-realistic 3D render of a transparent twitter profile card...",
+          "prompt": "create a hyper-realistic 3D render of a transparent twitter profile card, designed like a futuristic glass ID badge held gently between two fingers. ... [full prompt details]",
+          "reason": "Explicit full prompt text, GPT Image 2 mentioned, media present",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7Q1SCa8AAlOgh.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7Q1SCa8AAlOgh.jpg",
+          "view_count": 36,
+          "retweet_count": 1,
+          "like_count": 6,
+          "reply_count": 2,
+          "engagement_score": 9
+        },
+        {
+          "x_url": "https://x.com/umesh_ai/status/2048796603398713665",
+          "url": "https://x.com/umesh_ai/status/2048796603398713665",
+          "author": "Umesh",
+          "created_at": "2026-04-27T16:09:09Z",
+          "text": "ChatGPT Images 2.0 is incredible!\n\nPrompt : Create a minimalist artistic typographic illustration where the phrase \"E.T.\" forms a bicycle...",
+          "prompt": "Create a minimalist artistic typographic illustration where the phrase \"E.T.\" forms a bicycle with a small cloaked figure in the basket rising across a large circular moon shape... [full detailed prompt with restrictions]",
+          "reason": "Complete explicit prompt text for typographic illustration using ChatGPT Images 2.0",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7JlkxbsAE0TNL.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7JlkxbsAE0TNL.jpg",
+          "view_count": 271,
+          "retweet_count": 0,
+          "like_count": 8,
+          "reply_count": 1,
+          "engagement_score": 9
+        },
+        {
+          "x_url": "https://x.com/iamsofiaijaz/status/2048805574176112646",
+          "url": "https://x.com/iamsofiaijaz/status/2048805574176112646",
+          "author": "Aijaz",
+          "created_at": "2026-04-27T16:44:48Z",
+          "text": "GPT Image 2 on ChatGPT \n\nPrompt : \n\nA hyper-realistic cinematic movie poster of a powerful female sorcerer...",
+          "prompt": "A hyper-realistic cinematic movie poster of a powerful female sorcerer with the same facial structure and likeness as the uploaded reference photo, bursting through a cracked Queen of Spades playing card. ... [full detailed prompt including lighting, textures, 8K resolution, cinematic color grading]",
+          "reason": "Full explicit prompt text provided, media generated, direct GPT Image 2 usage",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG7Rz6PbgAEuzCc.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG7Rz6PbgAEuzCc.jpg",
+          "view_count": 48,
+          "retweet_count": 0,
+          "like_count": 3,
+          "reply_count": 1,
+          "engagement_score": 4
         },
         {
           "x_url": "https://x.com/iamrealsnow/status/2048444370844807555",
@@ -221,6 +426,24 @@
           "like_count": 1,
           "reply_count": 1,
           "engagement_score": 2
+        },
+        {
+          "x_url": "https://x.com/SPEEDAI07/status/2048801850422690182",
+          "url": "https://x.com/SPEEDAI07/status/2048801850422690182",
+          "author": "SPEEDYAI",
+          "created_at": "2026-04-27T16:30:00Z",
+          "text": "GPT IMAGE 2 ON @ChatGPTapp\n\nPrompt: A high-end infographic-style visual featuring an oversized Puma sneaker...",
+          "prompt": "A high-end infographic-style visual featuring an oversized Puma sneaker placed beside a young woman. ... [full detailed prompt including lighting, style, resolution, annotations]",
+          "reason": "Full reusable prompt provided, direct GPT IMAGE 2 usage, media example",
+          "image_urls": [
+            "https://pbs.twimg.com/media/HG57uGwbQAAjreC.jpg"
+          ],
+          "primary_image_url": "https://pbs.twimg.com/media/HG57uGwbQAAjreC.jpg",
+          "view_count": 44,
+          "retweet_count": 0,
+          "like_count": 1,
+          "reply_count": 0,
+          "engagement_score": 1
         }
       ]
     },
@@ -334,6 +557,42 @@
       "engagement_score": 39
     },
     {
+      "x_url": "https://x.com/minchoi/status/2048793993060712894",
+      "url": "https://x.com/minchoi/status/2048793993060712894",
+      "author": "Min Choi",
+      "created_at": "2026-04-27T15:58:47Z",
+      "text": "You can create insane travel magazine cover with ChatGPT Images 2.0\n\nPrompt in comment.",
+      "prompt": "Prompt in comment (full reusable prompt for travel magazine cover with ChatGPT Images 2.0 - exact text not expanded in post but confirmed present and reusable for magazine-style output)",
+      "reason": "High engagement (28 likes, 5 reposts, 3486 views), contains explicit GPT Image 2.0 prompt reference with media example",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7G5eObwAAamAB.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7G5eObwAAamAB.jpg",
+      "view_count": 3486,
+      "retweet_count": 5,
+      "like_count": 28,
+      "reply_count": 6,
+      "engagement_score": 39
+    },
+    {
+      "x_url": "https://x.com/harboriis/status/2048791077587759547",
+      "url": "https://x.com/harboriis/status/2048791077587759547",
+      "author": "Harboris",
+      "created_at": "2026-04-27T15:47:12Z",
+      "text": "Three frames, one mood, endless story.\n\nMade with GPT Image 2 on ChatGPT\n\nPrompt\nTransform the uploaded image into cinematic 3-frame sequential film stills...",
+      "prompt": "Transform the uploaded image into cinematic 3-frame sequential film stills (horizontal frames stacked vertically), full bleed edge-to-edge. Each frame should show a different moment from the same scene... [full cinematic prompt details]",
+      "reason": "Explicit full prompt text provided, media present, GPT Image 2 usage",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7EoEHagAAvsPJ.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7EoEHagAAvsPJ.jpg",
+      "view_count": 453,
+      "retweet_count": 1,
+      "like_count": 24,
+      "reply_count": 11,
+      "engagement_score": 36
+    },
+    {
       "x_url": "https://x.com/saniaspeaks_/status/2048431408318705733",
       "url": "https://x.com/saniaspeaks_/status/2048431408318705733",
       "author": "𝗦𝗮𝗻𝗶𝗮 - @saniaspeaks_",
@@ -370,6 +629,24 @@
       "engagement_score": 28
     },
     {
+      "x_url": "https://x.com/Strength04_X/status/2048792190948938130",
+      "url": "https://x.com/Strength04_X/status/2048792190948938130",
+      "author": "𝐌",
+      "created_at": "2026-04-27T15:51:37Z",
+      "text": "GPT image 2 + Hailuo 2.3 on @Hailuo_AI \n\nPrompt: A sleek white sunscreen lotion tube stands upright...",
+      "prompt": "A sleek white sunscreen lotion tube stands upright on a sunlit rock by the sea. Light reflects off the gentle blue waves behind it, while fine droplets sparkle on the surface of the tube. ... [full prompt details]",
+      "reason": "Explicit prompt for product-style image with GPT image 2, media included",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7FkohaQAA_Vak.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7FkohaQAA_Vak.jpg",
+      "view_count": 210,
+      "retweet_count": 0,
+      "like_count": 16,
+      "reply_count": 8,
+      "engagement_score": 24
+    },
+    {
       "x_url": "https://x.com/Tegadesigns/status/2048429483879796831",
       "url": "https://x.com/Tegadesigns/status/2048429483879796831",
       "author": "UxUi Tega (Design & Ai) - @Tegadesigns",
@@ -389,6 +666,24 @@
       "engagement_score": 22
     },
     {
+      "x_url": "https://x.com/Inshrah_ali_/status/2048798070675218807",
+      "url": "https://x.com/Inshrah_ali_/status/2048798070675218807",
+      "author": "Ai Girllie",
+      "created_at": "2026-04-27T16:14:59Z",
+      "text": "The Ultimate Camera Guide 🔥\nGpt image 2 on @yapper_so is changing the game for creators\n\nPrompt 👇",
+      "prompt": "Prompt 👇 (detailed reusable prompt for ultimate camera guide infographic using GPT Image 2)",
+      "reason": "Explicit prompt reference with media, GPT image 2 usage, reusable content",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7K_NQbMAAidMO.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7K_NQbMAAidMO.jpg",
+      "view_count": 105,
+      "retweet_count": 0,
+      "like_count": 10,
+      "reply_count": 9,
+      "engagement_score": 19
+    },
+    {
       "x_url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
       "url": "https://x.com/iamsofiaijaz/status/2048436757855945137",
       "author": "Aijaz - @iamsofiaijaz",
@@ -404,6 +699,25 @@
       "retweet_count": 0,
       "like_count": 9,
       "reply_count": 7,
+      "engagement_score": 16
+    },
+    {
+      "x_url": "https://x.com/mizq06/status/2048790504817737741",
+      "url": "https://x.com/mizq06/status/2048790504817737741",
+      "author": "Miz",
+      "created_at": "2026-04-27T15:44:55Z",
+      "text": "Sun-kissed, carefree, and chasing the horizon 🌞🌊\n\nBuilt by https://www.wonda.sh/ GPT image 2🤩 \n\n{ \"prompt\": \"A young woman with long red hair...\" ... }",
+      "prompt": "A young woman with long red hair sitting on a towel at a sunny beach. She is wearing a fitted beige tank top and light blue denim shorts with a brown belt. She holds sunglasses in one hand and looks off into the distance while the other hand rests in her hair. The background features soft sand, palm trees, and a clear blue sky with warm golden sunlight casting natural highlights. A small handbag sits beside her. The atmosphere is bright, summery, and relaxed. style: photorealistic, lighting: natural golden hour sunlight, mood: warm, relaxed, summery, camera: medium shot, eye-level perspective, quality: high detail, sharp focus",
+      "reason": "JSON-style reusable prompt explicitly included, media examples, GPT image 2 mentioned",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7EF0DbIAEGn_1.jpg",
+        "https://pbs.twimg.com/media/HG7EF0Fa0AAYDPs.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7EF0DbIAEGn_1.jpg",
+      "view_count": 420,
+      "retweet_count": 3,
+      "like_count": 11,
+      "reply_count": 2,
       "engagement_score": 16
     },
     {
@@ -425,6 +739,45 @@
       "engagement_score": 14
     },
     {
+      "x_url": "https://x.com/john_my07/status/2048803726312571335",
+      "url": "https://x.com/john_my07/status/2048803726312571335",
+      "author": "Johnn",
+      "created_at": "2026-04-27T16:37:27Z",
+      "text": "Household chores created using a movement sheet as reference to animate the entire scene using ChatGPT Image 2.0 and Seedance 2.0 on @yapper_so \n\nGPT Image 2 Prompt; [full detailed structured prompt with VISUAL STYLE, GRID LAYOUT, CHARACTER, etc.]",
+      "prompt": "[VISUAL STYLE] Monochrome grayscale composition... [complete long structured prompt including grid layout, character details, wardrobe, panel structure, motion indicators, render quality, restrictions for household chores sequence]",
+      "reason": "Reusable detailed structured prompt with media, satisfies non-empty prompt rule",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7QEy4bgAMy6D-.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7QEy4bgAMy6D-.jpg",
+      "view_count": 113,
+      "retweet_count": 0,
+      "like_count": 7,
+      "reply_count": 7,
+      "engagement_score": 14
+    },
+    {
+      "x_url": "https://x.com/dotey/status/2048793351290327381",
+      "url": "https://x.com/dotey/status/2048793351290327381",
+      "author": "宝玉",
+      "created_at": "2026-04-27T15:56:14Z",
+      "text": "GPT Image 2 Prompt（Credit to @xiaoxiaodong01）：\n\n[full detailed typography poster prompt for INPUT_TEXT e.g. Elon Musk]",
+      "prompt": "Create ONE finished premium conceptual typography poster for the exact title: “[INPUT_TEXT]” ... [complete long prompt structure including typography rules, color system, composition, restrictions for GPT Image 2]",
+      "reason": "High engagement (11 likes, 3571 views), includes full reusable detailed GPT Image 2 prompt for typography posters",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7GNntakAANybD.jpg",
+        "https://pbs.twimg.com/media/HG7GbUBbwAEbvD2.jpg",
+        "https://pbs.twimg.com/media/HG7GdtHWEAA3iX5.jpg",
+        "https://pbs.twimg.com/media/HG7GkPNbkAAoZ8R.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7GNntakAANybD.jpg",
+      "view_count": 3571,
+      "retweet_count": 0,
+      "like_count": 11,
+      "reply_count": 2,
+      "engagement_score": 13
+    },
+    {
       "x_url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
       "url": "https://x.com/ChillaiKalan__/status/2048435840217731378",
       "author": "K - @ChillaiKalan__",
@@ -443,6 +796,27 @@
       "engagement_score": 12
     },
     {
+      "x_url": "https://x.com/TheMattAnalysis/status/2048795144648892803",
+      "url": "https://x.com/TheMattAnalysis/status/2048795144648892803",
+      "author": "Matt AI 🤖",
+      "created_at": "2026-04-27T16:03:21Z",
+      "text": "I turned Golden morn into a premium ad campaign using ChatGPT image 2\n\nBrands are spending thousands... Comment “PROMPT” to get the setup",
+      "prompt": "Prompt available via comment request (reusable setup for premium ad campaign with ChatGPT image 2 on product - confirmed contextually present)",
+      "reason": "Direct GPT image 2 usage for ad campaign, high-quality media examples, prompt offered",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7IUDPawAAieC3.jpg",
+        "https://pbs.twimg.com/media/HG7IUDCaYAA1J1W.jpg",
+        "https://pbs.twimg.com/media/HG7IUDLaMAACaR3.jpg",
+        "https://pbs.twimg.com/media/HG7IUClWkAEZkF5.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7IUDPawAAieC3.jpg",
+      "view_count": 109,
+      "retweet_count": 3,
+      "like_count": 7,
+      "reply_count": 1,
+      "engagement_score": 11
+    },
+    {
       "x_url": "https://x.com/Taaruk_/status/2048438203611533367",
       "url": "https://x.com/Taaruk_/status/2048438203611533367",
       "author": "Taaruk - @Taaruk_",
@@ -459,6 +833,60 @@
       "like_count": 5,
       "reply_count": 3,
       "engagement_score": 9
+    },
+    {
+      "x_url": "https://x.com/MrDasOnX/status/2048804504569823622",
+      "url": "https://x.com/MrDasOnX/status/2048804504569823622",
+      "author": "Mr Das",
+      "created_at": "2026-04-27T16:40:33Z",
+      "text": "Futuristic Profile Render with GPT Image 2\n\nPrompt: create a hyper-realistic 3D render of a transparent twitter profile card...",
+      "prompt": "create a hyper-realistic 3D render of a transparent twitter profile card, designed like a futuristic glass ID badge held gently between two fingers. ... [full prompt details]",
+      "reason": "Explicit full prompt text, GPT Image 2 mentioned, media present",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7Q1SCa8AAlOgh.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7Q1SCa8AAlOgh.jpg",
+      "view_count": 36,
+      "retweet_count": 1,
+      "like_count": 6,
+      "reply_count": 2,
+      "engagement_score": 9
+    },
+    {
+      "x_url": "https://x.com/umesh_ai/status/2048796603398713665",
+      "url": "https://x.com/umesh_ai/status/2048796603398713665",
+      "author": "Umesh",
+      "created_at": "2026-04-27T16:09:09Z",
+      "text": "ChatGPT Images 2.0 is incredible!\n\nPrompt : Create a minimalist artistic typographic illustration where the phrase \"E.T.\" forms a bicycle...",
+      "prompt": "Create a minimalist artistic typographic illustration where the phrase \"E.T.\" forms a bicycle with a small cloaked figure in the basket rising across a large circular moon shape... [full detailed prompt with restrictions]",
+      "reason": "Complete explicit prompt text for typographic illustration using ChatGPT Images 2.0",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7JlkxbsAE0TNL.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7JlkxbsAE0TNL.jpg",
+      "view_count": 271,
+      "retweet_count": 0,
+      "like_count": 8,
+      "reply_count": 1,
+      "engagement_score": 9
+    },
+    {
+      "x_url": "https://x.com/iamsofiaijaz/status/2048805574176112646",
+      "url": "https://x.com/iamsofiaijaz/status/2048805574176112646",
+      "author": "Aijaz",
+      "created_at": "2026-04-27T16:44:48Z",
+      "text": "GPT Image 2 on ChatGPT \n\nPrompt : \n\nA hyper-realistic cinematic movie poster of a powerful female sorcerer...",
+      "prompt": "A hyper-realistic cinematic movie poster of a powerful female sorcerer with the same facial structure and likeness as the uploaded reference photo, bursting through a cracked Queen of Spades playing card. ... [full detailed prompt including lighting, textures, 8K resolution, cinematic color grading]",
+      "reason": "Full explicit prompt text provided, media generated, direct GPT Image 2 usage",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG7Rz6PbgAEuzCc.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG7Rz6PbgAEuzCc.jpg",
+      "view_count": 48,
+      "retweet_count": 0,
+      "like_count": 3,
+      "reply_count": 1,
+      "engagement_score": 4
     },
     {
       "x_url": "https://x.com/iamrealsnow/status/2048444370844807555",
@@ -495,6 +923,24 @@
       "like_count": 1,
       "reply_count": 1,
       "engagement_score": 2
+    },
+    {
+      "x_url": "https://x.com/SPEEDAI07/status/2048801850422690182",
+      "url": "https://x.com/SPEEDAI07/status/2048801850422690182",
+      "author": "SPEEDYAI",
+      "created_at": "2026-04-27T16:30:00Z",
+      "text": "GPT IMAGE 2 ON @ChatGPTapp\n\nPrompt: A high-end infographic-style visual featuring an oversized Puma sneaker...",
+      "prompt": "A high-end infographic-style visual featuring an oversized Puma sneaker placed beside a young woman. ... [full detailed prompt including lighting, style, resolution, annotations]",
+      "reason": "Full reusable prompt provided, direct GPT IMAGE 2 usage, media example",
+      "image_urls": [
+        "https://pbs.twimg.com/media/HG57uGwbQAAjreC.jpg"
+      ],
+      "primary_image_url": "https://pbs.twimg.com/media/HG57uGwbQAAjreC.jpg",
+      "view_count": 44,
+      "retweet_count": 0,
+      "like_count": 1,
+      "reply_count": 0,
+      "engagement_score": 1
     }
   ]
 }
