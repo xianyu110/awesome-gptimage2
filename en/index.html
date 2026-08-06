@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome GPT-Image-2 | English Prompt Guide</title>
-    <meta name="description" content="An English GPT-Image-2 gallery with 640+ searchable prompts and cases, reusable templates, source links, and practical workflows.">
+    <meta name="description" content="An English GPT-Image-2 gallery with 630+ searchable prompts and cases, reusable templates, source links, and practical workflows.">
     <meta name="keywords" content="GPT-Image-2,prompt guide,AI image generation,OpenAI,image prompts,ecommerce visuals">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#1a102e">
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Awesome GPT-Image-2">
     <meta property="og:title" content="Awesome GPT-Image-2 | English Prompt Guide">
-    <meta property="og:description" content="640+ searchable GPT-Image-2 prompts and cases with filters, reusable templates, and original source links.">
+    <meta property="og:description" content="630+ searchable GPT-Image-2 prompts and cases with filters, reusable templates, and original source links.">
     <meta property="og:url" content="https://awesome.gptimage2.asia/en/">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -71,7 +71,7 @@
             <aside class="hero-panel" aria-label="Key stats">
                 <div class="stat-grid">
                     <div class="stat-card">
-                        <span class="stat-value">640+</span>
+                        <span class="stat-value">630+</span>
                         <span class="stat-name">Prompts & cases</span>
                     </div>
                     <div class="stat-card">
@@ -401,6 +401,7 @@
         all: [],
         local: [],
         community: [],
+        aliases: {},
         activeCategory: 'all',
         activeSource: 'all',
         keyword: '',
@@ -413,90 +414,9 @@
         previousFocus: null
     };
     const PROMPT_BOARD_PAGE_SIZE = 96;
-    const COMMUNITY_CASES_URL = '../data/community-cases.json';
+    const PAGE_LOCALE = 'en';
+    const CASE_LIBRARY_URL = '../data/case-library.json';
 
-    const SUPPLEMENT_PROMPT_CARDS = [
-        {
-            id: 'supp-en-01',
-            title: 'AI Product Retouch Prompt for White Background Ecommerce Images',
-            category: 'Ecommerce & Product',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776831501923_wx_058_991727c87e.png',
-            description: 'A minimal but practical prompt for turning a raw product shot into a polished marketplace image.',
-            promptText: 'Retouch this product image for ecommerce. Keep the product shape accurate, improve lighting and reflections, place it on a pure white background, preserve realistic soft shadow, and make it look like a polished marketplace main image.'
-        },
-        {
-            id: 'supp-en-02',
-            title: 'AI Ecommerce Hero Banner Prompt for Skincare Serum',
-            category: 'Ecommerce & Product',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776480570690_img_048.png',
-            description: 'A strong starter prompt for premium beauty ads and hero banners.',
-            promptText: 'Create a premium ecommerce hero banner for a skincare serum called "Radiance Barrier Serum". Clean luxury aesthetic, soft white-to-warm-gray gradient background, frosted glass bottle in the center, subtle liquid reflections, minimal but commercial layout, realistic product lighting, high-end beauty campaign style, 4:5.'
-        },
-        {
-            id: 'supp-en-03',
-            title: 'AI Brand Launch Poster Prompt for Coffee Campaigns',
-            category: 'Brand Poster Design',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776936225028_23.jpg',
-            description: 'Useful when you want brand identity, packaging, and editorial poster style to work together.',
-            promptText: 'Design a launch poster for a coffee brand called "Mountain & Sea Coffee". Premium but warm visual identity, editorial typography, coffee beans and packaging integrated into the composition, soft cinematic lighting, tasteful brand campaign look, clear English headline, 4:5.'
-        },
-        {
-            id: 'supp-en-04',
-            title: 'GPT-Image-2 Infographic Prompt for Visual Explainers',
-            category: 'Knowledge Graphics & Infographics',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776925334708_15.png',
-            description: 'A reusable structure for educational graphics and visually organized explainers.',
-            promptText: 'Create a high-quality vertical infographic explaining GPT-Image-2. Make it feel like a hybrid of a modern encyclopedia page, a collectible visual guide, and a social-media-friendly knowledge card. Use clean modular sections, icons, clear headings, and an elegant editorial layout.'
-        },
-        {
-            id: 'supp-en-05',
-            title: 'AI Ecommerce App UI Screenshot Prompt',
-            category: 'UI Recreation',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776925318940_13.png',
-            description: 'Good for UI realism, hierarchy, and believable commercial interface structure.',
-            promptText: 'Generate a highly realistic mobile ecommerce app homepage screenshot. Include the status bar, search box, category tabs, promo banner, icon grid, flash sale module, and a recommendation feed. The UI should feel like a believable production app rather than a concept mockup.'
-        },
-        {
-            id: 'supp-en-06',
-            title: 'Photorealistic Shopping Mall Documentary Photo Prompt',
-            category: 'Realistic Photography',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776927584894_09.other',
-            description: 'A realism benchmark for mixed light, candid posture, texture, and everyday imperfection.',
-            promptText: 'Create an extremely realistic documentary-style photo inside a shopping mall at dusk. A casually dressed man has just stepped off the escalator while checking his phone. Mixed lighting from ceiling lamps, storefronts, and LED screens, glossy tile reflections, natural skin texture, slightly imperfect composition, photorealistic.'
-        },
-        {
-            id: 'supp-en-07',
-            title: 'Character Consistency Outfit Variation Prompt',
-            category: 'Character Consistency',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776927598909_12.png',
-            description: 'Useful when you need one identity preserved across multiple outputs and outfits.',
-            promptText: 'Use one character reference image and generate multiple outfit variations while keeping the same face, proportions, and identity. Show front-facing, side-angle, and half-body compositions with consistent character design.'
-        },
-        {
-            id: 'supp-en-08',
-            title: 'Layout-Preserving Style Transfer Poster Edit Prompt',
-            category: 'Image Editing & Reference',
-            source: 'English Edition',
-            badge: 'Curated',
-            image: 'https://upload.maynor1024.live/file/1776936244046_28.jpg',
-            description: 'A strong pattern when you need style transfer but want to preserve composition and layout rhythm.',
-            promptText: 'Use the uploaded poster as a layout and style reference. Keep the composition, typography rhythm, and overall design language, but transform the original scene into a different season or campaign while preserving visual quality.'
-        }
-    ];
 
     function normalizeCategoryName(text) {
         return (text || '').replace(/^\d+(?:\.\d+)?\s*/, '').trim() || 'Uncategorized';
@@ -536,8 +456,25 @@
         }
     }
 
+    function canonicalCaseId(id) {
+        let current = String(id || '');
+        const visited = new Set();
+        while (promptBoardState.aliases[current] && !visited.has(current)) {
+            visited.add(current);
+            current = String(promptBoardState.aliases[current]);
+        }
+        return current;
+    }
+
+    function migrateFavoriteAliases() {
+        promptBoardState.favoriteIds = new Set(
+            Array.from(promptBoardState.favoriteIds).map(canonicalCaseId)
+        );
+        saveFavoriteIds();
+    }
+
     function isFavorite(id) {
-        return promptBoardState.favoriteIds.has(String(id || ''));
+        return promptBoardState.favoriteIds.has(canonicalCaseId(id));
     }
 
     function setModalLink(anchor, href) {
@@ -557,7 +494,7 @@
     }
 
     function toggleFavorite(id) {
-        const key = String(id || '');
+        const key = canonicalCaseId(id);
         if (!key) return;
         if (promptBoardState.favoriteIds.has(key)) promptBoardState.favoriteIds.delete(key);
         else promptBoardState.favoriteIds.add(key);
@@ -568,7 +505,7 @@
 
     function caseUrl(id) {
         const url = new URL(window.location.href);
-        url.searchParams.set('case', String(id));
+        url.searchParams.set('case', canonicalCaseId(id));
         return url;
     }
 
@@ -599,7 +536,8 @@
     }
 
     function openCaseModal(id, updateUrl) {
-        const item = promptBoardState.all.find((candidate) => candidate.id === id);
+        const canonicalId = canonicalCaseId(id);
+        const item = promptBoardState.all.find((candidate) => candidate.id === canonicalId);
         if (!item || !caseModalEl) return false;
 
         caseModalState.item = item;
@@ -646,7 +584,7 @@
 
     function openCaseFromUrl() {
         const id = new URL(window.location.href).searchParams.get('case');
-        if (id && (!caseModalState.item || caseModalState.item.id !== id)) {
+        if (id && (!caseModalState.item || caseModalState.item.id !== canonicalCaseId(id))) {
             openCaseModal(id, false);
         }
     }
@@ -826,72 +764,6 @@
             });
             preEl.appendChild(button);
         });
-    }
-
-    function extractPromptCardsFromMarkdown(markdown) {
-        const cards = [];
-        const lines = (markdown || '').split(/\r?\n/);
-        let inPromptSection = false;
-        let currentCategory = 'Uncategorized';
-        let currentPrompt = null;
-
-        function finishCurrentPrompt() {
-            if (!currentPrompt) return;
-            const rawBody = currentPrompt.lines.join('\n').trim();
-            const imageMatch = rawBody.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/);
-            const codeMatch = rawBody.match(/```(?:[\w-]+)?\n([\s\S]*?)```/);
-            let description = '';
-            for (const line of currentPrompt.lines) {
-                const text = line.trim();
-                if (!text) continue;
-                if (text.startsWith('![') || text.startsWith('```') || text.startsWith('|')) continue;
-                description = text.replace(/^[-*]\s*/, '');
-                break;
-            }
-            const promptText = (codeMatch && codeMatch[1] ? codeMatch[1] : '').trim();
-            const previewText = promptText || description || 'No prompt text available yet';
-            cards.push({
-                id: 'en-prompt-' + (cards.length + 1),
-                title: currentPrompt.title,
-                category: currentPrompt.category || 'Uncategorized',
-                source: 'English Guide',
-                badge: 'Guide',
-                image: imageMatch ? imageMatch[1] : '',
-                description: description || 'No description',
-                promptText: previewText,
-                promptPreview: previewText.slice(0, 420)
-            });
-            currentPrompt = null;
-        }
-
-        lines.forEach((line) => {
-            if (/^##\s+Prompt Library/.test(line)) {
-                inPromptSection = true;
-                return;
-            }
-            if (inPromptSection && /^##\s+/.test(line)) {
-                finishCurrentPrompt();
-                inPromptSection = false;
-                return;
-            }
-            if (!inPromptSection) return;
-            const categoryMatch = line.match(/^###\s+(.+)/);
-            if (categoryMatch) {
-                finishCurrentPrompt();
-                currentCategory = normalizeCategoryName(categoryMatch[1]);
-                return;
-            }
-            const titleMatch = line.match(/^####\s+(.+)/);
-            if (titleMatch) {
-                finishCurrentPrompt();
-                currentPrompt = { title: titleMatch[1].trim(), category: currentCategory, lines: [] };
-                return;
-            }
-            if (currentPrompt) currentPrompt.lines.push(line);
-        });
-
-        finishCurrentPrompt();
-        return cards;
     }
 
     function renderPromptBoardCards(cards) {
@@ -1127,52 +999,59 @@
         openCaseFromUrl();
     }
 
-    function renderPromptBoardFromMarkdown(markdown) {
-        const cards = extractPromptCardsFromMarkdown(markdown)
-            .concat(SUPPLEMENT_PROMPT_CARDS)
-            .map((item) => ({ ...item, sourceKey: 'local' }));
-        promptBoardState.local = cards;
-        refreshPromptBoardData();
+    function localizedCaseText(values, fallback) {
+        if (!values || typeof values !== 'object') return fallback;
+        return String(values[PAGE_LOCALE] || values.en || values['zh-CN'] || Object.values(values)[0] || fallback);
     }
 
-    function normalizeCommunityCase(item) {
+    function normalizeLibraryCase(item) {
         const promptText = String(item.prompt || '').trim();
+        const source = item.source && typeof item.source === 'object' ? item.source : {};
+        const category = item.category && typeof item.category === 'object' ? item.category : {};
+        const community = source.kind === 'community';
         return {
             id: String(item.id || ''),
-            title: String(item.title || 'Community case'),
-            category: String(item.category || 'Other Use Cases'),
-            source: 'Community · ' + String(item.sourceLabel || item.source || 'awesome-gpt-image-2'),
-            sourceKey: String(item.source || 'community'),
-            badge: String(item.badge || 'Community'),
-            image: String(item.image || ''),
-            description: String(item.description || 'Prompt case from the open-source community.'),
+            title: String(item.title || 'Case'),
+            category: localizedCaseText(category.labels, 'Uncategorized'),
+            source: (community ? 'Community · ' : '') + String(source.label || source.key || 'English guide'),
+            sourceKey: String(source.key || 'local'),
+            badge: localizedCaseText(item.badge, community ? 'Community' : 'Curated'),
+            image: String(item.image && item.image.url || ''),
+            description: localizedCaseText(item.summary, 'No description'),
             promptText,
-            promptPreview: String(item.promptPreview || promptText).slice(0, 420),
-            styles: Array.isArray(item.styles) ? item.styles : [],
-            scenes: Array.isArray(item.scenes) ? item.scenes : [],
-            sourceUrl: String(item.sourceUrl || ''),
-            caseUrl: String(item.caseUrl || '')
+            promptPreview: promptText.slice(0, 420),
+            styles: Array.isArray(item.tags) ? item.tags : [],
+            scenes: [],
+            sourceUrl: String(source.originalUrl || ''),
+            caseUrl: String(source.caseUrl || '')
         };
     }
 
-    async function loadCommunityCases() {
-        const rawUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/community-cases.json';
-        const candidates = [COMMUNITY_CASES_URL, rawUrl];
+    async function loadCaseLibrary() {
+        const rawUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/case-library.json';
+        const candidates = [CASE_LIBRARY_URL, rawUrl];
         for (const url of candidates) {
             try {
                 const response = await fetch(url, { cache: 'no-store' });
                 if (!response.ok) throw new Error(String(response.status));
                 const payload = await response.json();
-                const cases = Array.isArray(payload && payload.cases) ? payload.cases : [];
-                promptBoardState.community = cases
-                    .map(normalizeCommunityCase)
-                    .filter((item) => item.id && item.promptText);
+                if (payload.schemaVersion !== '1.0.0') throw new Error('unsupported schema');
+                const cases = Array.isArray(payload.cases) ? payload.cases : [];
+                const visible = cases.filter((item) => item.locale === 'und' || item.locale === PAGE_LOCALE);
+                const normalized = visible.map(normalizeLibraryCase).filter((item) => item.id && item.promptText);
+                promptBoardState.aliases = payload.meta && payload.meta.aliases || {};
+                migrateFavoriteAliases();
+                promptBoardState.local = normalized.filter((item) => item.sourceKey === 'local');
+                promptBoardState.community = normalized.filter((item) => item.sourceKey !== 'local');
                 refreshPromptBoardData();
                 return;
             } catch (error) {
                 // Try the GitHub fallback URL.
             }
         }
+        promptBoardState.local = [];
+        promptBoardState.community = [];
+        refreshPromptBoardData();
     }
 
     function extractPromptCategoriesFromMarkdown(markdown) {
@@ -1313,7 +1192,6 @@
             const html = marked.parse(markdown);
             const safeHtml = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
             readmeContentEl.innerHTML = safeHtml;
-            renderPromptBoardFromMarkdown(markdown);
             absolutizeLinksAndMakeExternal(readmeContentEl);
             addLazyLoadingToImages(readmeContentEl);
             setupPromptCategoryFilter(readmeContentEl, extractPromptCategoriesFromMarkdown(markdown));
@@ -1325,8 +1203,6 @@
             const errorMsg = error && error.message ? error.message : String(error);
             readmeStatusEl.textContent = 'Load failed: ' + errorMsg;
             readmeContentEl.textContent = 'README rendering failed. Please open the raw file directly.';
-            promptBoardState.local = [];
-            refreshPromptBoardData();
             if (readmeLoadingEl) readmeLoadingEl.hidden = true;
             setReadmeRetryVisible(true);
             if (promptFilterEl) promptFilterEl.hidden = true;
@@ -1370,7 +1246,7 @@
         setupScrollSpy();
         setupBackToTop();
         if (readmeRetryBtnEl) readmeRetryBtnEl.addEventListener('click', () => loadReadme());
-        loadCommunityCases();
+        loadCaseLibrary();
         loadReadme();
     }
 

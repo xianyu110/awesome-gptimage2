@@ -1102,6 +1102,7 @@
         all: [],
         local: [],
         community: [],
+        aliases: {},
         activeCategory: 'all',
         activeSource: 'all',
         keyword: '',
@@ -1114,297 +1115,9 @@
         previousFocus: null
     };
     const PROMPT_BOARD_PAGE_SIZE = 96;
-    const COMMUNITY_CASES_URL = 'data/community-cases.json';
+    const PAGE_LOCALE = 'zh-CN';
+    const CASE_LIBRARY_URL = 'data/case-library.json';
 
-    const SUPPLEMENT_PROMPT_CARDS = [
-        {
-            id: 'supp-ai-01',
-            title: 'AI新榜｜社交媒体截图与假新闻玩法',
-            category: 'UI 界面复刻',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925286078_05.jpg',
-            description: '罗永浩 Apple CEO、抖音直播带货、Tim Cook 华为热搜、芙莉莲朋友圈、五条悟 X 主页这一组都适合用来做高拟真中文界面截图。',
-            promptText: [
-                '生成一张“罗永浩接任 Apple CEO”的中文人物海报，科技发布会视觉，人物半身特写，舞台灯光，带 Apple 风格标题与社交媒体传播感。',
-                '生成一张抖音直播间截图，Sam Altman 和 Elon Musk 正在中文直播带货，画面里要有主播头像、弹幕、商品卡片、点赞评论和平台 UI。',
-                '生成一张“Tim Cook 加入华为”的微博官宣图和热搜图，包含多个衍生热搜词条，看起来像真实中文互联网截图。',
-                '生成一张《葬送的芙莉莲》角色的微信朋友圈截图，头像、配图、文案、评论都符合人物设定。',
-                '生成一张五条悟的 X 账号主页截图，头像、简介、置顶内容和时间线风格贴近角色气质。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-ai-02',
-            title: 'AI新榜｜服装换装与品牌落地页',
-            category: '电商与产品',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925316827_12.png',
-            description: '适合把服装平铺图、电商详情页和品牌官网风格页统一纳入商业设计测试。',
-            promptText: [
-                '根据服装平铺图生成模特上身图，服饰细节 1:1 还原，场景自然，像真实棚拍或街拍。',
-                '假如鸡毛掸子是 Apple 的产品，请生成一张 Apple 官网风格的 Landing Page，极简排版，大面积留白，带幽默文案。',
-                '生成一张更本土化的 618 电商商品详情页，带价格、优惠券、卖点模块和中文电商视觉层级。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-ai-03',
-            title: 'AI新榜｜GPT Image 2 科普信息图',
-            category: '知识科普与信息图',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925334708_15.png',
-            description: '原文明确给出的高质量信息图 prompt，适合百科图、模块化知识卡和可收藏海报。',
-            promptText: '请生成一张高质量竖版科普百科图，介绍GPT image 2。这是一张兼具“图鉴感、百科感、信息结构感、收藏感”的模块化科普信息图。整体风格参考高级博物图鉴、现代百科书页、生活方式知识卡和社交媒体高传播信息图的结合，全中文。'
-        },
-        {
-            id: 'supp-ai-04',
-            title: 'AI新榜｜原神 Boss 战 UI 拟真',
-            category: 'UI 界面复刻',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925338855_16.png',
-            description: '用熟悉的游戏画面做 UI 拟真测试，尤其适合小地图、角色栏、技能图标和 HUD 细节。',
-            promptText: '生成一张特朗普变成《原神》大 Boss 的实机演示截图，完整复刻战斗 UI、小地图、角色栏、血条、技能图标和 UID。'
-        },
-        {
-            id: 'supp-ai-05',
-            title: 'AI新榜｜中文漫画分镜',
-            category: '艺术创作',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925344987_17.png',
-            description: '适合测试长图叙事、多格分镜、角色一致性和中文气泡文字。',
-            promptText: '生成一页全中文漫画分镜，主题是“哆啦A梦被夜神月威胁利用”，要求角色一致、剧情连贯、气泡和分镜完整。'
-        },
-        {
-            id: 'supp-ai-06',
-            title: 'AI新榜｜IP 联名设计',
-            category: '角色与一致性',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925353853_19.png',
-            description: '从桌面周边随手拍开始，延展成完整 IP，再继续做星巴克与泡泡玛特联名。',
-            promptText: [
-                '围绕上面的形象，设计一个IP。',
-                '参考一张办公桌上的周边随手拍，为它设计一个完整 IP：三视图、表情、角色设定和衍生周边。',
-                '围绕这个 IP 再设计星巴克联名和泡泡玛特联名，分别输出饮品、杯子、挂件、盲盒和海报物料。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-ai-07',
-            title: 'AI新榜｜菜单与旅行手账',
-            category: '创意字体',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925357255_22.png',
-            description: '这组重点看中英双语排版、手写信息编排和长文字内容的自然融入。',
-            promptText: [
-                '一块中英双语咖啡馆菜单黑板，上面有中文今日特调和英文 Daily Special。',
-                '生成一张手绘子弹笔记风格的记录去上海旅游 3 天的手账。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-ai-08',
-            title: 'AI新榜｜多图融合与 vlog 合照',
-            category: '图片编辑与参考',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925380623_25.png',
-            description: '适合拿多张人物参考图做姿势迁移、场景合成和人物一致性测试。',
-            promptText: '图1、图2、图3的人物仿照图4的三只猫拍vlog图片。'
-        },
-        {
-            id: 'supp-ai-09',
-            title: 'AI新榜｜玩梗电影海报与追星直拍',
-            category: '趣味玩法',
-            source: 'AI新榜',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776925387762_28.jpg',
-            description: '适合猫咪江湖片、追星应援海报、角色拼贴和各种互联网整活视觉。',
-            promptText: [
-                '生成一张猫咪主演的武侠电影海报，老港片 / 江湖片质感，标题夸张，人物关系复杂。',
-                '生成一组追星直拍 / 偶像应援海报，拼贴构图，强舞台灯光，中文应援字样。',
-                '根据人物设定生成一页专属漫画拼贴或角色故事板，带多格内容和统一美术风格。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-appso-01',
-            title: 'APPSO｜桌面 UI 与产品界面',
-            category: 'UI 界面复刻',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927572727_05.other',
-            description: '从 macOS 桌面到对话截图，这一组很适合拿来做产品演示和真实使用痕迹的界面图。',
-            promptText: [
-                '生成一张 macOS 桌面截图，前景窗口是 ChatGPT，用户输入 draw me a dog，输出 ASCII 艺术风格的小狗，后台开着终端和多个杂乱窗口。',
-                '生成一张对话截图或产品演示图，界面要像真实 SaaS / AI 工具，保留输入框、消息气泡、边栏和系统窗口细节。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-appso-02',
-            title: 'APPSO｜35mm 胶片旅行抓拍',
-            category: '真实摄影',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927584894_09.other',
-            description: '典型的写实摄影测试：低饱和、颗粒、纪录片感和真实生活痕迹。',
-            promptText: '一张写实风格的旅行抓拍：阴天清晨，一个人站在海边路旁的观景停车带，用 35mm 胶片拍摄。构图自然、略有瑕疵，颗粒感明显，环境光漫射，色调低饱和，衣物和发丝随风飘动，带着纪录片式的电影质感，像是某段真实生活留下的影像。'
-        },
-        {
-            id: 'supp-appso-03',
-            title: 'APPSO｜数学与体育信息图',
-            category: '知识科普与信息图',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927590918_10.webp',
-            description: '适合做原理图、课堂讲义、评分卡和可视化教学材料。',
-            promptText: [
-                '生成一张数学原理信息图，要求结构清晰、标题和标签准确、排版干净。',
-                '生成一张体育数据信息图，像真实数据可视化海报一样完整，保留标题、分项说明和图示。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-appso-04',
-            title: 'APPSO｜角色一致性穿搭延展',
-            category: '角色与一致性',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927598909_12.png',
-            description: '一张人物参考图延展出多套穿搭和不同角度，是典型的一致性测试场景。',
-            promptText: '上传一张人物照片，生成多套穿搭和多个角度，保持人物脸部特征一致。'
-        },
-        {
-            id: 'supp-appso-05',
-            title: 'APPSO｜中文手写与多语言排版',
-            category: '创意字体',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927610651_14.png',
-            description: '适合测手写中文、海报级多语言文字排版和小字号内容稳定性。',
-            promptText: [
-                '用普通人的笔迹抄写《定风波·莫听穿林打叶声》。',
-                '生成一张多语言排版海报，要求中文、英文和其他语言都自然融入版式。',
-                '生成一张中文玩梗视觉，小字号文字也尽量清晰稳定。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-appso-06',
-            title: 'APPSO｜photorealistic 与真实光影',
-            category: '真实摄影',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927637870_19.png',
-            description: '如果想压掉“AI 塑料感”，这一组非常适合拿来做真实光影和摄影感校准。',
-            promptText: [
-                '关键词：photorealistic。',
-                '生成一张具有真实光影逻辑的场景图，例如月球 360 全景，太阳方向与地面阴影必须一致。'
-            ].join('\n\n')
-        },
-        {
-            id: 'supp-appso-07',
-            title: 'APPSO｜鞋带教学图',
-            category: '知识科普与信息图',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927655003_21.webp',
-            description: '教学图是信息结构与箭头逻辑的典型高难度场景，适合单独搜索和复盘。',
-            promptText: '生成一张鞋带系法教学图，强调步骤清晰、箭头合理、布局像真实教材。'
-        },
-        {
-            id: 'supp-appso-08',
-            title: 'APPSO｜微信朋友圈整活图',
-            category: '趣味玩法',
-            source: 'APPSO',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776927657894_22.png',
-            description: '中文社交媒体梗图，适合拿世界知识、人物关系和评论区一起做测试。',
-            promptText: '生成 OpenAI CEO Sam Altman 在微信朋友圈用中文介绍宣传 ChatGPT Images 2.0，底下马斯克评论“？？？”，Demis Hassabis 评论“我觉得不如 Nano Banana Pro”，图片比例为 16:9。'
-        },
-        {
-            id: 'supp-jm-01',
-            title: '甲木未来派｜电商广告多平台创意',
-            category: '电商与产品',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936155777_07.jpg',
-            description: '从同一洗护品牌出发，快速扩成抖音弹窗、小红书种草、Instagram 轮播和活动主视觉。',
-            promptText: '为「弹动洗发水」品牌设计一整套活动主 Banner，覆盖抖音弹窗广告、小红书种草图、Instagram 轮播图等多个平台，要求品牌 Slogan、促销文案和产品卖点可直接使用。'
-        },
-        {
-            id: 'supp-jm-02',
-            title: '甲木未来派｜商品详情页与套图迁移',
-            category: '电商与产品',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936173341_12.jpg',
-            description: '适合把单张主产品视觉继续扩成详情页、亚马逊套图、卖点图和品牌故事长图。',
-            promptText: '根据一张主产品视觉图，自动迁移生成完整电商详情页、亚马逊套图、多角度产品图、痛点场景图、营养成分图和品牌故事长图。'
-        },
-        {
-            id: 'supp-jm-03',
-            title: '甲木未来派｜城市文旅海报批量生成',
-            category: '品牌与营销',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936205798_19.jpg',
-            description: '双重曝光 + 国潮城市手绘图的模板化玩法，适合批量做多城市宣传海报。',
-            promptText: '一张充满新春喜庆氛围但不失高雅格调的 2026 城市宣传海报。双重曝光，构图延续了 S 型的流动感；在这条“河流”中，叠加了一个有山有海河的广州城市手绘图，国潮，景色尽在眼底，壮阔雄伟，令人震撼。广州的地标建筑（广州塔，珠江新城建筑群，珠江，广州城里古建筑，游轮，白云山）。文字排版优美，大方，字迹清晰完整，尺寸 9:16。'
-        },
-        {
-            id: 'supp-jm-04',
-            title: '甲木未来派｜儿童绘本跨页插画',
-            category: '艺术创作',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936206758_21.jpg',
-            description: '这组重点在中文标题、小标签和童书式跨页插画能一起落到画面里。',
-            promptText: '画面手绘文字（用圆润可爱的中文字体准确渲染）：顶部标题「水宝宝的环球旅行」；四个阶段小标签「① 云上的家」「② 跳下来咯！」「③ 小河奔跑」「④ 坐电梯回家」；底部彩色对话框「小朋友你猜：一滴水要多久才能走完这一圈呢？」风格：宫崎骏 × 童书插画，柔和水彩质感，饱和度低，天蓝 + 嫩黄 + 草绿，适合 4-8 岁儿童阅读。'
-        },
-        {
-            id: 'supp-jm-05',
-            title: '甲木未来派｜山海咖啡品牌视觉系统',
-            category: '品牌与营销',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936225028_23.jpg',
-            description: '从品牌物料板一路延展到字体板、咖啡杯场景照和应用展示板，适合整套品牌提案。',
-            promptText: '为「山海咖啡」打造完整品牌视觉体系：Logo、包装设计、产品海报、周边效果图、品牌字体板、咖啡杯场景图和品牌应用展示板。'
-        },
-        {
-            id: 'supp-jm-06',
-            title: '甲木未来派｜朋友圈改字与局部编辑',
-            category: '图片编辑与参考',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936244046_28.jpg',
-            description: '更适合测试局部改字、保留原图质感和中文场景理解。',
-            promptText: '修改朋友圈转发图中的文案，保留原图质感和界面结构，只替换指定文字内容，让修改后的图看起来像真实截图。'
-        },
-        {
-            id: 'supp-jm-07',
-            title: '甲木未来派｜扫描件试卷与信息型版式',
-            category: '知识科普与信息图',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936253564_29.jpg',
-            description: '这类案例适合测试扫描件纹理、题目排版和信息型文档生成。',
-            promptText: '生成一张扫描件风格的数学卷子，带真实纸张阴影、打印噪点、题号和答题区排版，整体像手机拍摄后的作业试卷。'
-        },
-        {
-            id: 'supp-jm-08',
-            title: '甲木未来派｜电影海报与游戏整活',
-            category: '趣味玩法',
-            source: '甲木未来派',
-            badge: '补充',
-            image: 'https://upload.maynor1024.live/file/1776936250593_30.jpg',
-            description: '双重曝光电影海报和原神版英雄联盟，都是很适合外网传播的视觉整活题材。',
-            promptText: [
-                '生成一张双重曝光电影海报，人物肖像中融入城市夜景或剧情场景，中文标题清晰，质感像院线海报。',
-                '生成一张原神版英雄联盟游戏海报或场景图，保留角色识别度和游戏氛围。'
-            ].join('\n\n')
-        }
-    ];
 
     function setupAnchorScroll() {
         document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
@@ -1603,8 +1316,25 @@
         }
     }
 
+    function canonicalCaseId(id) {
+        let current = String(id || '');
+        const visited = new Set();
+        while (promptBoardState.aliases[current] && !visited.has(current)) {
+            visited.add(current);
+            current = String(promptBoardState.aliases[current]);
+        }
+        return current;
+    }
+
+    function migrateFavoriteAliases() {
+        promptBoardState.favoriteIds = new Set(
+            Array.from(promptBoardState.favoriteIds).map(canonicalCaseId)
+        );
+        saveFavoriteIds();
+    }
+
     function isFavorite(id) {
-        return promptBoardState.favoriteIds.has(String(id || ''));
+        return promptBoardState.favoriteIds.has(canonicalCaseId(id));
     }
 
     function setModalLink(anchor, href) {
@@ -1624,7 +1354,7 @@
     }
 
     function toggleFavorite(id) {
-        const key = String(id || '');
+        const key = canonicalCaseId(id);
         if (!key) return;
         if (promptBoardState.favoriteIds.has(key)) promptBoardState.favoriteIds.delete(key);
         else promptBoardState.favoriteIds.add(key);
@@ -1635,7 +1365,7 @@
 
     function caseUrl(id) {
         const url = new URL(window.location.href);
-        url.searchParams.set('case', String(id));
+        url.searchParams.set('case', canonicalCaseId(id));
         return url;
     }
 
@@ -1666,7 +1396,8 @@
     }
 
     function openCaseModal(id, updateUrl) {
-        const item = promptBoardState.all.find((candidate) => candidate.id === id);
+        const canonicalId = canonicalCaseId(id);
+        const item = promptBoardState.all.find((candidate) => candidate.id === canonicalId);
         if (!item || !caseModalEl) return false;
 
         caseModalState.item = item;
@@ -1713,7 +1444,7 @@
 
     function openCaseFromUrl() {
         const id = new URL(window.location.href).searchParams.get('case');
-        if (id && (!caseModalState.item || caseModalState.item.id !== id)) {
+        if (id && (!caseModalState.item || caseModalState.item.id !== canonicalCaseId(id))) {
             openCaseModal(id, false);
         }
     }
@@ -1768,83 +1499,6 @@
         const date = new Date(text);
         if (Number.isNaN(date.getTime())) return text;
         return date.toLocaleString('zh-CN', { hour12: false });
-    }
-
-    function extractPromptCardsFromMarkdown(markdown) {
-        const cards = [];
-        const lines = (markdown || '').split(/\r?\n/);
-        let inPromptSection = false;
-        let currentCategory = '未分类';
-        let currentPrompt = null;
-
-        function finishCurrentPrompt() {
-            if (!currentPrompt) return;
-            const rawBody = currentPrompt.lines.join('\n').trim();
-            const imageMatch = rawBody.match(/!\[[^\]]*\]\((https?:\/\/[^)\s]+)\)/);
-            const codeMatch = rawBody.match(/```(?:[\w-]+)?\n([\s\S]*?)```/);
-
-            let description = '';
-            for (const line of currentPrompt.lines) {
-                const text = line.trim();
-                if (!text) continue;
-                if (text.startsWith('![')) continue;
-                if (text.startsWith('```')) continue;
-                if (text.startsWith('|')) continue;
-                description = text.replace(/^[-*]\s*/, '');
-                break;
-            }
-
-            const promptText = (codeMatch && codeMatch[1] ? codeMatch[1] : '').trim();
-            const previewText = promptText || description || '暂无提示词内容';
-            cards.push({
-                id: 'zh-prompt-' + (cards.length + 1),
-                title: currentPrompt.title,
-                category: currentPrompt.category || '未分类',
-                source: '主教程',
-                badge: '教程',
-                image: imageMatch ? imageMatch[1] : '',
-                description: description || '暂无说明',
-                promptText: previewText,
-                promptPreview: previewText.slice(0, 420)
-            });
-            currentPrompt = null;
-        }
-
-        lines.forEach((line) => {
-            if (/^##\s+提示词合集/.test(line)) {
-                inPromptSection = true;
-                return;
-            }
-            if (inPromptSection && /^##\s+/.test(line)) {
-                finishCurrentPrompt();
-                inPromptSection = false;
-                return;
-            }
-            if (!inPromptSection) return;
-
-            const categoryMatch = line.match(/^###\s+(.+)/);
-            if (categoryMatch) {
-                finishCurrentPrompt();
-                currentCategory = normalizeCategoryName(categoryMatch[1]);
-                return;
-            }
-
-            const titleMatch = line.match(/^####\s+(.+)/);
-            if (titleMatch) {
-                finishCurrentPrompt();
-                currentPrompt = {
-                    title: titleMatch[1].trim(),
-                    category: currentCategory,
-                    lines: []
-                };
-                return;
-            }
-
-            if (currentPrompt) currentPrompt.lines.push(line);
-        });
-
-        finishCurrentPrompt();
-        return cards;
     }
 
     function renderPromptBoardCards(cards) {
@@ -2099,52 +1753,59 @@
         openCaseFromUrl();
     }
 
-    function renderPromptBoardFromMarkdown(markdown) {
-        const cards = extractPromptCardsFromMarkdown(markdown)
-            .concat(SUPPLEMENT_PROMPT_CARDS)
-            .map((item) => ({ ...item, sourceKey: 'local' }));
-        promptBoardState.local = cards;
-        refreshPromptBoardData();
+    function localizedCaseText(values, fallback) {
+        if (!values || typeof values !== 'object') return fallback;
+        return String(values[PAGE_LOCALE] || values.en || values['zh-CN'] || Object.values(values)[0] || fallback);
     }
 
-    function normalizeCommunityCase(item) {
+    function normalizeLibraryCase(item) {
         const promptText = String(item.prompt || '').trim();
+        const source = item.source && typeof item.source === 'object' ? item.source : {};
+        const category = item.category && typeof item.category === 'object' ? item.category : {};
+        const community = source.kind === 'community';
         return {
             id: String(item.id || ''),
-            title: String(item.title || '社区案例'),
-            category: String(item.categoryZh || item.category || '未分类'),
-            source: '社区 · ' + String(item.sourceLabel || item.source || 'awesome-gpt-image-2'),
-            sourceKey: String(item.source || 'community'),
-            badge: String(item.badgeZh || '社区案例'),
-            image: String(item.image || ''),
-            description: String(item.descriptionZh || item.description || '来自开源社区的提示词案例。'),
+            title: String(item.title || '案例'),
+            category: localizedCaseText(category.labels, '未分类'),
+            source: (community ? '社区 · ' : '') + String(source.label || source.key || '本地指南'),
+            sourceKey: String(source.key || 'local'),
+            badge: localizedCaseText(item.badge, community ? '社区案例' : '精选'),
+            image: String(item.image && item.image.url || ''),
+            description: localizedCaseText(item.summary, '暂无说明'),
             promptText,
-            promptPreview: String(item.promptPreview || promptText).slice(0, 420),
-            styles: Array.isArray(item.styles) ? item.styles : [],
-            scenes: Array.isArray(item.scenes) ? item.scenes : [],
-            sourceUrl: String(item.sourceUrl || ''),
-            caseUrl: String(item.caseUrl || '')
+            promptPreview: promptText.slice(0, 420),
+            styles: Array.isArray(item.tags) ? item.tags : [],
+            scenes: [],
+            sourceUrl: String(source.originalUrl || ''),
+            caseUrl: String(source.caseUrl || '')
         };
     }
 
-    async function loadCommunityCases() {
-        const rawUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/community-cases.json';
-        const candidates = [COMMUNITY_CASES_URL, './' + COMMUNITY_CASES_URL, rawUrl];
+    async function loadCaseLibrary() {
+        const rawUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/case-library.json';
+        const candidates = [CASE_LIBRARY_URL, './' + CASE_LIBRARY_URL, rawUrl];
         for (const url of candidates) {
             try {
                 const response = await fetch(url, { cache: 'no-store' });
                 if (!response.ok) throw new Error(String(response.status));
                 const payload = await response.json();
-                const cases = Array.isArray(payload && payload.cases) ? payload.cases : [];
-                promptBoardState.community = cases
-                    .map(normalizeCommunityCase)
-                    .filter((item) => item.id && item.promptText);
+                if (payload.schemaVersion !== '1.0.0') throw new Error('unsupported schema');
+                const cases = Array.isArray(payload.cases) ? payload.cases : [];
+                const visible = cases.filter((item) => item.locale === 'und' || item.locale === PAGE_LOCALE);
+                const normalized = visible.map(normalizeLibraryCase).filter((item) => item.id && item.promptText);
+                promptBoardState.aliases = payload.meta && payload.meta.aliases || {};
+                migrateFavoriteAliases();
+                promptBoardState.local = normalized.filter((item) => item.sourceKey === 'local');
+                promptBoardState.community = normalized.filter((item) => item.sourceKey !== 'local');
                 refreshPromptBoardData();
                 return;
             } catch (error) {
                 // Try the next local or GitHub fallback URL.
             }
         }
+        promptBoardState.local = [];
+        promptBoardState.community = [];
+        refreshPromptBoardData();
     }
 
     function renderLatestXPrompts(payload) {
@@ -2475,7 +2136,6 @@
             const html = marked.parse(markdown);
             const safeHtml = DOMPurify.sanitize(html, { USE_PROFILES: { html: true } });
             readmeContentEl.innerHTML = safeHtml;
-            renderPromptBoardFromMarkdown(markdown);
             absolutizeLinksAndMakeExternal(readmeContentEl);
             addLazyLoadingToImages(readmeContentEl);
             setupPromptCategoryFilter(readmeContentEl, extractPromptCategoriesFromMarkdown(markdown));
@@ -2488,8 +2148,6 @@
             const errorMsg = error && error.message ? error.message : String(error);
             readmeStatusEl.textContent = '加载失败：' + errorMsg;
             readmeContentEl.textContent = 'README 渲染失败，请点击“打开原始文件”直接查看。';
-            promptBoardState.local = [];
-            refreshPromptBoardData();
             if (readmeLoadingEl) readmeLoadingEl.hidden = true;
             setReadmeRetryVisible(true);
             if (promptFilterEl) promptFilterEl.hidden = true;
@@ -2547,7 +2205,7 @@
             });
         }
         loadLatestXPrompts();
-        loadCommunityCases();
+        loadCaseLibrary();
         loadReadme();
     }
 

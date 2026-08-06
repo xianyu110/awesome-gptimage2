@@ -69,6 +69,30 @@ python3 scripts/fetch_community_cases.py --check
 
 ---
 
+## 结构化案例库、Skill 与数据流水线
+
+仓库现在以 [`data/case-library.json`](data/case-library.json) 作为站点、自动化和 Agent 共用的数据契约：共 714 条去重记录，其中 617 条为跨语言社区案例，中文视图 697 条，英文视图 634 条。每条记录都有稳定 ID、locale、分类键、来源与许可、完整 Prompt、图片、标签和 SHA-256 指纹；8 个历史重复 ID 通过 aliases 保持深链接兼容。
+
+构建、校验、统计和检索：
+
+```bash
+python3 scripts/build_case_library.py build
+python3 scripts/build_case_library.py check
+python3 scripts/build_case_library.py stats
+python3 scripts/build_case_library.py search "电商 海报" --locale zh-CN --limit 5
+```
+
+可复用 Codex Skill 位于 [`skills/manage-gpt-image-cases`](skills/manage-gpt-image-cases)，可验证、搜索和导出任何符合 [`schema/case-library.schema.json`](schema/case-library.schema.json) 的案例库：
+
+```bash
+python3 skills/manage-gpt-image-cases/scripts/case_library.py validate --data data/case-library.json
+python3 skills/manage-gpt-image-cases/scripts/case_library.py search --data data/case-library.json --query "product image" --locale en
+```
+
+`data/case-library.json` 是生成文件，请修改 README、`data/curated-cases.*.json` 或上游适配器后重新构建，不要直接编辑生成结果。
+
+---
+
 ## 本仓库适合谁
 
 - **设计师 / 美术团队**：快速验证海报、电商图、品牌视觉和 UI 方案。

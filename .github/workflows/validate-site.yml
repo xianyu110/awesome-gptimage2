@@ -34,6 +34,11 @@ jobs:
       - name: Validate generated case data
         run: python scripts/fetch_community_cases.py --check
 
+      - name: Validate canonical case library
+        run: |
+          python scripts/build_case_library.py check
+          python skills/manage-gpt-image-cases/scripts/case_library.py validate --data data/case-library.json
+
       - name: Validate site contract
         run: node scripts/check_site.mjs
 

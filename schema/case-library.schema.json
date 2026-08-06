@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://awesome.gptimage2.asia/schema/case-library.schema.json",
+  "title": "GPT Image Case Library",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "meta", "cases"],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0.0"
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "totalRecords",
+        "uniquePrompts",
+        "duplicateRecordsRemoved",
+        "aliases",
+        "localeCounts",
+        "viewCounts",
+        "sourceCounts",
+        "generatedFrom"
+      ],
+      "properties": {
+        "totalRecords": { "type": "integer", "minimum": 1 },
+        "uniquePrompts": { "type": "integer", "minimum": 1 },
+        "duplicateRecordsRemoved": { "type": "integer", "minimum": 0 },
+        "aliases": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string",
+            "pattern": "^[a-z0-9][a-z0-9-]*$"
+          }
+        },
+        "localeCounts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "viewCounts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "sourceCounts": {
+          "type": "object",
+          "additionalProperties": { "type": "integer", "minimum": 0 }
+        },
+        "generatedFrom": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/case" }
+    }
+  },
+  "$defs": {
+    "localizedText": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "locale",
+        "title",
+        "category",
+        "source",
+        "badge",
+        "image",
+        "summary",
+        "prompt",
+        "promptHash",
+        "tags"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "locale": {
+          "enum": ["und", "zh-CN", "en"]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["key", "labels"],
+          "properties": {
+            "key": {
+              "type": "string",
+              "pattern": "^[a-z0-9][a-z0-9-]*$"
+            },
+            "labels": { "$ref": "#/$defs/localizedText" }
+          }
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["key", "kind", "label"],
+          "properties": {
+            "key": { "type": "string", "minLength": 1 },
+            "kind": { "enum": ["local", "community"] },
+            "label": { "type": "string", "minLength": 1 },
+            "repository": { "type": "string", "format": "uri" },
+            "license": { "type": "string", "minLength": 1 },
+            "originalUrl": { "type": "string", "format": "uri" },
+            "caseUrl": { "type": "string", "format": "uri" }
+          }
+        },
+        "badge": { "$ref": "#/$defs/localizedText" },
+        "image": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["url"],
+          "properties": {
+            "url": { "type": "string" }
+          }
+        },
+        "summary": { "$ref": "#/$defs/localizedText" },
+        "prompt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "promptHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "tags": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        }
+      }
+    }
+  }
+}

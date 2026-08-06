@@ -1,0 +1,87 @@
+{
+  "schemaVersion": "1.0.0",
+  "locale": "en",
+  "count": 8,
+  "cases": [
+    {
+      "id": "supp-en-01",
+      "title": "AI Product Retouch Prompt for White Background Ecommerce Images",
+      "category": "Ecommerce & Product",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776831501923_wx_058_991727c87e.png",
+      "description": "A minimal but practical prompt for turning a raw product shot into a polished marketplace image.",
+      "promptText": "Retouch this product image for ecommerce. Keep the product shape accurate, improve lighting and reflections, place it on a pure white background, preserve realistic soft shadow, and make it look like a polished marketplace main image."
+    },
+    {
+      "id": "supp-en-02",
+      "title": "AI Ecommerce Hero Banner Prompt for Skincare Serum",
+      "category": "Ecommerce & Product",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776480570690_img_048.png",
+      "description": "A strong starter prompt for premium beauty ads and hero banners.",
+      "promptText": "Create a premium ecommerce hero banner for a skincare serum called \"Radiance Barrier Serum\". Clean luxury aesthetic, soft white-to-warm-gray gradient background, frosted glass bottle in the center, subtle liquid reflections, minimal but commercial layout, realistic product lighting, high-end beauty campaign style, 4:5."
+    },
+    {
+      "id": "supp-en-03",
+      "title": "AI Brand Launch Poster Prompt for Coffee Campaigns",
+      "category": "Brand Poster Design",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776936225028_23.jpg",
+      "description": "Useful when you want brand identity, packaging, and editorial poster style to work together.",
+      "promptText": "Design a launch poster for a coffee brand called \"Mountain & Sea Coffee\". Premium but warm visual identity, editorial typography, coffee beans and packaging integrated into the composition, soft cinematic lighting, tasteful brand campaign look, clear English headline, 4:5."
+    },
+    {
+      "id": "supp-en-04",
+      "title": "GPT-Image-2 Infographic Prompt for Visual Explainers",
+      "category": "Knowledge Graphics & Infographics",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776925334708_15.png",
+      "description": "A reusable structure for educational graphics and visually organized explainers.",
+      "promptText": "Create a high-quality vertical infographic explaining GPT-Image-2. Make it feel like a hybrid of a modern encyclopedia page, a collectible visual guide, and a social-media-friendly knowledge card. Use clean modular sections, icons, clear headings, and an elegant editorial layout."
+    },
+    {
+      "id": "supp-en-05",
+      "title": "AI Ecommerce App UI Screenshot Prompt",
+      "category": "UI Recreation",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776925318940_13.png",
+      "description": "Good for UI realism, hierarchy, and believable commercial interface structure.",
+      "promptText": "Generate a highly realistic mobile ecommerce app homepage screenshot. Include the status bar, search box, category tabs, promo banner, icon grid, flash sale module, and a recommendation feed. The UI should feel like a believable production app rather than a concept mockup."
+    },
+    {
+      "id": "supp-en-06",
+      "title": "Photorealistic Shopping Mall Documentary Photo Prompt",
+      "category": "Realistic Photography",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776927584894_09.other",
+      "description": "A realism benchmark for mixed light, candid posture, texture, and everyday imperfection.",
+      "promptText": "Create an extremely realistic documentary-style photo inside a shopping mall at dusk. A casually dressed man has just stepped off the escalator while checking his phone. Mixed lighting from ceiling lamps, storefronts, and LED screens, glossy tile reflections, natural skin texture, slightly imperfect composition, photorealistic."
+    },
+    {
+      "id": "supp-en-07",
+      "title": "Character Consistency Outfit Variation Prompt",
+      "category": "Character Consistency",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776927598909_12.png",
+      "description": "Useful when you need one identity preserved across multiple outputs and outfits.",
+      "promptText": "Use one character reference image and generate multiple outfit variations while keeping the same face, proportions, and identity. Show front-facing, side-angle, and half-body compositions with consistent character design."
+    },
+    {
+      "id": "supp-en-08",
+      "title": "Layout-Preserving Style Transfer Poster Edit Prompt",
+      "category": "Image Editing & Reference",
+      "source": "English Edition",
+      "badge": "Curated",
+      "image": "https://upload.maynor1024.live/file/1776936244046_28.jpg",
+      "description": "A strong pattern when you need style transfer but want to preserve composition and layout rhythm.",
+      "promptText": "Use the uploaded poster as a layout and style reference. Keep the composition, typography rhythm, and overall design language, but transform the original scene into a different season or campaign while preserving visual quality."
+    }
+  ]
+}

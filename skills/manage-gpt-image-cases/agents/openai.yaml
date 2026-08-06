@@ -1,0 +1,4 @@
+interface:
+  display_name: "GPT Image Case Library"
+  short_description: "Build, validate, search, and maintain prompt cases"
+  default_prompt: "Use $manage-gpt-image-cases to build or query a structured GPT image prompt case library."

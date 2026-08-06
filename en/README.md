@@ -6,7 +6,7 @@
 
 A continuously updated English resource for prompt frameworks, real-world workflows, and reusable GPT-Image-2 examples.
 
-Curated from hands-on testing and public case studies | 640+ searchable prompts and cases | 10+ practical scenarios
+Curated from hands-on testing and public case studies | 630+ searchable prompts and cases | 10+ practical scenarios
 
 </div>
 
@@ -35,6 +35,28 @@ python3 scripts/fetch_community_cases.py --check
 ```
 
 See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the MIT and CC BY 4.0 notices.
+
+---
+
+## Structured Library, Skill, and Pipeline
+
+[`data/case-library.json`](../data/case-library.json) is now the shared data contract for the site, automation, and agents. It contains 714 deduplicated records: 617 shared community cases, 697 records in the Chinese view, and 634 in the English view. Every case has a stable ID, locale, category key, source and license, full prompt, image, tags, and SHA-256 fingerprint. Eight removed duplicate IDs remain available through aliases.
+
+```bash
+python3 scripts/build_case_library.py build
+python3 scripts/build_case_library.py check
+python3 scripts/build_case_library.py stats
+python3 scripts/build_case_library.py search "product image" --locale en --limit 5
+```
+
+The reusable Codex Skill lives at [`skills/manage-gpt-image-cases`](../skills/manage-gpt-image-cases). It validates, searches, and exports any library that follows [`schema/case-library.schema.json`](../schema/case-library.schema.json).
+
+```bash
+python3 skills/manage-gpt-image-cases/scripts/case_library.py validate --data data/case-library.json
+python3 skills/manage-gpt-image-cases/scripts/case_library.py search --data data/case-library.json --query "product image" --locale en
+```
+
+Treat `data/case-library.json` as generated output. Update README sources, `data/curated-cases.*.json`, or source adapters, then rebuild it.
 
 ---
 

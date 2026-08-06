@@ -33,18 +33,24 @@ jobs:
       - name: Fetch community cases
         run: python scripts/fetch_community_cases.py
 
+      - name: Build canonical case library
+        run: python scripts/build_case_library.py build
+
       - name: Validate generated data
-        run: python scripts/fetch_community_cases.py --check
+        run: |
+          python scripts/fetch_community_cases.py --check
+          python scripts/build_case_library.py check
+          python skills/manage-gpt-image-cases/scripts/case_library.py validate --data data/case-library.json
 
       - name: Commit and push if changed
         run: |
-          if git diff --quiet -- data/community-cases.json; then
+          if git diff --quiet -- data/community-cases.json data/case-library.json; then
             echo "No community case changes."
             exit 0
           fi
 
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/community-cases.json
-          git commit -m "chore(data): sync community cases"
+          git add data/community-cases.json data/case-library.json
+          git commit -m "chore(data): sync case library"
           git push
