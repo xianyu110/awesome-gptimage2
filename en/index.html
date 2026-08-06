@@ -152,6 +152,12 @@
             </div>
             <div class="prompt-board-filter-row">
                 <div id="prompt-board-filters" class="prompt-board-filters" role="tablist" aria-label="Prompt categories"></div>
+                <label class="prompt-board-source-wrap" for="prompt-board-source">
+                    <span>Source</span>
+                    <select id="prompt-board-source" class="prompt-board-source" aria-label="Filter by source">
+                        <option value="all">All sources</option>
+                    </select>
+                </label>
                 <div class="prompt-board-filter-actions">
                     <button id="prompt-board-favorites" class="prompt-board-clear" type="button" aria-pressed="false">Favorites only</button>
                     <button id="prompt-board-clear" class="prompt-board-clear" type="button">Clear</button>
@@ -363,6 +369,7 @@
     const readmeClockEl = document.getElementById('readme-clock');
     const readmeRetryBtnEl = document.getElementById('readme-retry-btn');
     const promptBoardFiltersEl = document.getElementById('prompt-board-filters');
+    const promptBoardSourceEl = document.getElementById('prompt-board-source');
     const promptBoardGridEl = document.getElementById('prompt-board-grid');
     const promptBoardTotalEl = document.getElementById('prompt-board-total');
     const promptBoardSearchEl = document.getElementById('prompt-board-search');
@@ -395,6 +402,7 @@
         local: [],
         community: [],
         activeCategory: 'all',
+        activeSource: 'all',
         keyword: '',
         visibleLimit: 96,
         favoritesOnly: false,
@@ -987,13 +995,46 @@
         });
     }
 
+    function sourceFilterKey(item) {
+        return String(item.sourceKey || 'local');
+    }
+
+    function sourceFilterLabel(key) {
+        const labels = {
+            local: 'English guide',
+            'awesome-gpt-image-2': 'freestylefly community',
+            'youmind-awesome-gpt-image-2': 'YouMind community'
+        };
+        return labels[key] || key;
+    }
+
+    function renderPromptBoardSources(cards) {
+        if (!promptBoardSourceEl) return;
+        const counts = new Map();
+        cards.forEach((item) => {
+            const key = sourceFilterKey(item);
+            counts.set(key, (counts.get(key) || 0) + 1);
+        });
+        promptBoardSourceEl.innerHTML = '<option value="all">All sources</option>';
+        Array.from(counts.keys()).sort((a, b) => sourceFilterLabel(a).localeCompare(sourceFilterLabel(b), 'en')).forEach((key) => {
+            const option = document.createElement('option');
+            option.value = key;
+            option.textContent = sourceFilterLabel(key) + ' (' + String(counts.get(key)) + ')';
+            promptBoardSourceEl.appendChild(option);
+        });
+        promptBoardSourceEl.value = promptBoardState.activeSource;
+    }
+
     function applyPromptBoardFilters() {
         const all = promptBoardState.all || [];
         const keyword = (promptBoardState.keyword || '').toLowerCase().trim();
         const category = promptBoardState.activeCategory || 'all';
+        const activeSource = promptBoardState.activeSource || 'all';
         const filtered = all.filter((item) => {
             const matchCategory = category === 'all' || item.category === category;
+            const matchSource = activeSource === 'all' || sourceFilterKey(item) === activeSource;
             if (!matchCategory) return false;
+            if (!matchSource) return false;
             if (promptBoardState.favoritesOnly && !isFavorite(item.id)) return false;
             if (!keyword) return true;
             const source = [
@@ -1020,6 +1061,7 @@
             promptBoardFavoritesEl.classList.toggle('is-active', promptBoardState.favoritesOnly);
             promptBoardFavoritesEl.setAttribute('aria-pressed', promptBoardState.favoritesOnly ? 'true' : 'false');
         }
+        if (promptBoardSourceEl) promptBoardSourceEl.value = activeSource;
         renderPromptBoardCards(filtered.slice(0, promptBoardState.visibleLimit));
         if (promptBoardMoreEl) {
             const remaining = Math.max(0, filtered.length - promptBoardState.visibleLimit);
@@ -1039,10 +1081,18 @@
         if (promptBoardClearEl) {
             promptBoardClearEl.addEventListener('click', () => {
                 promptBoardState.activeCategory = 'all';
+                promptBoardState.activeSource = 'all';
                 promptBoardState.keyword = '';
                 promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 promptBoardState.favoritesOnly = false;
                 if (promptBoardSearchEl) promptBoardSearchEl.value = '';
+                applyPromptBoardFilters();
+            });
+        }
+        if (promptBoardSourceEl) {
+            promptBoardSourceEl.addEventListener('change', () => {
+                promptBoardState.activeSource = promptBoardSourceEl.value || 'all';
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
         }
@@ -1062,18 +1112,25 @@
     }
 
     function refreshPromptBoardData() {
-        promptBoardState.all = promptBoardState.local.concat(promptBoardState.community);
+        promptBoardState.all = promptBoardState.local.concat(promptBoardState.community).map((item) => ({
+            ...item,
+            sourceKey: sourceFilterKey(item)
+        }));
         promptBoardState.activeCategory = 'all';
+        promptBoardState.activeSource = 'all';
         promptBoardState.keyword = '';
         promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
         if (promptBoardSearchEl) promptBoardSearchEl.value = '';
         renderPromptBoardFilters(promptBoardState.all);
+        renderPromptBoardSources(promptBoardState.all);
         applyPromptBoardFilters();
         openCaseFromUrl();
     }
 
     function renderPromptBoardFromMarkdown(markdown) {
-        const cards = extractPromptCardsFromMarkdown(markdown).concat(SUPPLEMENT_PROMPT_CARDS);
+        const cards = extractPromptCardsFromMarkdown(markdown)
+            .concat(SUPPLEMENT_PROMPT_CARDS)
+            .map((item) => ({ ...item, sourceKey: 'local' }));
         promptBoardState.local = cards;
         refreshPromptBoardData();
     }
@@ -1085,6 +1142,7 @@
             title: String(item.title || 'Community case'),
             category: String(item.category || 'Other Use Cases'),
             source: 'Community · ' + String(item.sourceLabel || item.source || 'awesome-gpt-image-2'),
+            sourceKey: String(item.source || 'community'),
             badge: String(item.badge || 'Community'),
             image: String(item.image || ''),
             description: String(item.description || 'Prompt case from the open-source community.'),

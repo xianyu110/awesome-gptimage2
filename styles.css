@@ -452,6 +452,25 @@ body {
     gap: 8px;
 }
 
+.prompt-board-source-wrap {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex: 0 0 auto;
+    color: #4a5568;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.prompt-board-source {
+    min-width: 168px;
+    border: 3px solid #111;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    padding: 8px 10px;
+}
+
 .prompt-board-filter-btn {
     border: 3px solid #111;
     background: #f4f4f4;

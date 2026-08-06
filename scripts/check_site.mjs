@@ -23,6 +23,7 @@ function checkPage(relativePath) {
   const requiredIds = [
     'prompt-board-grid',
     'prompt-board-search',
+    'prompt-board-source',
     'prompt-board-favorites',
     'prompt-board-more',
     'case-modal',
@@ -42,6 +43,8 @@ function checkPage(relativePath) {
   for (const script of inlineScripts) new Function(script);
   assert(source.includes('loadCommunityCases();'), `${relativePath} does not load community cases`);
   assert(source.includes('setupCaseModalInteractions();'), `${relativePath} does not initialize case details`);
+  assert(source.includes('activeSource'), `${relativePath} does not track source filters`);
+  assert(source.includes('prompt-board-source'), `${relativePath} does not initialize source filters`);
 }
 
 function checkCommunityCases() {
