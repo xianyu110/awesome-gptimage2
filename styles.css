@@ -440,6 +440,12 @@ body {
     margin-bottom: 12px;
 }
 
+.prompt-board-filter-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 8px;
+}
+
 .prompt-board-filters {
     display: flex;
     flex-wrap: wrap;
@@ -477,6 +483,11 @@ body {
     cursor: pointer;
 }
 
+.prompt-board-clear.is-active {
+    background: #111;
+    color: #53ffc6;
+}
+
 .prompt-board-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -485,6 +496,11 @@ body {
 
 .prompt-item-card {
     position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
     border: 4px solid #111;
     background: #ededed;
     color: #111;
@@ -507,7 +523,9 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
     gap: 8px;
+    min-width: 0;
     color: #5c6473;
     font-size: 13px;
     font-weight: 700;
@@ -515,11 +533,17 @@ body {
     padding-bottom: 8px;
 }
 
+.prompt-item-meta span {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
 .prompt-item-title {
     margin: 12px 0 12px;
     font-size: 24px;
     line-height: 1.25;
     font-weight: 900;
+    overflow-wrap: anywhere;
 }
 
 .prompt-item-image {
@@ -547,6 +571,8 @@ body {
 }
 
 .prompt-item-code-box {
+    min-width: 0;
+    margin-top: auto;
     border: 3px solid #111;
     background: #f8f8f8;
 }
@@ -579,6 +605,7 @@ body {
     max-height: 190px;
     overflow: auto;
     white-space: pre-wrap;
+    overflow-wrap: anywhere;
     line-height: 1.5;
     font-size: 13px;
     font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -633,6 +660,255 @@ body {
 .prompt-item-links a:hover,
 .prompt-item-links a:focus-visible {
     text-decoration: underline;
+}
+
+.prompt-item-card-actions {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.prompt-item-detail,
+.prompt-item-favorite,
+.case-modal-actions button,
+.case-modal-prompt-head button {
+    min-height: 38px;
+    border: 3px solid #111;
+    background: #fff;
+    color: #111;
+    font: inherit;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.prompt-item-detail {
+    background: #53ffc6;
+}
+
+.prompt-item-favorite.is-active,
+.case-modal-actions button.is-active {
+    background: #f2e35d;
+}
+
+.prompt-item-detail:hover,
+.prompt-item-detail:focus-visible,
+.prompt-item-favorite:hover,
+.prompt-item-favorite:focus-visible,
+.case-modal-actions button:hover,
+.case-modal-actions button:focus-visible,
+.case-modal-prompt-head button:hover,
+.case-modal-prompt-head button:focus-visible {
+    transform: translate(-1px, -1px);
+    box-shadow: 3px 3px 0 #111;
+}
+
+body.case-modal-open {
+    overflow: hidden;
+}
+
+.case-modal[hidden] {
+    display: none;
+}
+
+.case-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+}
+
+.case-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.82);
+}
+
+.case-modal-dialog {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.9fr) minmax(0, 1.1fr);
+    width: min(1120px, 100%);
+    max-height: calc(100vh - 48px);
+    overflow: hidden;
+    border: 4px solid #111;
+    background: #efefef;
+    box-shadow: 12px 12px 0 rgba(83, 255, 198, 0.55);
+}
+
+.case-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 3;
+    width: 42px;
+    height: 42px;
+    border: 3px solid #111;
+    background: #f2e35d;
+    color: #111;
+    font-size: 28px;
+    font-weight: 900;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.case-modal-media {
+    position: relative;
+    display: grid;
+    place-items: center;
+    min-height: 0;
+    background: #111;
+}
+
+.case-modal-media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 420px;
+    max-height: calc(100vh - 56px);
+    object-fit: contain;
+}
+
+.case-modal-media-status {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    color: #53ffc6;
+    font-weight: 800;
+    text-align: center;
+    pointer-events: none;
+}
+
+.case-modal-media-status[hidden] {
+    display: none;
+}
+
+.case-modal-content {
+    min-width: 0;
+    overflow-y: auto;
+    padding: 30px;
+}
+
+.case-modal-meta {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 32px;
+    padding-right: 52px;
+    color: #525866;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.case-modal-badge {
+    position: static;
+    display: inline-block;
+    transform: none;
+}
+
+.case-modal-content h2 {
+    margin: 18px 0 10px;
+    color: #111;
+    font-size: 36px;
+    line-height: 1.08;
+    letter-spacing: 0;
+}
+
+.case-modal-description {
+    margin: 0 0 14px;
+    color: #303746;
+    line-height: 1.7;
+}
+
+.case-modal-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 18px;
+}
+
+.case-modal-links a {
+    color: #0a684e;
+    font-weight: 800;
+}
+
+.case-modal-prompt {
+    border: 3px solid #111;
+    background: #fff;
+}
+
+.case-modal-prompt-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 10px;
+    background: #111;
+    color: #fff;
+    font-weight: 800;
+}
+
+.case-modal-prompt-head button {
+    min-height: 32px;
+    padding: 3px 10px;
+}
+
+.case-modal-prompt pre {
+    max-height: 340px;
+    margin: 0;
+    overflow: auto;
+    padding: 14px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    color: #111;
+    font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.case-modal-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+}
+
+.case-modal-actions button:last-child {
+    background: #53ffc6;
+}
+
+@media (max-width: 760px) {
+    .case-modal {
+        padding: 10px;
+    }
+
+    .case-modal-dialog {
+        grid-template-columns: 1fr;
+        max-height: calc(100vh - 20px);
+        box-shadow: 6px 6px 0 rgba(83, 255, 198, 0.55);
+    }
+
+    .case-modal-media img {
+        min-height: 0;
+        height: min(34vh, 260px);
+    }
+
+    .case-modal-content {
+        padding: 20px 16px;
+    }
+
+    .case-modal-content h2 {
+        padding-right: 36px;
+        font-size: 26px;
+    }
+
+    .case-modal-prompt pre {
+        max-height: 220px;
+    }
 }
 
 .latest-x-shell {

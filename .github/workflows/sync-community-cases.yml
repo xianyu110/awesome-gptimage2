@@ -1,0 +1,50 @@
+name: Sync Community Cases
+
+on:
+  schedule:
+    - cron: "17 3 * * 1"
+  workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-community-cases
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Run sync tests
+        run: python -m unittest scripts/test_fetch_community_cases.py
+
+      - name: Fetch community cases
+        run: python scripts/fetch_community_cases.py
+
+      - name: Validate generated data
+        run: python scripts/fetch_community_cases.py --check
+
+      - name: Commit and push if changed
+        run: |
+          if git diff --quiet -- data/community-cases.json; then
+            echo "No community case changes."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/community-cases.json
+          git commit -m "chore(data): sync community cases"
+          git push

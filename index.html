@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome GPT-Image-2 | 史上最全提示词实战手册</title>
-    <meta name="description" content="Awesome GPT-Image-2 的可视化案例库：系统化提示词框架、590+ 可检索提示词与案例、分类筛选和社区来源回链。">
+    <meta name="description" content="Awesome GPT-Image-2 的可视化案例库：系统化提示词框架、690+ 可检索提示词与案例、分类筛选和社区来源回链。">
     <meta name="keywords" content="GPT-Image-2,提示词,AI绘图,Prompt,图像生成,OpenAI,教程">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#1a102e">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Awesome GPT-Image-2">
     <meta property="og:title" content="Awesome GPT-Image-2 | 史上最全提示词实战手册">
-    <meta property="og:description" content="590+ 可检索提示词与案例、分类筛选、社区来源回链和参数方法论。">
+    <meta property="og:description" content="690+ 可检索提示词与案例、分类筛选、社区来源回链和参数方法论。">
     <meta property="og:url" content="https://xianyu110.github.io/awesome-gptimage2/">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -69,7 +69,7 @@
             <aside class="hero-panel" aria-label="关键指标">
                 <div class="stat-grid">
                     <div class="stat-card">
-                        <span class="stat-value">590+</span>
+                        <span class="stat-value">690+</span>
                         <span class="stat-name">提示词与案例</span>
                     </div>
                     <div class="stat-card">
@@ -152,7 +152,10 @@
             </div>
             <div class="prompt-board-filter-row">
                 <div id="prompt-board-filters" class="prompt-board-filters" role="tablist" aria-label="提示词分类"></div>
-                <button id="prompt-board-clear" class="prompt-board-clear" type="button">清空筛选</button>
+                <div class="prompt-board-filter-actions">
+                    <button id="prompt-board-favorites" class="prompt-board-clear" type="button" aria-pressed="false">只看收藏</button>
+                    <button id="prompt-board-clear" class="prompt-board-clear" type="button">清空筛选</button>
+                </div>
             </div>
             <div id="prompt-board-grid" class="prompt-board-grid"></div>
             <p id="prompt-board-empty" class="prompt-board-empty" hidden>没有匹配结果，试试更短关键词。</p>
@@ -1004,6 +1007,40 @@
     </footer>
 </div>
 
+<div class="case-modal" id="case-modal" hidden>
+    <div class="case-modal-backdrop" data-case-close></div>
+    <section class="case-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="case-modal-title">
+        <button class="case-modal-close" id="case-modal-close" type="button" aria-label="关闭案例详情" title="关闭">×</button>
+        <div class="case-modal-media" id="case-modal-media">
+            <img id="case-modal-image" alt="" loading="eager" decoding="async" referrerpolicy="no-referrer">
+            <span class="case-modal-media-status" id="case-modal-media-status">图片加载中…</span>
+        </div>
+        <div class="case-modal-content">
+            <div class="case-modal-meta">
+                <span class="prompt-item-badge case-modal-badge" id="case-modal-badge">案例</span>
+                <span id="case-modal-category"></span>
+            </div>
+            <h2 id="case-modal-title"></h2>
+            <p class="case-modal-description" id="case-modal-description"></p>
+            <div class="case-modal-links">
+                <a id="case-modal-source" target="_blank" rel="noreferrer noopener" hidden>原始来源</a>
+                <a id="case-modal-upstream" target="_blank" rel="noreferrer noopener" hidden>上游案例</a>
+            </div>
+            <div class="case-modal-prompt">
+                <div class="case-modal-prompt-head">
+                    <span>完整提示词</span>
+                    <button id="case-modal-copy" type="button">复制</button>
+                </div>
+                <pre id="case-modal-prompt"></pre>
+            </div>
+            <div class="case-modal-actions">
+                <button id="case-modal-favorite" type="button" aria-pressed="false">收藏</button>
+                <button id="case-modal-share" type="button">复制分享链接</button>
+            </div>
+        </div>
+    </section>
+</div>
+
 <button class="back-to-top" id="back-to-top" aria-label="返回顶部">↑</button>
 
 <noscript>
@@ -1028,6 +1065,7 @@
     const promptBoardClearEl = document.getElementById('prompt-board-clear');
     const promptBoardEmptyEl = document.getElementById('prompt-board-empty');
     const promptBoardMoreEl = document.getElementById('prompt-board-more');
+    const promptBoardFavoritesEl = document.getElementById('prompt-board-favorites');
     const promptFilterEl = document.getElementById('prompt-filter');
     const promptFilterSummaryEl = document.getElementById('prompt-filter-summary');
     const promptFilterButtonsEl = document.getElementById('prompt-filter-buttons');
@@ -1037,13 +1075,35 @@
     const latestXContentEl = document.getElementById('latest-x-content');
     const latestXJsonLinkEl = document.getElementById('latest-x-json-link');
     const backToTopBtn = document.getElementById('back-to-top');
+    const caseModalEl = document.getElementById('case-modal');
+    const caseModalCloseEl = document.getElementById('case-modal-close');
+    const caseModalMediaEl = document.getElementById('case-modal-media');
+    const caseModalImageEl = document.getElementById('case-modal-image');
+    const caseModalMediaStatusEl = document.getElementById('case-modal-media-status');
+    const caseModalBadgeEl = document.getElementById('case-modal-badge');
+    const caseModalCategoryEl = document.getElementById('case-modal-category');
+    const caseModalTitleEl = document.getElementById('case-modal-title');
+    const caseModalDescriptionEl = document.getElementById('case-modal-description');
+    const caseModalSourceEl = document.getElementById('case-modal-source');
+    const caseModalUpstreamEl = document.getElementById('case-modal-upstream');
+    const caseModalPromptEl = document.getElementById('case-modal-prompt');
+    const caseModalCopyEl = document.getElementById('case-modal-copy');
+    const caseModalFavoriteEl = document.getElementById('case-modal-favorite');
+    const caseModalShareEl = document.getElementById('case-modal-share');
+    const FAVORITE_CASES_KEY = 'awesome-gptimage2:favorites:v1';
     const promptBoardState = {
         all: [],
         local: [],
         community: [],
         activeCategory: 'all',
         keyword: '',
-        visibleLimit: 96
+        visibleLimit: 96,
+        favoritesOnly: false,
+        favoriteIds: readFavoriteIds()
+    };
+    const caseModalState = {
+        item: null,
+        previousFocus: null
     };
     const PROMPT_BOARD_PAGE_SIZE = 96;
     const COMMUNITY_CASES_URL = 'data/community-cases.json';
@@ -1515,6 +1575,185 @@
             .replace(/'/g, '&#39;');
     }
 
+    function readFavoriteIds() {
+        try {
+            const value = JSON.parse(window.localStorage.getItem(FAVORITE_CASES_KEY) || '[]');
+            return new Set(Array.isArray(value) ? value.map(String) : []);
+        } catch (error) {
+            return new Set();
+        }
+    }
+
+    function saveFavoriteIds() {
+        try {
+            window.localStorage.setItem(
+                FAVORITE_CASES_KEY,
+                JSON.stringify(Array.from(promptBoardState.favoriteIds))
+            );
+        } catch (error) {
+            // Browsing still works when local storage is unavailable.
+        }
+    }
+
+    function isFavorite(id) {
+        return promptBoardState.favoriteIds.has(String(id || ''));
+    }
+
+    function setModalLink(anchor, href) {
+        if (!anchor) return;
+        const value = String(href || '').trim();
+        anchor.hidden = !value;
+        if (value) anchor.href = value;
+        else anchor.removeAttribute('href');
+    }
+
+    function updateModalFavorite() {
+        if (!caseModalFavoriteEl || !caseModalState.item) return;
+        const active = isFavorite(caseModalState.item.id);
+        caseModalFavoriteEl.classList.toggle('is-active', active);
+        caseModalFavoriteEl.setAttribute('aria-pressed', active ? 'true' : 'false');
+        caseModalFavoriteEl.textContent = active ? '已收藏' : '收藏';
+    }
+
+    function toggleFavorite(id) {
+        const key = String(id || '');
+        if (!key) return;
+        if (promptBoardState.favoriteIds.has(key)) promptBoardState.favoriteIds.delete(key);
+        else promptBoardState.favoriteIds.add(key);
+        saveFavoriteIds();
+        updateModalFavorite();
+        applyPromptBoardFilters();
+    }
+
+    function caseUrl(id) {
+        const url = new URL(window.location.href);
+        url.searchParams.set('case', String(id));
+        return url;
+    }
+
+    function hideCaseModal() {
+        if (!caseModalEl || caseModalEl.hidden) return;
+        caseModalEl.hidden = true;
+        document.body.classList.remove('case-modal-open');
+        caseModalState.item = null;
+        if (caseModalState.previousFocus && typeof caseModalState.previousFocus.focus === 'function') {
+            caseModalState.previousFocus.focus();
+        }
+        caseModalState.previousFocus = null;
+    }
+
+    function closeCaseModal(updateUrl) {
+        const shouldUpdateUrl = updateUrl !== false;
+        hideCaseModal();
+        if (!shouldUpdateUrl) return;
+
+        const url = new URL(window.location.href);
+        if (!url.searchParams.has('case')) return;
+        if (window.history.state && window.history.state.caseModal) {
+            window.history.back();
+            return;
+        }
+        url.searchParams.delete('case');
+        window.history.replaceState({}, '', url.pathname + url.search + url.hash);
+    }
+
+    function openCaseModal(id, updateUrl) {
+        const item = promptBoardState.all.find((candidate) => candidate.id === id);
+        if (!item || !caseModalEl) return false;
+
+        caseModalState.item = item;
+        caseModalState.previousFocus = document.activeElement;
+        caseModalTitleEl.textContent = item.title;
+        caseModalDescriptionEl.textContent = item.description || '';
+        caseModalCategoryEl.textContent = item.category || '未分类';
+        caseModalBadgeEl.textContent = item.badge || '案例';
+        caseModalPromptEl.textContent = item.promptText || '';
+        setModalLink(caseModalSourceEl, item.sourceUrl);
+        setModalLink(caseModalUpstreamEl, item.caseUrl);
+
+        const image = String(item.image || '').trim();
+        caseModalMediaEl.hidden = !image;
+        if (image) {
+            caseModalMediaStatusEl.hidden = false;
+            caseModalMediaStatusEl.textContent = '图片加载中…';
+            caseModalImageEl.src = image;
+            caseModalImageEl.alt = item.title;
+        } else {
+            caseModalImageEl.removeAttribute('src');
+            caseModalImageEl.alt = '';
+        }
+
+        updateModalFavorite();
+        caseModalCopyEl.textContent = '复制';
+        caseModalShareEl.textContent = '复制分享链接';
+        caseModalEl.hidden = false;
+        document.body.classList.add('case-modal-open');
+        caseModalCloseEl.focus();
+
+        if (updateUrl !== false) {
+            const url = caseUrl(item.id);
+            if (new URL(window.location.href).searchParams.get('case') !== item.id) {
+                window.history.pushState(
+                    { caseModal: true, caseId: item.id },
+                    '',
+                    url.pathname + url.search + url.hash
+                );
+            }
+        }
+        return true;
+    }
+
+    function openCaseFromUrl() {
+        const id = new URL(window.location.href).searchParams.get('case');
+        if (id && (!caseModalState.item || caseModalState.item.id !== id)) {
+            openCaseModal(id, false);
+        }
+    }
+
+    function setupCaseModalInteractions() {
+        if (!caseModalEl) return;
+        caseModalImageEl.addEventListener('load', () => {
+            caseModalMediaStatusEl.hidden = true;
+        });
+        caseModalImageEl.addEventListener('error', () => {
+            caseModalMediaStatusEl.hidden = false;
+            caseModalMediaStatusEl.textContent = '图片暂时无法加载';
+        });
+        caseModalEl.querySelectorAll('[data-case-close]').forEach((element) => {
+            element.addEventListener('click', () => closeCaseModal());
+        });
+        caseModalCloseEl.addEventListener('click', () => closeCaseModal());
+        caseModalCopyEl.addEventListener('click', async () => {
+            if (!caseModalState.item) return;
+            try {
+                await copyTextToClipboard(caseModalState.item.promptText || '');
+                caseModalCopyEl.textContent = '已复制';
+            } catch (error) {
+                caseModalCopyEl.textContent = '复制失败';
+            }
+        });
+        caseModalFavoriteEl.addEventListener('click', () => {
+            if (caseModalState.item) toggleFavorite(caseModalState.item.id);
+        });
+        caseModalShareEl.addEventListener('click', async () => {
+            if (!caseModalState.item) return;
+            try {
+                await copyTextToClipboard(caseUrl(caseModalState.item.id).toString());
+                caseModalShareEl.textContent = '链接已复制';
+            } catch (error) {
+                caseModalShareEl.textContent = '复制失败';
+            }
+        });
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape' && !caseModalEl.hidden) closeCaseModal();
+        });
+        window.addEventListener('popstate', () => {
+            const id = new URL(window.location.href).searchParams.get('case');
+            if (id) openCaseModal(id, false);
+            else hideCaseModal();
+        });
+    }
+
     function formatDateTimeLabel(value) {
         const text = (value || '').trim();
         if (!text) return '--';
@@ -1550,7 +1789,7 @@
             const promptText = (codeMatch && codeMatch[1] ? codeMatch[1] : '').trim();
             const previewText = promptText || description || '暂无提示词内容';
             cards.push({
-                id: 'prompt-' + (cards.length + 1),
+                id: 'zh-prompt-' + (cards.length + 1),
                 title: currentPrompt.title,
                 category: currentPrompt.category || '未分类',
                 source: '主教程',
@@ -1624,6 +1863,7 @@
             const linksHtml = links.length
                 ? '<p class="prompt-item-links">' + links.join('<span aria-hidden="true">·</span>') + '</p>'
                 : '';
+            const favorite = isFavorite(item.id);
 
             return (
                 '<article class="prompt-item-card">' +
@@ -1636,6 +1876,10 @@
                     '<div class="prompt-item-code-box">' +
                         '<div class="prompt-item-code-head"><span>提示词</span><button type="button" class="prompt-item-copy" data-prompt-id="' + escapeHtml(item.id) + '">复制</button></div>' +
                         '<pre>' + escapeHtml(item.promptPreview) + '</pre>' +
+                    '</div>' +
+                    '<div class="prompt-item-card-actions">' +
+                        '<button type="button" class="prompt-item-detail" data-case-id="' + escapeHtml(item.id) + '">查看详情</button>' +
+                        '<button type="button" class="prompt-item-favorite' + (favorite ? ' is-active' : '') + '" data-favorite-id="' + escapeHtml(item.id) + '" aria-pressed="' + (favorite ? 'true' : 'false') + '">' + (favorite ? '♥ 已收藏' : '♡ 收藏') + '</button>' +
                     '</div>' +
                 '</article>'
             );
@@ -1658,6 +1902,16 @@
                         button.textContent = '复制';
                     }, 1200);
                 }
+            });
+        });
+        promptBoardGridEl.querySelectorAll('[data-case-id]').forEach((button) => {
+            button.addEventListener('click', () => {
+                openCaseModal(button.getAttribute('data-case-id') || '');
+            });
+        });
+        promptBoardGridEl.querySelectorAll('[data-favorite-id]').forEach((button) => {
+            button.addEventListener('click', () => {
+                toggleFavorite(button.getAttribute('data-favorite-id') || '');
             });
         });
     }
@@ -1707,6 +1961,7 @@
         const filtered = all.filter((item) => {
             const matchCategory = category === 'all' || item.category === category;
             if (!matchCategory) return false;
+            if (promptBoardState.favoritesOnly && !isFavorite(item.id)) return false;
             if (!keyword) return true;
             const source = [
                 item.title,
@@ -1729,6 +1984,10 @@
                 const active = (button.dataset.category || '') === category;
                 button.classList.toggle('is-active', active);
             });
+        }
+        if (promptBoardFavoritesEl) {
+            promptBoardFavoritesEl.classList.toggle('is-active', promptBoardState.favoritesOnly);
+            promptBoardFavoritesEl.setAttribute('aria-pressed', promptBoardState.favoritesOnly ? 'true' : 'false');
         }
 
         renderPromptBoardCards(filtered.slice(0, promptBoardState.visibleLimit));
@@ -1754,7 +2013,15 @@
                 promptBoardState.activeCategory = 'all';
                 promptBoardState.keyword = '';
                 promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
+                promptBoardState.favoritesOnly = false;
                 if (promptBoardSearchEl) promptBoardSearchEl.value = '';
+                applyPromptBoardFilters();
+            });
+        }
+        if (promptBoardFavoritesEl) {
+            promptBoardFavoritesEl.addEventListener('click', () => {
+                promptBoardState.favoritesOnly = !promptBoardState.favoritesOnly;
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
         }
@@ -1774,6 +2041,7 @@
         if (promptBoardSearchEl) promptBoardSearchEl.value = '';
         renderPromptBoardFilters(promptBoardState.all);
         applyPromptBoardFilters();
+        openCaseFromUrl();
     }
 
     function renderPromptBoardFromMarkdown(markdown) {
@@ -2214,6 +2482,7 @@
         setupActiveNav();
         setupBackToTop();
         setupPromptBoardInteractions();
+        setupCaseModalInteractions();
         if (readmeRetryBtnEl) {
             readmeRetryBtnEl.addEventListener('click', () => {
                 loadReadme();

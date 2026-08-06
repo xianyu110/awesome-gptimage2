@@ -23,7 +23,7 @@ def load_json(path: Path) -> Dict[str, Any]:
 
 def normalize_groups(payload: Dict[str, Any]) -> List[Dict[str, Any]]:
     raw_groups = payload.get("dates", [])
-    if isinstance(raw_groups, list):
+    if isinstance(raw_groups, list) and raw_groups:
         return [group for group in raw_groups if isinstance(group, dict)]
 
     raw_items = payload.get("items", [])

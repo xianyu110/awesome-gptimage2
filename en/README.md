@@ -6,7 +6,7 @@
 
 A continuously updated English resource for prompt frameworks, real-world workflows, and reusable GPT-Image-2 examples.
 
-Curated from hands-on testing and public case studies | 540+ searchable prompts and cases | 10+ practical scenarios
+Curated from hands-on testing and public case studies | 640+ searchable prompts and cases | 10+ practical scenarios
 
 </div>
 
@@ -22,17 +22,19 @@ Curated from hands-on testing and public case studies | 540+ searchable prompts 
 
 ## Community Case Library
 
-The visual site includes 517 public cases from
-[freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2).
-Every imported card keeps its upstream case link and original source link when
-available. The generated data is pinned to the source commit used during sync.
+The visual site includes 617 public cases from
+[freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)
+and [YouMind-OpenLab/awesome-gpt-image-2](https://github.com/YouMind-OpenLab/awesome-gpt-image-2).
+The sync deduplicates normalized prompts. Every imported card keeps its author,
+upstream case link, and original source link when available. Generated data is
+pinned to the source commits and refreshed by a weekly GitHub Actions workflow.
 
 ```bash
 python3 scripts/fetch_community_cases.py
 python3 scripts/fetch_community_cases.py --check
 ```
 
-See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the MIT license notice.
+See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the MIT and CC BY 4.0 notices.
 
 ---
 

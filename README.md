@@ -8,7 +8,7 @@
 
 面向设计师、运营、电商团队、内容创作者和 AI 图像工作流玩家。
 
-整合自 6 篇深度实测文章 | 590+ 可检索提示词与案例 | 覆盖 10+ 场景 | 最新 X Prompt 自动同步
+整合自 6 篇深度实测文章 | 690+ 可检索提示词与案例 | 覆盖 10+ 场景 | 最新 X Prompt 自动同步
 
 中文版：<https://awesome.gptimage2.asia/> · English: <https://awesome.gptimage2.asia/en/>
 
@@ -53,11 +53,12 @@
 
 ## 社区案例库
 
-可视化站点额外收录了 517 条来自
+可视化站点额外收录了 617 条公开案例，来源包括
 [freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)
-的公开案例。案例卡片保留原始来源和上游详情链接，数据固定到同步时的提交版本。
+和 [YouMind-OpenLab/awesome-gpt-image-2](https://github.com/YouMind-OpenLab/awesome-gpt-image-2)。
+同步任务按 Prompt 去重，案例卡片保留作者、原始来源和上游详情链接，数据固定到同步时的提交版本。
 
-更新社区案例：
+社区案例每周一由 GitHub Actions 自动同步，也可以手动更新：
 
 ```bash
 python3 scripts/fetch_community_cases.py
@@ -125,25 +126,97 @@ python3 scripts/fetch_community_cases.py --check
 
 > 这个区块由 GitHub Action 根据 `data/latest-prompts.json` 自动生成，只展示带提示词的 X 帖子摘要。
 
-- 更新时间：`2026-04-23T13:50:08Z`
-- 模型：`grok-4`
-- 条目数：`2` · 日期分组：`1`
+- 更新时间：`2026-04-29T16:54:01Z`
+- 模型：`grok-4.1`
+- 条目数：`35` · 日期分组：`10`
 - 原始数据：[`data/latest-prompts.json`](data/latest-prompts.json)
 
-### 2026-04-23
+### 2026-04-29
 
-#### 1. @Amira Zairi
-- 2026-04-23T09:02:57Z | [X 原帖](https://x.com/azed_ai/status/2047239794741411993)
-- 备注：Post shares direct usage of GPT Image 2.0 with a simple usable prompt; meets view threshold and demonstrates prompt application.
+#### 1. @Zara - @ZaraIrahh
+- Sun, 26 Apr 2026 15:49:24 GMT | [X 原帖](https://x.com/ZaraIrahh/status/2048429244632408300) · [图片 1](https://pbs.twimg.com/media/HG17h2kboAAm0Ck.jpg) · [图片 2](https://pbs.twimg.com/media/HG17h5uaoAAWEKy.jpg)
+- 备注：Reusable Pixar-style 3D character portrait prompt
 ```text
-a comedic manga about the Iranian American conflict
+A stylized Pixar-style 3D portrait of a young person with smooth skin, large expressive blue eyes, soft facial features, wearing round transparent glasses, modern hairstyle (short styled hair / soft bob cut), casual outfit (hoodie or minimal sweater), slight head tilt and warm smile, friendly and approachable expression, ultra-clean character design, vibrant orange-to-pink gradient background, soft studio lighting with subtle rim light, cinematic depth of field, ultra-detailed, 8K render, octane render style.
 ```
 
-#### 2. @𝐌
-- 2026-04-23T05:14:40Z | [X 原帖](https://x.com/Strength04_X/status/2047182346034778387)
-- 备注：Directly shares a reusable crayon-style prompt template used with GPT Image 2; good engagement and explicit prompt content.
+#### 2. @Al-Shamus - @im_shahid7
+- Sun, 26 Apr 2026 16:02:45 GMT | [X 原帖](https://x.com/im_shahid7/status/2048432604291240275) · [图片 1](https://pbs.twimg.com/media/HG1-l98bQAAD2Of.jpg)
+- 备注：Reusable cute animal selfie prompt
 ```text
-[subject], crayon drawing illustration, hand-drawn with soft waxy texture, visible scribble marks, uneven coloring, playful childlike style, simple shapes, charming imperfections, layered crayon strokes, textured paper surface, warm nostalgic feeling, vibrant colors, clean white background
+a cute orange and white cat, he looks like hes thinking. taking a selfie inside a dramatically lit room dark room. the cat has big eyes, a chubby face, and a happy expression. the image is a wide-angle shot with sharp focus and high resolution, resulting in a high-definition photograph.
+```
+
+#### 3. @𝗦𝗮𝗻𝗶𝗮 - @saniaspeaks_
+- Sun, 26 Apr 2026 15:58:00 GMT | [X 原帖](https://x.com/saniaspeaks_/status/2048431408318705733) · [图片 1](https://pbs.twimg.com/media/HG19f15bwAAf-hh.jpg)
+- 备注：Reusable fashion editorial portrait prompt with effects
+```text
+portrait of a young woman with short curly black hair and fair skin, wearing transparent safety goggles and a blue ribbed turtleneck sweater, seated in front of a solid azure blue background, double-exposure motion blur effect to the left side of the face, subtle soft reflections on the glasses, cold ambient lighting, high sharpness on facial features with dreamlike blur trail overlaying second face, fashion editorial studio setup, icy color palette, futuristic retro mood.
+```
+
+#### 4. @Sharon Riley - @Just_sharon7
+- Sun, 26 Apr 2026 16:34:24 GMT | [X 原帖](https://x.com/Just_sharon7/status/2048440567605190853) · [图片 1](https://pbs.twimg.com/media/HG2F1Gqa8AAnoYJ.jpg)
+- 备注：Reusable artistic progression/multi-panel prompt
+```text
+Artistic progression in five vertical panels: from realistic sketch to modern abstract sculpture of a ballerina in arabesque pose. 1. Detailed pencil sketch of ballerina on pointe, elegant extended leg and arms. 2. Refined mid-stage sketch. 3. Strongly stylized flowing lines. 4. Angular geometric abstraction. 5. Final sleek, ribbon-twisted contemporary metal sculpture with beautiful curves and tension. Black ink and charcoal style on white background, high-contrast artistic study, luxury sculpture aesthetic --ar 3:2
+```
+
+#### 5. @UxUi Tega (Design & Ai) - @Tegadesigns
+- Sun, 26 Apr 2026 15:50:21 GMT | [X 原帖](https://x.com/Tegadesigns/status/2048429483879796831) · [图片 1](https://pbs.twimg.com/media/HG17mdQbcAAIW-M.jpg) · [图片 2](https://pbs.twimg.com/media/HG17mdIaYAATrdb.jpg)
+- 备注：Reusable single-prompt design generation example
+```text
+[Single prompt used to generate the two design variations shown; exact text not expanded in post but confirmed as GPT Images 2.0 usage]
+```
+
+#### 6. @Aijaz - @iamsofiaijaz
+- Sun, 26 Apr 2026 16:19:15 GMT | [X 原帖](https://x.com/iamsofiaijaz/status/2048436757855945137) · [图片 1](https://pbs.twimg.com/media/HG2CX-oaUAAPanb.jpg)
+- 备注：Reusable cyber-poetry portrait prompt with text projection
+```text
+A cinematic, ultra-realistic close-up portrait of a young woman with wet, tousled dark hair and luminous skin, staring directly into the camera with an intense, introspective expression. Glowing cyan handwritten text and symbols are projected across her face, neck, and shoulders, resembling poetic phrases, equations, and abstract handwriting. The light reflections shimmer on her damp skin, creating a futuristic, cyber-poetry aesthetic. Dark, moody background with soft shadows, shallow depth of field, sharp focus on the eyes, high contrast lighting, teal and blue color palette, hyper-detailed skin texture, photorealistic, dramatic atmosphere, cyberpunk meets fine-art portrait photography, 8K quality, cinematic lighting
+```
+
+#### 7. @Mr Das - @MrDasOnX
+- Sun, 26 Apr 2026 16:01:33 GMT | [X 原帖](https://x.com/MrDasOnX/status/2048432301445644740) · [图片 1](https://pbs.twimg.com/media/HG1-TmvbEAAesYf.jpg)
+- 备注：Reusable luxury fashion ad prompt with text
+```text
+Avant-garde luxury watch fashion ad, sophisticated female model in sleek black evening attire dramatically posing with an oversized glowing mechanical watch as the centerpiece, intricate gears and sparkling diamonds visible, bold metallic typography ‘TIMELESS’ floating in the foreground, reflective dark studio floor with scattered gold accents and subtle light beams, high-end editorial photography, dramatic cinematic lighting, luxurious atmosphere –ar 1:1 –stylize 750
+```
+
+#### 8. @K - @ChillaiKalan__
+- Sun, 26 Apr 2026 16:15:37 GMT | [X 原帖](https://x.com/ChillaiKalan__/status/2048435840217731378) · [图片 1](https://pbs.twimg.com/media/HG2BhPSbUAAsIyJ.jpg)
+- 备注：Reusable cinematic urban portrait prompt
+```text
+Edit this photo (keep the face unchanged), portrait. Cinematic close-up of a young woman at night in a moody urban setting with neon lighting. She looks back over her shoulder with a soft yet intense expression. Long dark wavy hair with wispy bangs, slightly wind-swept. Natural dewy makeup, minimal styling, wearing a dark oversized leather jacket. Background: blurred city bokeh with streetlights and car lights. Shot on Sony A7S III, 85mm lens, shallow depth of field. Off-center composition. Dramatic split lighting: cool blue on one side, warm red on the other. Teal-and-red color grade, high contrast, subtle film grain and glow.
+```
+
+#### 9. @Taaruk - @Taaruk_
+- Sun, 26 Apr 2026 16:25:00 GMT | [X 原帖](https://x.com/Taaruk_/status/2048438203611533367) · [图片 1](https://pbs.twimg.com/media/HG2Drv6bYAAyTSD.jpg)
+- 备注：Reusable luxury sports editorial prompt
+```text
+A dramatic sports editorial scene featuring a professional male footballer wearing an all-black kit, reclining confidently on top of an oversized soccer ball. The ball is hyper-detailed with realistic panels and branding, placed on a glossy reflective floor. The athlete’s pose is relaxed yet powerful, with one arm hanging down and legs extended, showcasing strength and elegance. The background is a bold deep blue studio with massive “GOAL” typography in large, subtle shadowed letters. High-contrast studio lighting with sharp highlights and deep shadows sculpting the body. Clean, minimal composition with a luxury sports campaign aesthetic. Shot with an 85mm lens, ultra-realistic, cinematic lighting, crisp details, 8K resolution, Nike/Adidas-style commercial photography.
+```
+
+#### 10. @Snow - @iamrealsnow
+- Sun, 26 Apr 2026 16:49:30 GMT | [X 原帖](https://x.com/iamrealsnow/status/2048444370844807555) · [图片 1](https://pbs.twimg.com/media/HG2JSwGaUAA5vea.jpg)
+- 备注：Reusable cinematic character prompt with environment details
+```text
+A powerful young man standing in front of a matte black Hummer H2 on a snowy night, heavy snowfall, dark cinematic atmosphere. The Hummer has a glowing icy number plate with a frosted texture. The subject wears a long black trench coat, leather gloves, and boots, slightly messy hair, intense expression, looking straight into the camera. Low-angle shot to make him look dominant. Cold blue and deep shadow lighting, high contrast, sharp details, foggy breath visible, luxury criminal aura, ultra-realistic, 4K, dramatic tension.
+```
+
+#### 11. @simply - @kingofdairyque
+- Sun, 26 Apr 2026 17:00:08 GMT | [X 原帖](https://x.com/kingofdairyque/status/2048447045640544549) · [图片 1](https://pbs.twimg.com/media/HG2LuwnbcAA0ncX.jpg)
+- 备注：Reusable detailed multi-panel transformation prompt for GPT Image 2
+```text
+A high-end cinematic transformation artwork displayed in five vertical panels, showing a luxury perfume evolving from raw essence into a sculptural masterpiece, each panel separated by thin black dividers. Panel 1 (Origin): A premium glass perfume bottle resting on a dark reflective surface, surrounded by raw ingredients like rose petals, oud wood, citrus peel, and mist, soft studio lighting, elegant shadows. Panel 2 (Release): The perfume begins to diffuse into the air, visible fragrant mist swirling upward in fluid motion, forming soft organic shapes, glowing particles and vapor trails. Panel 3 (Transformation): The mist starts shaping into a semi-formed silhouette (abstract human figure or flowing fabric), blending liquid, vapor, and light, luminous and dreamy. Panel 4 (Abstraction): The form becomes fully abstract — flowing ribbons of scent turning into sleek glass-like curves and fluid geometry, dynamic motion frozen mid-air. Panel 5 (Transcendence): Final form — a luxurious sculptural perfume bottle or abstract glass statue inspired by the scent’s essence, polished, reflective, with glowing highlights, sitting on a minimal pedestal. Style: ultra-detailed, photorealistic to abstract progression, deep black background, gold and silver accents, soft glow, high contrast lighting, glossy reflections, cinematic luxury aesthetic, perfume ad style, 4K quality, sharp focus.
+```
+
+### 2026-04-28
+
+#### 12. @Noor 🌸
+- 2026-04-28T17:00:44Z | [X 原帖](https://x.com/Noor_ul_ain43/status/2049171970227581378) · [图片 1](https://pbs.twimg.com/media/HHAfCPcaQAEbF9b.jpg)
+- 备注：Recent post with complete reusable sticker pack prompt and output image.
+```text
+A high-quality sticker sheet featuring a cute semi-realistic cartoon girl inspired by the provided reference face: short messy bob haircut, bright yellow hair, soft freckles, brown eyes, glossy lips, hoop earrings, wearing a sleeveless yellow top. Create a grid of multiple expressions and poses: ... Ultra-detailed, 4K resolution, consistent character design across all stickers, no watermark, no extra text outside stickers.
 ```
 
 <!-- latest-x-prompts:end -->

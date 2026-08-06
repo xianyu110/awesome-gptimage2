@@ -1,0 +1,43 @@
+name: Validate Site
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.11"
+
+      - name: Run Python tests
+        run: python -m unittest discover -s scripts -p "test_*.py"
+
+      - name: Validate generated case data
+        run: python scripts/fetch_community_cases.py --check
+
+      - name: Validate site contract
+        run: node scripts/check_site.mjs
+
+      - name: Verify README generated section
+        run: |
+          python scripts/render_latest_x_section.py
+          git diff --exit-code -- README.md
