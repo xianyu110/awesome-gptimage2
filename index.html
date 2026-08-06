@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome GPT-Image-2 | 史上最全提示词实战手册</title>
-    <meta name="description" content="Awesome GPT-Image-2 的可视化阅读版：系统化提示词框架、80+可检索提示词、10大场景与案例扩展，内容自动同步仓库 README。">
+    <meta name="description" content="Awesome GPT-Image-2 的可视化案例库：系统化提示词框架、590+ 可检索提示词与案例、分类筛选和社区来源回链。">
     <meta name="keywords" content="GPT-Image-2,提示词,AI绘图,Prompt,图像生成,OpenAI,教程">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#1a102e">
@@ -14,7 +14,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Awesome GPT-Image-2">
     <meta property="og:title" content="Awesome GPT-Image-2 | 史上最全提示词实战手册">
-    <meta property="og:description" content="80+可检索提示词、10大场景、案例扩展与参数方法论，内容与仓库 README 自动同步。">
+    <meta property="og:description" content="590+ 可检索提示词与案例、分类筛选、社区来源回链和参数方法论。">
     <meta property="og:url" content="https://xianyu110.github.io/awesome-gptimage2/">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -69,8 +69,8 @@
             <aside class="hero-panel" aria-label="关键指标">
                 <div class="stat-grid">
                     <div class="stat-card">
-                        <span class="stat-value">80+</span>
-                        <span class="stat-name">可检索提示词</span>
+                        <span class="stat-value">590+</span>
+                        <span class="stat-name">提示词与案例</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-value">10+</span>
@@ -156,6 +156,9 @@
             </div>
             <div id="prompt-board-grid" class="prompt-board-grid"></div>
             <p id="prompt-board-empty" class="prompt-board-empty" hidden>没有匹配结果，试试更短关键词。</p>
+            <div class="prompt-board-more-wrap">
+                <button id="prompt-board-more" class="prompt-board-more" type="button" hidden>加载更多</button>
+            </div>
         </section>
 
         <section id="latest-x-prompts" class="section" aria-label="最新 X Prompt">
@@ -1024,6 +1027,7 @@
     const promptBoardSearchEl = document.getElementById('prompt-board-search');
     const promptBoardClearEl = document.getElementById('prompt-board-clear');
     const promptBoardEmptyEl = document.getElementById('prompt-board-empty');
+    const promptBoardMoreEl = document.getElementById('prompt-board-more');
     const promptFilterEl = document.getElementById('prompt-filter');
     const promptFilterSummaryEl = document.getElementById('prompt-filter-summary');
     const promptFilterButtonsEl = document.getElementById('prompt-filter-buttons');
@@ -1035,9 +1039,14 @@
     const backToTopBtn = document.getElementById('back-to-top');
     const promptBoardState = {
         all: [],
+        local: [],
+        community: [],
         activeCategory: 'all',
-        keyword: ''
+        keyword: '',
+        visibleLimit: 96
     };
+    const PROMPT_BOARD_PAGE_SIZE = 96;
+    const COMMUNITY_CASES_URL = 'data/community-cases.json';
 
     const SUPPLEMENT_PROMPT_CARDS = [
         {
@@ -1603,8 +1612,18 @@
         promptBoardEmptyEl.hidden = true;
         promptBoardGridEl.innerHTML = cards.map((item, idx) => {
             const imageHtml = item.image
-                ? '<img class="prompt-item-image" loading="lazy" decoding="async" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '">'
+                ? '<img class="prompt-item-image" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '">'
                 : '<div class="prompt-item-image prompt-item-image-placeholder">暂无预览图</div>';
+            const links = [];
+            if (item.sourceUrl) {
+                links.push('<a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noreferrer noopener">原始来源</a>');
+            }
+            if (item.caseUrl) {
+                links.push('<a href="' + escapeHtml(item.caseUrl) + '" target="_blank" rel="noreferrer noopener">上游案例</a>');
+            }
+            const linksHtml = links.length
+                ? '<p class="prompt-item-links">' + links.join('<span aria-hidden="true">·</span>') + '</p>'
+                : '';
 
             return (
                 '<article class="prompt-item-card">' +
@@ -1613,6 +1632,7 @@
                     '<h3 class="prompt-item-title">' + escapeHtml(item.title) + '</h3>' +
                     imageHtml +
                     '<p class="prompt-item-desc">' + escapeHtml(item.description) + '</p>' +
+                    linksHtml +
                     '<div class="prompt-item-code-box">' +
                         '<div class="prompt-item-code-head"><span>提示词</span><button type="button" class="prompt-item-copy" data-prompt-id="' + escapeHtml(item.id) + '">复制</button></div>' +
                         '<pre>' + escapeHtml(item.promptPreview) + '</pre>' +
@@ -1649,7 +1669,7 @@
             counts.set(item.category, (counts.get(item.category) || 0) + 1);
         });
 
-        const categories = Array.from(counts.keys());
+        const categories = Array.from(counts.keys()).sort((a, b) => a.localeCompare(b, 'zh-CN'));
         promptBoardFiltersEl.innerHTML = '';
 
         const allButton = document.createElement('button');
@@ -1659,6 +1679,7 @@
         allButton.textContent = '全部';
         allButton.addEventListener('click', () => {
             promptBoardState.activeCategory = 'all';
+            promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
             applyPromptBoardFilters();
         });
         promptBoardFiltersEl.appendChild(allButton);
@@ -1671,6 +1692,7 @@
             button.textContent = category + ' (' + String(counts.get(category)) + ')';
             button.addEventListener('click', () => {
                 promptBoardState.activeCategory = category;
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
             promptBoardFiltersEl.appendChild(button);
@@ -1686,12 +1708,20 @@
             const matchCategory = category === 'all' || item.category === category;
             if (!matchCategory) return false;
             if (!keyword) return true;
-            const source = [item.title, item.category, item.source || '', item.description, item.promptText].join(' ').toLowerCase();
+            const source = [
+                item.title,
+                item.category,
+                item.source || '',
+                item.description,
+                item.promptText,
+                (item.styles || []).join(' '),
+                (item.scenes || []).join(' ')
+            ].join(' ').toLowerCase();
             return source.includes(keyword);
         });
 
         if (promptBoardTotalEl) {
-            promptBoardTotalEl.textContent = '总计：' + String(filtered.length);
+            promptBoardTotalEl.textContent = '总计：' + String(filtered.length) + ' · 已显示 ' + String(Math.min(filtered.length, promptBoardState.visibleLimit));
         }
 
         if (promptBoardFiltersEl) {
@@ -1701,13 +1731,21 @@
             });
         }
 
-        renderPromptBoardCards(filtered);
+        renderPromptBoardCards(filtered.slice(0, promptBoardState.visibleLimit));
+        if (promptBoardMoreEl) {
+            const remaining = Math.max(0, filtered.length - promptBoardState.visibleLimit);
+            promptBoardMoreEl.hidden = remaining === 0;
+            promptBoardMoreEl.textContent = remaining
+                ? '加载更多（剩余 ' + String(remaining) + '）'
+                : '加载更多';
+        }
     }
 
     function setupPromptBoardInteractions() {
         if (promptBoardSearchEl) {
             promptBoardSearchEl.addEventListener('input', () => {
                 promptBoardState.keyword = promptBoardSearchEl.value || '';
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
         }
@@ -1715,20 +1753,72 @@
             promptBoardClearEl.addEventListener('click', () => {
                 promptBoardState.activeCategory = 'all';
                 promptBoardState.keyword = '';
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 if (promptBoardSearchEl) promptBoardSearchEl.value = '';
+                applyPromptBoardFilters();
+            });
+        }
+        if (promptBoardMoreEl) {
+            promptBoardMoreEl.addEventListener('click', () => {
+                promptBoardState.visibleLimit += PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
         }
     }
 
-    function renderPromptBoardFromMarkdown(markdown) {
-        const cards = extractPromptCardsFromMarkdown(markdown).concat(SUPPLEMENT_PROMPT_CARDS);
-        promptBoardState.all = cards;
+    function refreshPromptBoardData() {
+        promptBoardState.all = promptBoardState.local.concat(promptBoardState.community);
         promptBoardState.activeCategory = 'all';
         promptBoardState.keyword = '';
+        promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
         if (promptBoardSearchEl) promptBoardSearchEl.value = '';
-        renderPromptBoardFilters(cards);
+        renderPromptBoardFilters(promptBoardState.all);
         applyPromptBoardFilters();
+    }
+
+    function renderPromptBoardFromMarkdown(markdown) {
+        const cards = extractPromptCardsFromMarkdown(markdown).concat(SUPPLEMENT_PROMPT_CARDS);
+        promptBoardState.local = cards;
+        refreshPromptBoardData();
+    }
+
+    function normalizeCommunityCase(item) {
+        const promptText = String(item.prompt || '').trim();
+        return {
+            id: String(item.id || ''),
+            title: String(item.title || '社区案例'),
+            category: String(item.categoryZh || item.category || '未分类'),
+            source: '社区 · ' + String(item.sourceLabel || item.source || 'awesome-gpt-image-2'),
+            badge: String(item.badgeZh || '社区案例'),
+            image: String(item.image || ''),
+            description: String(item.descriptionZh || item.description || '来自开源社区的提示词案例。'),
+            promptText,
+            promptPreview: String(item.promptPreview || promptText).slice(0, 420),
+            styles: Array.isArray(item.styles) ? item.styles : [],
+            scenes: Array.isArray(item.scenes) ? item.scenes : [],
+            sourceUrl: String(item.sourceUrl || ''),
+            caseUrl: String(item.caseUrl || '')
+        };
+    }
+
+    async function loadCommunityCases() {
+        const rawUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/community-cases.json';
+        const candidates = [COMMUNITY_CASES_URL, './' + COMMUNITY_CASES_URL, rawUrl];
+        for (const url of candidates) {
+            try {
+                const response = await fetch(url, { cache: 'no-store' });
+                if (!response.ok) throw new Error(String(response.status));
+                const payload = await response.json();
+                const cases = Array.isArray(payload && payload.cases) ? payload.cases : [];
+                promptBoardState.community = cases
+                    .map(normalizeCommunityCase)
+                    .filter((item) => item.id && item.promptText);
+                refreshPromptBoardData();
+                return;
+            } catch (error) {
+                // Try the next local or GitHub fallback URL.
+            }
+        }
     }
 
     function renderLatestXPrompts(payload) {
@@ -2072,9 +2162,8 @@
             const errorMsg = error && error.message ? error.message : String(error);
             readmeStatusEl.textContent = '加载失败：' + errorMsg;
             readmeContentEl.textContent = 'README 渲染失败，请点击“打开原始文件”直接查看。';
-            promptBoardState.all = [];
-            renderPromptBoardFilters([]);
-            applyPromptBoardFilters();
+            promptBoardState.local = [];
+            refreshPromptBoardData();
             if (readmeLoadingEl) readmeLoadingEl.hidden = true;
             setReadmeRetryVisible(true);
             if (promptFilterEl) promptFilterEl.hidden = true;
@@ -2131,6 +2220,7 @@
             });
         }
         loadLatestXPrompts();
+        loadCommunityCases();
         loadReadme();
     }
 

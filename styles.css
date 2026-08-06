@@ -594,6 +594,47 @@ body {
     font-weight: 700;
 }
 
+.prompt-board-more-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.prompt-board-more {
+    min-height: 42px;
+    padding: 9px 18px;
+    border: 3px solid #111;
+    border-radius: 0;
+    background: #f2e35d;
+    color: #111;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.prompt-board-more:hover,
+.prompt-board-more:focus-visible {
+    background: #53ffc6;
+}
+
+.prompt-item-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    font-size: 0.84rem;
+}
+
+.prompt-item-links a {
+    color: #0a684e;
+    text-decoration: none;
+}
+
+.prompt-item-links a:hover,
+.prompt-item-links a:focus-visible {
+    text-decoration: underline;
+}
+
 .latest-x-shell {
     display: grid;
     gap: 14px;

@@ -8,13 +8,13 @@
 
 面向设计师、运营、电商团队、内容创作者和 AI 图像工作流玩家。
 
-整合自 6 篇深度实测文章 | 80+ 可检索提示词 | 覆盖 10 大场景 + 案例扩展 | 最新 X Prompt 自动同步
+整合自 6 篇深度实测文章 | 590+ 可检索提示词与案例 | 覆盖 10+ 场景 | 最新 X Prompt 自动同步
 
 中文版：<https://awesome.gptimage2.asia/> · English: <https://awesome.gptimage2.asia/en/>
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-2ea44f?style=for-the-badge)](https://xianyu110.github.io/awesome-gptimage2/)
 [![GPT-Image-2](https://img.shields.io/badge/Model-GPT--Image--2-blue?style=for-the-badge)](https://chatgpt.com)
-[![Prompts](https://img.shields.io/badge/Prompts-80%2B-ff73be?style=for-the-badge)](#提示词合集)
+[![Prompts](https://img.shields.io/badge/Prompts-590%2B-ff73be?style=for-the-badge)](#提示词合集)
 [![Scenes](https://img.shields.io/badge/Scenes-10%2B%20Case-53ffc6?style=for-the-badge)](#提示词合集)
 
 </div>
@@ -50,6 +50,21 @@
 - 英文版站点：<https://awesome.gptimage2.asia/en/>
 
 > 第三方入口请自行确认可用性、价格和数据安全；重要素材建议优先使用官方或可信环境。
+
+## 社区案例库
+
+可视化站点额外收录了 517 条来自
+[freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)
+的公开案例。案例卡片保留原始来源和上游详情链接，数据固定到同步时的提交版本。
+
+更新社区案例：
+
+```bash
+python3 scripts/fetch_community_cases.py
+python3 scripts/fetch_community_cases.py --check
+```
+
+第三方内容许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 ---
 

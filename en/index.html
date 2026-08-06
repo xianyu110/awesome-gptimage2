@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome GPT-Image-2 | English Prompt Guide</title>
-    <meta name="description" content="An English GPT-Image-2 guide with prompt frameworks, reusable templates, practical workflows, and ongoing updates.">
+    <meta name="description" content="An English GPT-Image-2 gallery with 540+ searchable prompts and cases, reusable templates, source links, and practical workflows.">
     <meta name="keywords" content="GPT-Image-2,prompt guide,AI image generation,OpenAI,image prompts,ecommerce visuals">
     <meta name="robots" content="index,follow,max-image-preview:large">
     <meta name="theme-color" content="#1a102e">
@@ -16,7 +16,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Awesome GPT-Image-2">
     <meta property="og:title" content="Awesome GPT-Image-2 | English Prompt Guide">
-    <meta property="og:description" content="Prompt frameworks, practical workflows, reusable templates, and curated GPT-Image-2 references in English.">
+    <meta property="og:description" content="540+ searchable GPT-Image-2 prompts and cases with filters, reusable templates, and original source links.">
     <meta property="og:url" content="https://awesome.gptimage2.asia/en/">
 
     <meta name="twitter:card" content="summary_large_image">
@@ -71,8 +71,8 @@
             <aside class="hero-panel" aria-label="Key stats">
                 <div class="stat-grid">
                     <div class="stat-card">
-                        <span class="stat-value">24</span>
-                        <span class="stat-name">Reusable prompts</span>
+                        <span class="stat-value">540+</span>
+                        <span class="stat-name">Prompts & cases</span>
                     </div>
                     <div class="stat-card">
                         <span class="stat-value">10</span>
@@ -156,6 +156,9 @@
             </div>
             <div id="prompt-board-grid" class="prompt-board-grid"></div>
             <p id="prompt-board-empty" class="prompt-board-empty" hidden>No matches found. Try a shorter keyword.</p>
+            <div class="prompt-board-more-wrap">
+                <button id="prompt-board-more" class="prompt-board-more" type="button" hidden>Load more</button>
+            </div>
         </section>
 
         <section id="case-study" class="section" aria-label="Case study notes">
@@ -328,11 +331,21 @@
     const promptBoardSearchEl = document.getElementById('prompt-board-search');
     const promptBoardClearEl = document.getElementById('prompt-board-clear');
     const promptBoardEmptyEl = document.getElementById('prompt-board-empty');
+    const promptBoardMoreEl = document.getElementById('prompt-board-more');
     const promptFilterEl = document.getElementById('prompt-filter');
     const promptFilterSummaryEl = document.getElementById('prompt-filter-summary');
     const promptFilterButtonsEl = document.getElementById('prompt-filter-buttons');
     const backToTopBtn = document.getElementById('back-to-top');
-    const promptBoardState = { all: [], activeCategory: 'all', keyword: '' };
+    const promptBoardState = {
+        all: [],
+        local: [],
+        community: [],
+        activeCategory: 'all',
+        keyword: '',
+        visibleLimit: 96
+    };
+    const PROMPT_BOARD_PAGE_SIZE = 96;
+    const COMMUNITY_CASES_URL = '../data/community-cases.json';
 
     const SUPPLEMENT_PROMPT_CARDS = [
         {
@@ -644,7 +657,17 @@
         promptBoardEmptyEl.hidden = true;
         promptBoardGridEl.innerHTML = cards.map((item, idx) => {
             const imageHtml = item.image
-                ? '<img class="prompt-item-image" loading="lazy" decoding="async" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '">'
+                ? '<img class="prompt-item-image" loading="lazy" decoding="async" referrerpolicy="no-referrer" src="' + escapeHtml(item.image) + '" alt="' + escapeHtml(item.title) + '">'
+                : '';
+            const links = [];
+            if (item.sourceUrl) {
+                links.push('<a href="' + escapeHtml(item.sourceUrl) + '" target="_blank" rel="noreferrer noopener">Original source</a>');
+            }
+            if (item.caseUrl) {
+                links.push('<a href="' + escapeHtml(item.caseUrl) + '" target="_blank" rel="noreferrer noopener">Upstream case</a>');
+            }
+            const linksHtml = links.length
+                ? '<p class="prompt-item-links">' + links.join('<span aria-hidden="true">·</span>') + '</p>'
                 : '';
             return (
                 '<article class="prompt-item-card">' +
@@ -653,6 +676,7 @@
                     '<h3 class="prompt-item-title">' + escapeHtml(item.title) + '</h3>' +
                     imageHtml +
                     '<p class="prompt-item-desc">' + escapeHtml(item.description) + '</p>' +
+                    linksHtml +
                     '<div class="prompt-item-code-box">' +
                         '<div class="prompt-item-code-head"><span>Prompt</span><button type="button" class="prompt-item-copy" data-prompt-id="' + escapeHtml(item.id) + '">Copy</button></div>' +
                         '<pre>' + escapeHtml(item.promptPreview) + '</pre>' +
@@ -681,7 +705,7 @@
         if (!promptBoardFiltersEl) return;
         const counts = new Map();
         cards.forEach((item) => counts.set(item.category, (counts.get(item.category) || 0) + 1));
-        const categories = Array.from(counts.keys());
+        const categories = Array.from(counts.keys()).sort((a, b) => a.localeCompare(b, 'en'));
         promptBoardFiltersEl.innerHTML = '';
         const allButton = document.createElement('button');
         allButton.type = 'button';
@@ -690,6 +714,7 @@
         allButton.textContent = 'All';
         allButton.addEventListener('click', () => {
             promptBoardState.activeCategory = 'all';
+            promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
             applyPromptBoardFilters();
         });
         promptBoardFiltersEl.appendChild(allButton);
@@ -701,6 +726,7 @@
             button.textContent = category + ' (' + String(counts.get(category)) + ')';
             button.addEventListener('click', () => {
                 promptBoardState.activeCategory = category;
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
             promptBoardFiltersEl.appendChild(button);
@@ -715,23 +741,39 @@
             const matchCategory = category === 'all' || item.category === category;
             if (!matchCategory) return false;
             if (!keyword) return true;
-            const source = [item.title, item.category, item.source || '', item.description, item.promptText].join(' ').toLowerCase();
+            const source = [
+                item.title,
+                item.category,
+                item.source || '',
+                item.description,
+                item.promptText,
+                (item.styles || []).join(' '),
+                (item.scenes || []).join(' ')
+            ].join(' ').toLowerCase();
             return source.includes(keyword);
         });
-        if (promptBoardTotalEl) promptBoardTotalEl.textContent = 'Total: ' + String(filtered.length);
+        if (promptBoardTotalEl) {
+            promptBoardTotalEl.textContent = 'Total: ' + String(filtered.length) + ' · Showing ' + String(Math.min(filtered.length, promptBoardState.visibleLimit));
+        }
         if (promptBoardFiltersEl) {
             promptBoardFiltersEl.querySelectorAll('.prompt-board-filter-btn').forEach((button) => {
                 const active = (button.dataset.category || '') === category;
                 button.classList.toggle('is-active', active);
             });
         }
-        renderPromptBoardCards(filtered);
+        renderPromptBoardCards(filtered.slice(0, promptBoardState.visibleLimit));
+        if (promptBoardMoreEl) {
+            const remaining = Math.max(0, filtered.length - promptBoardState.visibleLimit);
+            promptBoardMoreEl.hidden = remaining === 0;
+            promptBoardMoreEl.textContent = remaining ? 'Load more (' + String(remaining) + ' remaining)' : 'Load more';
+        }
     }
 
     function setupPromptBoardInteractions() {
         if (promptBoardSearchEl) {
             promptBoardSearchEl.addEventListener('input', () => {
                 promptBoardState.keyword = promptBoardSearchEl.value || '';
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
         }
@@ -739,20 +781,72 @@
             promptBoardClearEl.addEventListener('click', () => {
                 promptBoardState.activeCategory = 'all';
                 promptBoardState.keyword = '';
+                promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
                 if (promptBoardSearchEl) promptBoardSearchEl.value = '';
+                applyPromptBoardFilters();
+            });
+        }
+        if (promptBoardMoreEl) {
+            promptBoardMoreEl.addEventListener('click', () => {
+                promptBoardState.visibleLimit += PROMPT_BOARD_PAGE_SIZE;
                 applyPromptBoardFilters();
             });
         }
     }
 
-    function renderPromptBoardFromMarkdown(markdown) {
-        const cards = extractPromptCardsFromMarkdown(markdown).concat(SUPPLEMENT_PROMPT_CARDS);
-        promptBoardState.all = cards;
+    function refreshPromptBoardData() {
+        promptBoardState.all = promptBoardState.local.concat(promptBoardState.community);
         promptBoardState.activeCategory = 'all';
         promptBoardState.keyword = '';
+        promptBoardState.visibleLimit = PROMPT_BOARD_PAGE_SIZE;
         if (promptBoardSearchEl) promptBoardSearchEl.value = '';
-        renderPromptBoardFilters(cards);
+        renderPromptBoardFilters(promptBoardState.all);
         applyPromptBoardFilters();
+    }
+
+    function renderPromptBoardFromMarkdown(markdown) {
+        const cards = extractPromptCardsFromMarkdown(markdown).concat(SUPPLEMENT_PROMPT_CARDS);
+        promptBoardState.local = cards;
+        refreshPromptBoardData();
+    }
+
+    function normalizeCommunityCase(item) {
+        const promptText = String(item.prompt || '').trim();
+        return {
+            id: String(item.id || ''),
+            title: String(item.title || 'Community case'),
+            category: String(item.category || 'Other Use Cases'),
+            source: 'Community · ' + String(item.sourceLabel || item.source || 'awesome-gpt-image-2'),
+            badge: String(item.badge || 'Community'),
+            image: String(item.image || ''),
+            description: String(item.description || 'Prompt case from the open-source community.'),
+            promptText,
+            promptPreview: String(item.promptPreview || promptText).slice(0, 420),
+            styles: Array.isArray(item.styles) ? item.styles : [],
+            scenes: Array.isArray(item.scenes) ? item.scenes : [],
+            sourceUrl: String(item.sourceUrl || ''),
+            caseUrl: String(item.caseUrl || '')
+        };
+    }
+
+    async function loadCommunityCases() {
+        const rawUrl = 'https://raw.githubusercontent.com/xianyu110/awesome-gptimage2/main/data/community-cases.json';
+        const candidates = [COMMUNITY_CASES_URL, rawUrl];
+        for (const url of candidates) {
+            try {
+                const response = await fetch(url, { cache: 'no-store' });
+                if (!response.ok) throw new Error(String(response.status));
+                const payload = await response.json();
+                const cases = Array.isArray(payload && payload.cases) ? payload.cases : [];
+                promptBoardState.community = cases
+                    .map(normalizeCommunityCase)
+                    .filter((item) => item.id && item.promptText);
+                refreshPromptBoardData();
+                return;
+            } catch (error) {
+                // Try the GitHub fallback URL.
+            }
+        }
     }
 
     function extractPromptCategoriesFromMarkdown(markdown) {
@@ -905,9 +999,8 @@
             const errorMsg = error && error.message ? error.message : String(error);
             readmeStatusEl.textContent = 'Load failed: ' + errorMsg;
             readmeContentEl.textContent = 'README rendering failed. Please open the raw file directly.';
-            promptBoardState.all = [];
-            renderPromptBoardFilters([]);
-            applyPromptBoardFilters();
+            promptBoardState.local = [];
+            refreshPromptBoardData();
             if (readmeLoadingEl) readmeLoadingEl.hidden = true;
             setReadmeRetryVisible(true);
             if (promptFilterEl) promptFilterEl.hidden = true;
@@ -950,6 +1043,7 @@
         setupScrollSpy();
         setupBackToTop();
         if (readmeRetryBtnEl) readmeRetryBtnEl.addEventListener('click', () => loadReadme());
+        loadCommunityCases();
         loadReadme();
     }
 

@@ -6,7 +6,7 @@
 
 A continuously updated English resource for prompt frameworks, real-world workflows, and reusable GPT-Image-2 examples.
 
-Curated from hands-on testing and public case studies | 24 reusable prompts | 10 practical scenarios
+Curated from hands-on testing and public case studies | 540+ searchable prompts and cases | 10+ practical scenarios
 
 </div>
 
@@ -19,6 +19,20 @@ Curated from hands-on testing and public case studies | 24 reusable prompts | 10
 - GitHub repo: https://github.com/xianyu110/awesome-gptimage2
 - ChatGPT: https://chatgpt.com/
 - Global access: https://gptimage2.asia/
+
+## Community Case Library
+
+The visual site includes 517 public cases from
+[freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2).
+Every imported card keeps its upstream case link and original source link when
+available. The generated data is pinned to the source commit used during sync.
+
+```bash
+python3 scripts/fetch_community_cases.py
+python3 scripts/fetch_community_cases.py --check
+```
+
+See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the MIT license notice.
 
 ---
 
