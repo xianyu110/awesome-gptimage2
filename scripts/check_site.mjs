@@ -48,6 +48,11 @@ function checkPage(relativePath) {
   assert(source.includes('setupCaseModalInteractions();'), `${relativePath} does not initialize case details`);
   assert(source.includes('activeSource'), `${relativePath} does not track source filters`);
   assert(source.includes('prompt-board-source'), `${relativePath} does not initialize source filters`);
+  assert(source.includes("deferSectionLoad('readme'"), `${relativePath} loads README eagerly`);
+  assert(source.includes("cache: 'default'"), `${relativePath} disables browser caching`);
+  if (relativePath === 'index.html') {
+    assert(source.includes("deferSectionLoad('latest-x-prompts'"), `${relativePath} loads latest X data eagerly`);
+  }
 }
 
 function promptHash(prompt) {

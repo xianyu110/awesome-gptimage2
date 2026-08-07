@@ -260,7 +260,7 @@
 
             <div class="readme-card">
                 <div class="readme-meta">
-                    <span class="readme-status" id="readme-status">Loading English README.md...</span>
+                    <span class="readme-status" id="readme-status">Loads when you reach this section...</span>
                     <span class="readme-clock" id="readme-clock">Last refresh: --</span>
                     <button class="readme-retry-btn" id="readme-retry-btn" type="button" hidden>Retry</button>
                 </div>
@@ -270,7 +270,7 @@
                     <div class="prompt-filter-buttons" id="prompt-filter-buttons" role="tablist" aria-label="Prompt category filters"></div>
                 </div>
 
-                <div id="readme-loading" class="readme-loading" aria-hidden="true">
+                <div id="readme-loading" class="readme-loading" aria-hidden="true" hidden>
                     <span></span><span></span><span></span>
                 </div>
 
@@ -357,8 +357,6 @@
     <div class="noscript-box">This page needs JavaScript to render the README content. Please open the raw README directly.</div>
 </noscript>
 
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js" defer></script>
 <script>
 (function () {
     const NAV_ACTIVE_CLASS = 'is-active';
@@ -416,6 +414,26 @@
     const PROMPT_BOARD_PAGE_SIZE = 96;
     const PAGE_LOCALE = 'en';
     const CASE_LIBRARY_URL = '../data/case-library.json';
+
+    function deferSectionLoad(sectionId, loader) {
+        const section = document.getElementById(sectionId);
+        let loaded = false;
+        const loadOnce = () => {
+            if (loaded) return;
+            loaded = true;
+            loader();
+        };
+        if (!section || !('IntersectionObserver' in window)) {
+            window.setTimeout(loadOnce, 0);
+            return;
+        }
+        const observer = new IntersectionObserver((entries) => {
+            if (!entries.some((entry) => entry.isIntersecting)) return;
+            observer.disconnect();
+            loadOnce();
+        }, { rootMargin: '160px 0px' });
+        observer.observe(section);
+    }
 
 
     function normalizeCategoryName(text) {
@@ -1032,7 +1050,7 @@
         const candidates = [CASE_LIBRARY_URL, rawUrl];
         for (const url of candidates) {
             try {
-                const response = await fetch(url, { cache: 'no-store' });
+                const response = await fetch(url, { cache: 'default' });
                 if (!response.ok) throw new Error(String(response.status));
                 const payload = await response.json();
                 if (payload.schemaVersion !== '1.0.0') throw new Error('unsupported schema');
@@ -1179,7 +1197,7 @@
             let lastError = null;
             for (const url of candidates) {
                 try {
-                    const response = await fetch(url, { cache: 'no-store' });
+                    const response = await fetch(url, { cache: 'default' });
                     if (!response.ok) throw new Error(String(response.status));
                     markdown = await response.text();
                     if (readmeRawLinkEl) readmeRawLinkEl.href = url;
@@ -1247,7 +1265,7 @@
         setupBackToTop();
         if (readmeRetryBtnEl) readmeRetryBtnEl.addEventListener('click', () => loadReadme());
         loadCaseLibrary();
-        loadReadme();
+        deferSectionLoad('readme', loadReadme);
     }
 
     if (document.readyState === 'loading') {
