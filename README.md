@@ -56,9 +56,9 @@
 可视化站点额外收录了 617 条公开案例，来源包括
 [freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)
 和 [YouMind-OpenLab/awesome-gpt-image-2](https://github.com/YouMind-OpenLab/awesome-gpt-image-2)。
-同步任务按 Prompt 去重，案例卡片保留作者、原始来源和上游详情链接，数据固定到同步时的提交版本。
+同步任务按 Prompt 去重，案例卡片保留作者、原始来源和上游详情链接，数据固定到案例源文件实际变化时的提交版本。
 
-社区案例每周一由 GitHub Actions 自动同步，也可以手动更新：
+GitHub Actions 每 6 小时检查一次上游；只有案例源文件变化且通过完整校验时才自动提交，也可以手动更新：
 
 ```bash
 python3 scripts/fetch_community_cases.py

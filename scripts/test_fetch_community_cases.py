@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -9,9 +11,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from fetch_community_cases import (
     build_merged_payload,
     build_payload,
+    choose_source_revision,
+    ensure_case_count_not_decreased,
     merge_cases,
     normalize_image,
     parse_youmind_cases,
+    validate_file,
 )
 
 
@@ -34,6 +39,7 @@ class CommunityCaseSyncTests(unittest.TestCase):
             ],
             "abc123",
             "2026-01-01T00:00:00Z",
+            "blob123",
         )
 
         item = payload["cases"][0]
@@ -45,6 +51,7 @@ class CommunityCaseSyncTests(unittest.TestCase):
             "freestylefly/awesome-gpt-image-2@abc123/data/images/case7.jpg",
         )
         self.assertEqual(payload["meta"]["count"], 1)
+        self.assertEqual(payload["meta"]["sourceBlobSha"], "blob123")
 
     def test_keeps_absolute_images(self) -> None:
         self.assertEqual(
@@ -134,12 +141,111 @@ Create a polished portrait
         ]
 
         payload = build_merged_payload(
-            source, "abc123", "2026-01-01", youmind, "def456", "2026-01-02"
+            source,
+            "abc123",
+            "2026-01-01",
+            "blob123",
+            youmind,
+            "def456",
+            "2026-01-02",
+            "blob456",
         )
 
         self.assertEqual(payload["meta"]["count"], 2)
         self.assertEqual(len(payload["meta"]["sources"]), 2)
         self.assertEqual(payload["meta"]["duplicatePromptCount"], 0)
+        self.assertEqual(
+            payload["meta"]["sources"][0]["sourceBlobSha"], "blob123"
+        )
+        self.assertEqual(
+            payload["meta"]["sources"][1]["sourceBlobSha"], "blob456"
+        )
+
+    def test_reuses_revision_when_source_blob_is_unchanged(self) -> None:
+        existing = {
+            "sourceCommit": "old-commit",
+            "sourceCommitDate": "2026-01-01",
+            "sourceBlobSha": "same-blob",
+        }
+
+        revision = choose_source_revision(
+            existing, "new-commit", "2026-01-02", "same-blob"
+        )
+
+        self.assertEqual(revision, ("old-commit", "2026-01-01"))
+
+    def test_uses_new_revision_when_source_blob_changes(self) -> None:
+        existing = {
+            "sourceCommit": "old-commit",
+            "sourceCommitDate": "2026-01-01",
+            "sourceBlobSha": "old-blob",
+        }
+
+        revision = choose_source_revision(
+            existing, "new-commit", "2026-01-02", "new-blob"
+        )
+
+        self.assertEqual(revision, ("new-commit", "2026-01-02"))
+
+    def test_reuses_revision_during_blob_metadata_migration(self) -> None:
+        existing = {
+            "sourceCommit": "old-commit",
+            "sourceCommitDate": "2026-01-01",
+        }
+
+        revision = choose_source_revision(
+            existing,
+            "new-commit",
+            "2026-01-02",
+            "same-blob",
+            previous_blob_sha="same-blob",
+        )
+
+        self.assertEqual(revision, ("old-commit", "2026-01-01"))
+
+    def test_refuses_to_shrink_an_existing_source(self) -> None:
+        with self.assertRaisesRegex(ValueError, "decreased from 517 to 516"):
+            ensure_case_count_not_decreased(
+                "reference", 516, {"availableCount": 517}
+            )
+
+    def test_validation_requires_source_blob_sha(self) -> None:
+        payload = build_merged_payload(
+            [
+                {
+                    "id": 7,
+                    "title": "Primary",
+                    "category": "Other Use Cases",
+                    "image": "https://example.com/primary.jpg",
+                    "prompt": "Primary prompt",
+                    "githubUrl": "https://example.com/primary",
+                }
+            ],
+            "abc123",
+            "2026-01-01",
+            "blob123",
+            [
+                {
+                    "id": "youmind-8",
+                    "title": "Secondary",
+                    "category": "Other Use Cases",
+                    "source": "youmind-awesome-gpt-image-2",
+                    "image": "https://example.com/secondary.jpg",
+                    "prompt": "Secondary prompt",
+                    "caseUrl": "https://example.com/secondary",
+                }
+            ],
+            "def456",
+            "2026-01-02",
+            "blob456",
+        )
+        del payload["meta"]["sources"][0]["sourceBlobSha"]
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "community-cases.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "sourceBlobSha"):
+                validate_file(path)
 
 
 if __name__ == "__main__":

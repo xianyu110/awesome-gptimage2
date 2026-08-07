@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import base64
 import json
+import os
 import re
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Tuple
@@ -53,12 +54,16 @@ YOUMIND_CATEGORY_MAP = {
 
 
 def fetch_json(url: str) -> Dict[str, Any]:
+    headers = {
+        "Accept": "application/vnd.github+json",
+        "User-Agent": "awesome-gptimage2-community-sync/1.0",
+    }
+    token = os.environ.get("GITHUB_TOKEN", "").strip()
+    if token:
+        headers["Authorization"] = f"Bearer {token}"
     req = request.Request(
         url,
-        headers={
-            "Accept": "application/vnd.github+json",
-            "User-Agent": "awesome-gptimage2-community-sync/1.0",
-        },
+        headers=headers,
     )
     with request.urlopen(req, timeout=60) as response:
         payload = json.loads(response.read().decode("utf-8"))
@@ -67,16 +72,8 @@ def fetch_json(url: str) -> Dict[str, Any]:
     return payload
 
 
-def fetch_repository_file(repository: str, path: str) -> Tuple[str, str, str]:
+def fetch_repository_blob_sha(repository: str, path: str, commit: str) -> str:
     api_root = f"https://api.github.com/repos/{repository}"
-    branch = fetch_json(f"{api_root}/branches/main")
-    commit = str(branch.get("commit", {}).get("sha") or "").strip()
-    commit_date = str(
-        branch.get("commit", {}).get("commit", {}).get("author", {}).get("date") or ""
-    ).strip()
-    if not commit:
-        raise ValueError(f"{repository} did not return a main commit")
-
     tree = fetch_json(f"{api_root}/git/trees/{commit}?recursive=1")
     source_entry = next(
         (
@@ -89,16 +86,29 @@ def fetch_repository_file(repository: str, path: str) -> Tuple[str, str, str]:
     blob_sha = str((source_entry or {}).get("sha") or "").strip()
     if not blob_sha:
         raise ValueError(f"Could not find {path} in {repository} at {commit}")
+    return blob_sha
 
+
+def fetch_repository_file(repository: str, path: str) -> Tuple[str, str, str, str]:
+    api_root = f"https://api.github.com/repos/{repository}"
+    branch = fetch_json(f"{api_root}/branches/main")
+    commit = str(branch.get("commit", {}).get("sha") or "").strip()
+    commit_date = str(
+        branch.get("commit", {}).get("commit", {}).get("author", {}).get("date") or ""
+    ).strip()
+    if not commit:
+        raise ValueError(f"{repository} did not return a main commit")
+
+    blob_sha = fetch_repository_blob_sha(repository, path, commit)
     blob = fetch_json(f"{api_root}/git/blobs/{blob_sha}")
     if blob.get("encoding") != "base64":
         raise ValueError(f"The {repository}/{path} blob was not base64 encoded")
     raw = base64.b64decode(str(blob.get("content") or "")).decode("utf-8")
-    return commit, commit_date, raw
+    return commit, commit_date, blob_sha, raw
 
 
-def fetch_source_cases() -> tuple[str, str, List[Dict[str, Any]]]:
-    commit, commit_date, raw = fetch_repository_file(
+def fetch_source_cases() -> tuple[str, str, str, List[Dict[str, Any]]]:
+    commit, commit_date, blob_sha, raw = fetch_repository_file(
         SOURCE_REPOSITORY, SOURCE_CASES_PATH
     )
     payload = json.loads(raw)
@@ -110,7 +120,7 @@ def fetch_source_cases() -> tuple[str, str, List[Dict[str, Any]]]:
         raise ValueError(
             f"Reference case count dropped below {MIN_SOURCE_CASES}: {len(normalized)}"
         )
-    return commit, commit_date, normalized
+    return commit, commit_date, blob_sha, normalized
 
 
 def markdown_section(body: str, heading: str) -> str:
@@ -212,8 +222,8 @@ def parse_youmind_cases(markdown: str) -> List[Dict[str, Any]]:
     return cases
 
 
-def fetch_youmind_cases() -> tuple[str, str, List[Dict[str, Any]]]:
-    commit, commit_date, markdown = fetch_repository_file(
+def fetch_youmind_cases() -> tuple[str, str, str, List[Dict[str, Any]]]:
+    commit, commit_date, blob_sha, markdown = fetch_repository_file(
         YOUMIND_REPOSITORY, YOUMIND_README_PATH
     )
     cases = parse_youmind_cases(markdown)
@@ -221,7 +231,7 @@ def fetch_youmind_cases() -> tuple[str, str, List[Dict[str, Any]]]:
         raise ValueError(
             f"YouMind case count dropped below {MIN_YOUMIND_CASES}: {len(cases)}"
         )
-    return commit, commit_date, cases
+    return commit, commit_date, blob_sha, cases
 
 
 def normalize_image(image: str, commit: str) -> str:
@@ -306,7 +316,10 @@ def validate_cases(cases: Iterable[Dict[str, Any]]) -> List[Dict[str, Any]]:
 
 
 def build_payload(
-    source_cases: Iterable[Dict[str, Any]], commit: str, commit_date: str
+    source_cases: Iterable[Dict[str, Any]],
+    commit: str,
+    commit_date: str,
+    blob_sha: str,
 ) -> Dict[str, Any]:
     cases = validate_cases(normalize_case(item, commit) for item in source_cases)
     return {
@@ -314,6 +327,7 @@ def build_payload(
             "sourceRepository": SOURCE_URL,
             "sourceCommit": commit,
             "sourceCommitDate": commit_date,
+            "sourceBlobSha": blob_sha,
             "sourceLicense": "MIT",
             "count": len(cases),
         },
@@ -342,9 +356,11 @@ def build_merged_payload(
     source_cases: Iterable[Dict[str, Any]],
     source_commit: str,
     source_commit_date: str,
+    source_blob_sha: str,
     youmind_cases: Iterable[Dict[str, Any]],
     youmind_commit: str,
     youmind_commit_date: str,
+    youmind_blob_sha: str,
 ) -> Dict[str, Any]:
     primary_cases = [normalize_case(item, source_commit) for item in source_cases]
     secondary_cases = list(youmind_cases)
@@ -364,6 +380,7 @@ def build_merged_payload(
                     "sourceRepository": SOURCE_URL,
                     "sourceCommit": source_commit,
                     "sourceCommitDate": source_commit_date,
+                    "sourceBlobSha": source_blob_sha,
                     "sourceLicense": "MIT",
                     "availableCount": len(primary_cases),
                     "includedCount": primary_included,
@@ -372,6 +389,7 @@ def build_merged_payload(
                     "sourceRepository": YOUMIND_URL,
                     "sourceCommit": youmind_commit,
                     "sourceCommitDate": youmind_commit_date,
+                    "sourceBlobSha": youmind_blob_sha,
                     "sourceLicense": "CC-BY-4.0",
                     "availableCount": len(secondary_cases),
                     "includedCount": youmind_included,
@@ -380,6 +398,87 @@ def build_merged_payload(
         },
         "cases": cases,
     }
+
+
+def load_existing_payload(path: Path) -> Dict[str, Any]:
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(payload, dict):
+        raise ValueError("Existing community case data must be an object")
+    return payload
+
+
+def find_source_metadata(
+    payload: Dict[str, Any], repository_url: str
+) -> Dict[str, Any]:
+    sources = payload.get("meta", {}).get("sources", [])
+    if not isinstance(sources, list):
+        return {}
+    return next(
+        (
+            source
+            for source in sources
+            if isinstance(source, dict)
+            and source.get("sourceRepository") == repository_url
+        ),
+        {},
+    )
+
+
+def ensure_case_count_not_decreased(
+    source_label: str, fetched_count: int, existing_source: Dict[str, Any]
+) -> None:
+    previous_count = int(existing_source.get("availableCount") or 0)
+    if previous_count and fetched_count < previous_count:
+        raise ValueError(
+            f"{source_label} case count decreased from {previous_count} "
+            f"to {fetched_count}; refusing to shrink the library"
+        )
+
+
+def choose_source_revision(
+    existing_source: Dict[str, Any],
+    fetched_commit: str,
+    fetched_commit_date: str,
+    fetched_blob_sha: str,
+    previous_blob_sha: str = "",
+) -> Tuple[str, str]:
+    existing_commit = str(existing_source.get("sourceCommit") or "").strip()
+    existing_commit_date = str(
+        existing_source.get("sourceCommitDate") or ""
+    ).strip()
+    existing_blob_sha = str(
+        existing_source.get("sourceBlobSha") or previous_blob_sha
+    ).strip()
+    if (
+        existing_commit
+        and existing_commit_date
+        and (
+            existing_commit == fetched_commit
+            or (existing_blob_sha and existing_blob_sha == fetched_blob_sha)
+        )
+    ):
+        return existing_commit, existing_commit_date
+    return fetched_commit, fetched_commit_date
+
+
+def resolve_previous_blob_sha(
+    repository: str,
+    path: str,
+    existing_source: Dict[str, Any],
+    fetched_commit: str,
+    fetched_blob_sha: str,
+) -> str:
+    stored_blob_sha = str(existing_source.get("sourceBlobSha") or "").strip()
+    if stored_blob_sha:
+        return stored_blob_sha
+    existing_commit = str(existing_source.get("sourceCommit") or "").strip()
+    if not existing_commit:
+        return ""
+    if existing_commit == fetched_commit:
+        return fetched_blob_sha
+    return fetch_repository_blob_sha(repository, path, existing_commit)
 
 
 def validate_file(path: Path) -> int:
@@ -398,6 +497,24 @@ def validate_file(path: Path) -> int:
     sources = payload.get("meta", {}).get("sources")
     if not isinstance(sources, list) or len(sources) < 2:
         raise ValueError("Community case metadata must contain both sources")
+    required_source_fields = {
+        "sourceRepository",
+        "sourceCommit",
+        "sourceCommitDate",
+        "sourceBlobSha",
+        "sourceLicense",
+    }
+    for source in sources:
+        if not isinstance(source, dict):
+            raise ValueError("Every community source must be an object")
+        missing_source_fields = sorted(
+            field for field in required_source_fields if not source.get(field)
+        )
+        if missing_source_fields:
+            raise ValueError(
+                "Community source is missing required metadata: "
+                + ", ".join(missing_source_fields)
+            )
     included_count = sum(int(source.get("includedCount") or 0) for source in sources)
     available_count = sum(int(source.get("availableCount") or 0) for source in sources)
     duplicate_count = int(payload.get("meta", {}).get("duplicatePromptCount") or 0)
@@ -423,15 +540,58 @@ def main() -> int:
     if args.check:
         return validate_file(args.output)
 
-    commit, commit_date, source_cases = fetch_source_cases()
-    youmind_commit, youmind_commit_date, youmind_cases = fetch_youmind_cases()
-    payload = build_merged_payload(
-        source_cases,
+    existing_payload = load_existing_payload(args.output)
+    existing_source = find_source_metadata(existing_payload, SOURCE_URL)
+    existing_youmind = find_source_metadata(existing_payload, YOUMIND_URL)
+
+    commit, commit_date, source_blob_sha, source_cases = fetch_source_cases()
+    youmind_commit, youmind_commit_date, youmind_blob_sha, youmind_cases = (
+        fetch_youmind_cases()
+    )
+    ensure_case_count_not_decreased(
+        SOURCE_REPOSITORY, len(source_cases), existing_source
+    )
+    ensure_case_count_not_decreased(
+        YOUMIND_REPOSITORY, len(youmind_cases), existing_youmind
+    )
+
+    previous_source_blob_sha = resolve_previous_blob_sha(
+        SOURCE_REPOSITORY,
+        SOURCE_CASES_PATH,
+        existing_source,
+        commit,
+        source_blob_sha,
+    )
+    previous_youmind_blob_sha = resolve_previous_blob_sha(
+        YOUMIND_REPOSITORY,
+        YOUMIND_README_PATH,
+        existing_youmind,
+        youmind_commit,
+        youmind_blob_sha,
+    )
+    source_revision, source_revision_date = choose_source_revision(
+        existing_source,
         commit,
         commit_date,
-        youmind_cases,
+        source_blob_sha,
+        previous_source_blob_sha,
+    )
+    youmind_revision, youmind_revision_date = choose_source_revision(
+        existing_youmind,
         youmind_commit,
         youmind_commit_date,
+        youmind_blob_sha,
+        previous_youmind_blob_sha,
+    )
+    payload = build_merged_payload(
+        source_cases,
+        source_revision,
+        source_revision_date,
+        source_blob_sha,
+        youmind_cases,
+        youmind_revision,
+        youmind_revision_date,
+        youmind_blob_sha,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(
@@ -440,7 +600,7 @@ def main() -> int:
     )
     print(
         f"Synced {len(payload['cases'])} community cases from "
-        f"{commit[:8]} and {youmind_commit[:8]} to {args.output}"
+        f"{source_revision[:8]} and {youmind_revision[:8]} to {args.output}"
     )
     return 0
 

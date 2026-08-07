@@ -2,7 +2,7 @@ name: Sync Community Cases
 
 on:
   schedule:
-    - cron: "17 3 * * 1"
+    - cron: "17 */6 * * *"
   workflow_dispatch:
 
 env:
@@ -18,9 +18,13 @@ concurrency:
 jobs:
   sync:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          ref: main
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v6
@@ -28,9 +32,11 @@ jobs:
           python-version: "3.11"
 
       - name: Run sync tests
-        run: python -m unittest scripts/test_fetch_community_cases.py
+        run: python -m unittest discover -s scripts -p "test_*.py"
 
       - name: Fetch community cases
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/fetch_community_cases.py
 
       - name: Build canonical case library
@@ -41,6 +47,7 @@ jobs:
           python scripts/fetch_community_cases.py --check
           python scripts/build_case_library.py check
           python skills/manage-gpt-image-cases/scripts/case_library.py validate --data data/case-library.json
+          node scripts/check_site.mjs
 
       - name: Commit and push if changed
         run: |
@@ -53,4 +60,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/community-cases.json data/case-library.json
           git commit -m "chore(data): sync case library"
-          git push
+          git pull --rebase origin main
+          git push origin HEAD:main

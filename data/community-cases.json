@@ -7,14 +7,16 @@
         "sourceRepository": "https://github.com/freestylefly/awesome-gpt-image-2",
         "sourceCommit": "76fcd0e6b3961ef2b041547aac654f1efd1ef270",
         "sourceCommitDate": "2026-07-22T16:57:17Z",
+        "sourceBlobSha": "0c6d5fcecec08af16e082c13989c1136c22c9622",
         "sourceLicense": "MIT",
         "availableCount": 517,
         "includedCount": 497
       },
       {
         "sourceRepository": "https://github.com/YouMind-OpenLab/awesome-gpt-image-2",
-        "sourceCommit": "6d110768c565962e500b62862f530df9fdf608fa",
-        "sourceCommitDate": "2026-08-06T13:39:19Z",
+        "sourceCommit": "f6f1931cf5f5c0149868aa7ea1d5b642649363f2",
+        "sourceCommitDate": "2026-08-07T02:04:37Z",
+        "sourceBlobSha": "72619b5e5ca60759c3f85e69b0e440ea6c08a42e",
         "sourceLicense": "CC-BY-4.0",
         "availableCount": 120,
         "includedCount": 120
