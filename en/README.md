@@ -6,7 +6,7 @@
 
 A continuously updated English resource for prompt frameworks, real-world workflows, and reusable GPT-Image-2 examples.
 
-Curated from hands-on testing and public case studies | 630+ searchable prompts and cases | 10+ practical scenarios
+Curated from hands-on testing and public case studies | 770+ searchable prompts and cases | 10+ practical scenarios
 
 </div>
 
@@ -22,16 +22,20 @@ Curated from hands-on testing and public case studies | 630+ searchable prompts 
 
 ## Community Case Library
 
-The visual site includes 617 public cases from
+The visual site includes 675 public cases from
 [freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)
 and [YouMind-OpenLab/awesome-gpt-image-2](https://github.com/YouMind-OpenLab/awesome-gpt-image-2).
 The sync deduplicates normalized prompts. Every imported card keeps its author,
 upstream case link, and original source link when available. Generated data is
 pinned to the source commits and refreshed by a weekly GitHub Actions workflow.
+Valid historical cases are retained while new upstream cases are appended,
+instead of rotating a fixed recent window.
 
 ```bash
 python3 scripts/fetch_community_cases.py
 python3 scripts/fetch_community_cases.py --check
+# One-time migration of an older community-cases.json snapshot
+python3 scripts/fetch_community_cases.py --history-only --history-from /path/to/older/community-cases.json
 ```
 
 See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the MIT and CC BY 4.0 notices.
@@ -40,7 +44,7 @@ See [THIRD_PARTY_NOTICES.md](../THIRD_PARTY_NOTICES.md) for the MIT and CC BY 4.
 
 ## Structured Library, Skill, and Pipeline
 
-[`data/case-library.json`](../data/case-library.json) is now the shared data contract for the site, automation, and agents. It contains 714 deduplicated records: 617 shared community cases, 697 records in the Chinese view, and 634 in the English view. Every case has a stable ID, locale, category key, source and license, full prompt, image, tags, and SHA-256 fingerprint. Eight removed duplicate IDs remain available through aliases.
+[`data/case-library.json`](../data/case-library.json) is now the shared data contract for the site, automation, and agents. It contains 772 deduplicated records: 675 shared community cases, 755 records in the Chinese view, and 692 in the English view. Every case has a stable ID, locale, category key, source and license, full prompt, image, tags, and SHA-256 fingerprint. Eight removed duplicate IDs remain available through aliases.
 
 ```bash
 python3 scripts/build_case_library.py build

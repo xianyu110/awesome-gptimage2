@@ -30,10 +30,10 @@ class CaseLibraryBuildTests(unittest.TestCase):
     def test_builds_expected_locale_views(self) -> None:
         meta = self.payload["meta"]
 
-        self.assertEqual(meta["totalRecords"], 714)
-        self.assertEqual(meta["uniquePrompts"], 714)
+        self.assertEqual(meta["totalRecords"], 772)
+        self.assertEqual(meta["uniquePrompts"], 772)
         self.assertEqual(meta["duplicateRecordsRemoved"], 8)
-        self.assertEqual(meta["viewCounts"], {"zh-CN": 697, "en": 634})
+        self.assertEqual(meta["viewCounts"], {"zh-CN": 755, "en": 692})
 
     def test_preserves_aliases_for_removed_duplicates(self) -> None:
         aliases = self.payload["meta"]["aliases"]

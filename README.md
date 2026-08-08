@@ -8,13 +8,13 @@
 
 面向设计师、运营、电商团队、内容创作者和 AI 图像工作流玩家。
 
-整合自 6 篇深度实测文章 | 690+ 可检索提示词与案例 | 覆盖 10+ 场景 | 最新 X Prompt 自动同步
+整合自 6 篇深度实测文章 | 770+ 可检索提示词与案例 | 覆盖 10+ 场景 | 最新 X Prompt 自动同步
 
 中文版：<https://awesome.gptimage2.asia/> · English: <https://awesome.gptimage2.asia/en/>
 
 [![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-2ea44f?style=for-the-badge)](https://xianyu110.github.io/awesome-gptimage2/)
 [![GPT-Image-2](https://img.shields.io/badge/Model-GPT--Image--2-blue?style=for-the-badge)](https://chatgpt.com)
-[![Prompts](https://img.shields.io/badge/Prompts-590%2B-ff73be?style=for-the-badge)](#提示词合集)
+[![Prompts](https://img.shields.io/badge/Prompts-770%2B-ff73be?style=for-the-badge)](#提示词合集)
 [![Scenes](https://img.shields.io/badge/Scenes-10%2B%20Case-53ffc6?style=for-the-badge)](#提示词合集)
 
 </div>
@@ -53,16 +53,18 @@
 
 ## 社区案例库
 
-可视化站点额外收录了 617 条公开案例，来源包括
+可视化站点额外收录了 675 条公开案例，来源包括
 [freestylefly/awesome-gpt-image-2](https://github.com/freestylefly/awesome-gpt-image-2)
 和 [YouMind-OpenLab/awesome-gpt-image-2](https://github.com/YouMind-OpenLab/awesome-gpt-image-2)。
 同步任务按 Prompt 去重，案例卡片保留作者、原始来源和上游详情链接，数据固定到案例源文件实际变化时的提交版本。
 
-GitHub Actions 每 6 小时检查一次上游；只有案例源文件变化且通过完整校验时才自动提交，也可以手动更新：
+GitHub Actions 每 6 小时检查一次上游；同步会保留历史合法案例并追加新案例，只有案例源文件变化且通过完整校验时才自动提交，也可以手动更新：
 
 ```bash
 python3 scripts/fetch_community_cases.py
 python3 scripts/fetch_community_cases.py --check
+# 首次迁移旧快照时，可把历史 community-cases.json 合并进当前快照
+python3 scripts/fetch_community_cases.py --history-only --history-from /path/to/older/community-cases.json
 ```
 
 第三方内容许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
@@ -71,7 +73,7 @@ python3 scripts/fetch_community_cases.py --check
 
 ## 结构化案例库、Skill 与数据流水线
 
-仓库现在以 [`data/case-library.json`](data/case-library.json) 作为站点、自动化和 Agent 共用的数据契约：共 714 条去重记录，其中 617 条为跨语言社区案例，中文视图 697 条，英文视图 634 条。每条记录都有稳定 ID、locale、分类键、来源与许可、完整 Prompt、图片、标签和 SHA-256 指纹；8 个历史重复 ID 通过 aliases 保持深链接兼容。
+仓库现在以 [`data/case-library.json`](data/case-library.json) 作为站点、自动化和 Agent 共用的数据契约：共 772 条去重记录，其中 675 条为跨语言社区案例，中文视图 755 条，英文视图 692 条。每条记录都有稳定 ID、locale、分类键、来源与许可、完整 Prompt、图片、标签和 SHA-256 指纹；8 个历史重复 ID 通过 aliases 保持深链接兼容。
 
 构建、校验、统计和检索：
 

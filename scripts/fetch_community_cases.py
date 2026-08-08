@@ -352,6 +352,28 @@ def merge_cases(*case_groups: Iterable[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return validate_cases(merged)
 
 
+def merge_source_history(
+    current_cases: Iterable[Dict[str, Any]],
+    existing_cases: Iterable[Dict[str, Any]],
+    source_key: str,
+) -> List[Dict[str, Any]]:
+    current = validate_cases(current_cases)
+    current_by_id = {str(item["id"]): item for item in current}
+    merged: List[Dict[str, Any]] = list(current)
+    seen_ids = set(current_by_id)
+
+    for existing in existing_cases:
+        if existing.get("source") != source_key:
+            continue
+        case_id = str(existing.get("id") or "")
+        if not case_id or case_id in seen_ids:
+            continue
+        merged.append(existing)
+        seen_ids.add(case_id)
+
+    return validate_cases(merged)
+
+
 def build_merged_payload(
     source_cases: Iterable[Dict[str, Any]],
     source_commit: str,
@@ -361,9 +383,19 @@ def build_merged_payload(
     youmind_commit: str,
     youmind_commit_date: str,
     youmind_blob_sha: str,
+    existing_cases: Iterable[Dict[str, Any]] = (),
 ) -> Dict[str, Any]:
-    primary_cases = [normalize_case(item, source_commit) for item in source_cases]
-    secondary_cases = list(youmind_cases)
+    history = list(existing_cases)
+    current_primary_cases = [
+        normalize_case(item, source_commit) for item in source_cases
+    ]
+    current_secondary_cases = list(youmind_cases)
+    primary_cases = merge_source_history(
+        current_primary_cases, history, "awesome-gpt-image-2"
+    )
+    secondary_cases = merge_source_history(
+        current_secondary_cases, history, "youmind-awesome-gpt-image-2"
+    )
     cases = merge_cases(primary_cases, secondary_cases)
     primary_included = sum(item["source"] == "awesome-gpt-image-2" for item in cases)
     youmind_included = sum(
@@ -382,7 +414,10 @@ def build_merged_payload(
                     "sourceCommitDate": source_commit_date,
                     "sourceBlobSha": source_blob_sha,
                     "sourceLicense": "MIT",
+                    "currentAvailableCount": len(current_primary_cases),
                     "availableCount": len(primary_cases),
+                    "historicalCount": len(primary_cases)
+                    - len(current_primary_cases),
                     "includedCount": primary_included,
                 },
                 {
@@ -391,10 +426,90 @@ def build_merged_payload(
                     "sourceCommitDate": youmind_commit_date,
                     "sourceBlobSha": youmind_blob_sha,
                     "sourceLicense": "CC-BY-4.0",
+                    "currentAvailableCount": len(current_secondary_cases),
                     "availableCount": len(secondary_cases),
+                    "historicalCount": len(secondary_cases)
+                    - len(current_secondary_cases),
                     "includedCount": youmind_included,
                 },
             ],
+        },
+        "cases": cases,
+    }
+
+
+def source_key_for_repository(repository_url: str) -> str:
+    if repository_url == SOURCE_URL:
+        return "awesome-gpt-image-2"
+    if repository_url == YOUMIND_URL:
+        return "youmind-awesome-gpt-image-2"
+    raise ValueError(f"Unsupported community source: {repository_url}")
+
+
+def accumulate_existing_payload(
+    current_payload: Dict[str, Any], history_cases: Iterable[Dict[str, Any]]
+) -> Dict[str, Any]:
+    current_cases = validate_cases(current_payload.get("cases") or [])
+    source_metadata = current_payload.get("meta", {}).get("sources")
+    if not isinstance(source_metadata, list) or not source_metadata:
+        raise ValueError("Current payload has no source metadata")
+
+    available_history = current_cases + list(history_cases)
+    source_groups: Dict[str, List[Dict[str, Any]]] = {}
+    updated_sources: List[Dict[str, Any]] = []
+
+    for source in source_metadata:
+        if not isinstance(source, dict):
+            raise ValueError("Every community source must be an object")
+        source_key = source_key_for_repository(
+            str(source.get("sourceRepository") or "")
+        )
+        source_cases = [
+            item for item in current_cases if item.get("source") == source_key
+        ]
+        current_available_count = int(
+            source.get("currentAvailableCount")
+            or source.get("availableCount")
+            or len(source_cases)
+        )
+        current_included_count = int(
+            source.get("includedCount") or len(source_cases)
+        )
+        current_window = source_cases[:current_included_count]
+        accumulated = merge_source_history(
+            current_window, available_history, source_key
+        )
+        historical_count = len(accumulated) - len(current_window)
+        source_groups[source_key] = accumulated
+        updated_sources.append(
+            {
+                **source,
+                "currentAvailableCount": current_available_count,
+                "availableCount": current_available_count + historical_count,
+                "historicalCount": historical_count,
+            }
+        )
+
+    ordered_groups = [
+        source_groups[source_key_for_repository(source["sourceRepository"])]
+        for source in updated_sources
+    ]
+    cases = merge_cases(*ordered_groups)
+    for source in updated_sources:
+        source_key = source_key_for_repository(source["sourceRepository"])
+        source["includedCount"] = sum(
+            item.get("source") == source_key for item in cases
+        )
+
+    return {
+        "meta": {
+            **current_payload.get("meta", {}),
+            "count": len(cases),
+            "duplicatePromptCount": sum(
+                int(source["availableCount"]) for source in updated_sources
+            )
+            - len(cases),
+            "sources": updated_sources,
         },
         "cases": cases,
     }
@@ -429,7 +544,11 @@ def find_source_metadata(
 def ensure_case_count_not_decreased(
     source_label: str, fetched_count: int, existing_source: Dict[str, Any]
 ) -> None:
-    previous_count = int(existing_source.get("availableCount") or 0)
+    previous_count = int(
+        existing_source.get("currentAvailableCount")
+        or existing_source.get("availableCount")
+        or 0
+    )
     if previous_count and fetched_count < previous_count:
         raise ValueError(
             f"{source_label} case count decreased from {previous_count} "
@@ -497,24 +616,47 @@ def validate_file(path: Path) -> int:
     sources = payload.get("meta", {}).get("sources")
     if not isinstance(sources, list) or len(sources) < 2:
         raise ValueError("Community case metadata must contain both sources")
-    required_source_fields = {
+    required_source_text_fields = {
         "sourceRepository",
         "sourceCommit",
         "sourceCommitDate",
         "sourceBlobSha",
         "sourceLicense",
     }
+    required_source_count_fields = {
+        "currentAvailableCount",
+        "availableCount",
+        "historicalCount",
+        "includedCount",
+    }
     for source in sources:
         if not isinstance(source, dict):
             raise ValueError("Every community source must be an object")
         missing_source_fields = sorted(
-            field for field in required_source_fields if not source.get(field)
+            field
+            for field in required_source_text_fields
+            if not source.get(field)
+        )
+        missing_source_fields.extend(
+            sorted(
+                field
+                for field in required_source_count_fields
+                if field not in source
+            )
         )
         if missing_source_fields:
             raise ValueError(
                 "Community source is missing required metadata: "
                 + ", ".join(missing_source_fields)
             )
+        current_count = int(source.get("currentAvailableCount") or 0)
+        historical_count = int(source.get("historicalCount") or 0)
+        source_available_count = int(source.get("availableCount") or 0)
+        source_included_count = int(source.get("includedCount") or 0)
+        if current_count + historical_count != source_available_count:
+            raise ValueError("Source historical counts do not match availability")
+        if source_included_count > source_available_count:
+            raise ValueError("Source included count exceeds availability")
     included_count = sum(int(source.get("includedCount") or 0) for source in sources)
     available_count = sum(int(source.get("availableCount") or 0) for source in sources)
     duplicate_count = int(payload.get("meta", {}).get("duplicatePromptCount") or 0)
@@ -535,14 +677,44 @@ def main() -> int:
         default=root / "data" / "community-cases.json",
     )
     parser.add_argument("--check", action="store_true")
+    parser.add_argument(
+        "--history-from",
+        action="append",
+        type=Path,
+        default=[],
+        help="Merge cases from an older community-cases.json snapshot",
+    )
+    parser.add_argument(
+        "--history-only",
+        action="store_true",
+        help="Merge snapshots without fetching current upstream data",
+    )
     args = parser.parse_args()
 
     if args.check:
         return validate_file(args.output)
 
     existing_payload = load_existing_payload(args.output)
+    existing_cases = list(existing_payload.get("cases") or [])
+    for history_path in args.history_from:
+        history_payload = load_existing_payload(history_path)
+        history_cases = history_payload.get("cases")
+        if not isinstance(history_cases, list):
+            raise ValueError(f"History payload has no cases array: {history_path}")
+        existing_cases.extend(history_cases)
     existing_source = find_source_metadata(existing_payload, SOURCE_URL)
     existing_youmind = find_source_metadata(existing_payload, YOUMIND_URL)
+
+    if args.history_only:
+        if not existing_payload:
+            raise ValueError("--history-only requires an existing output payload")
+        payload = accumulate_existing_payload(existing_payload, existing_cases)
+        args.output.write_text(
+            json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+            encoding="utf-8",
+        )
+        print(f"Accumulated {len(payload['cases'])} community cases in {args.output}")
+        return 0
 
     commit, commit_date, source_blob_sha, source_cases = fetch_source_cases()
     youmind_commit, youmind_commit_date, youmind_blob_sha, youmind_cases = (
@@ -592,6 +764,7 @@ def main() -> int:
         youmind_revision,
         youmind_revision_date,
         youmind_blob_sha,
+        existing_cases,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(

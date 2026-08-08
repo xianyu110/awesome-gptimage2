@@ -9,11 +9,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from fetch_community_cases import (
+    accumulate_existing_payload,
     build_merged_payload,
     build_payload,
     choose_source_revision,
     ensure_case_count_not_decreased,
     merge_cases,
+    merge_source_history,
     normalize_image,
     parse_youmind_cases,
     validate_file,
@@ -117,6 +119,30 @@ Create a polished portrait
             [item["id"] for item in merge_cases([first], [duplicate])], ["first"]
         )
 
+    def test_merge_source_history_updates_current_and_keeps_missing_ids(self) -> None:
+        def case(case_id: str, prompt: str) -> dict:
+            return {
+                "id": case_id,
+                "title": case_id,
+                "category": "Other Use Cases",
+                "source": "youmind-awesome-gpt-image-2",
+                "image": f"https://example.com/{case_id}.jpg",
+                "prompt": prompt,
+                "caseUrl": f"https://example.com/{case_id}",
+            }
+
+        merged = merge_source_history(
+            [case("youmind-1", "Updated prompt"), case("youmind-3", "New prompt")],
+            [case("youmind-1", "Old prompt"), case("youmind-2", "Historical prompt")],
+            "youmind-awesome-gpt-image-2",
+        )
+
+        self.assertEqual(
+            [item["id"] for item in merged],
+            ["youmind-1", "youmind-3", "youmind-2"],
+        )
+        self.assertEqual(merged[0]["prompt"], "Updated prompt")
+
     def test_builds_multi_source_metadata(self) -> None:
         source = [
             {
@@ -160,6 +186,113 @@ Create a polished portrait
         self.assertEqual(
             payload["meta"]["sources"][1]["sourceBlobSha"], "blob456"
         )
+        self.assertEqual(
+            payload["meta"]["sources"][1]["currentAvailableCount"], 1
+        )
+        self.assertEqual(payload["meta"]["sources"][1]["historicalCount"], 0)
+
+    def test_build_merged_payload_counts_accumulated_history(self) -> None:
+        source = [
+            {
+                "id": 7,
+                "title": "Primary",
+                "category": "Other Use Cases",
+                "image": "https://example.com/primary.jpg",
+                "prompt": "Primary prompt",
+                "githubUrl": "https://example.com/primary",
+            }
+        ]
+        youmind = [
+            {
+                "id": "youmind-8",
+                "title": "Current",
+                "category": "Other Use Cases",
+                "source": "youmind-awesome-gpt-image-2",
+                "image": "https://example.com/current.jpg",
+                "prompt": "Current prompt",
+                "caseUrl": "https://example.com/current",
+            }
+        ]
+        history = [
+            {
+                "id": "youmind-9",
+                "title": "Historical",
+                "category": "Other Use Cases",
+                "source": "youmind-awesome-gpt-image-2",
+                "image": "https://example.com/history.jpg",
+                "prompt": "Historical prompt",
+                "caseUrl": "https://example.com/history",
+            }
+        ]
+
+        payload = build_merged_payload(
+            source,
+            "abc123",
+            "2026-01-01",
+            "blob123",
+            youmind,
+            "def456",
+            "2026-01-02",
+            "blob456",
+            history,
+        )
+
+        self.assertEqual(payload["meta"]["count"], 3)
+        secondary = payload["meta"]["sources"][1]
+        self.assertEqual(secondary["currentAvailableCount"], 1)
+        self.assertEqual(secondary["availableCount"], 2)
+        self.assertEqual(secondary["historicalCount"], 1)
+        self.assertEqual(secondary["includedCount"], 2)
+
+    def test_accumulates_history_without_fetching(self) -> None:
+        current = build_merged_payload(
+            [
+                {
+                    "id": 7,
+                    "title": "Primary",
+                    "category": "Other Use Cases",
+                    "image": "https://example.com/primary.jpg",
+                    "prompt": "Primary prompt",
+                    "githubUrl": "https://example.com/primary",
+                }
+            ],
+            "abc123",
+            "2026-01-01",
+            "blob123",
+            [
+                {
+                    "id": "youmind-8",
+                    "title": "Current",
+                    "category": "Other Use Cases",
+                    "source": "youmind-awesome-gpt-image-2",
+                    "image": "https://example.com/current.jpg",
+                    "prompt": "Current prompt",
+                    "caseUrl": "https://example.com/current",
+                }
+            ],
+            "def456",
+            "2026-01-02",
+            "blob456",
+        )
+        history = [
+            {
+                "id": "youmind-9",
+                "title": "Historical",
+                "category": "Other Use Cases",
+                "source": "youmind-awesome-gpt-image-2",
+                "image": "https://example.com/history.jpg",
+                "prompt": "Historical prompt",
+                "caseUrl": "https://example.com/history",
+            }
+        ]
+
+        payload = accumulate_existing_payload(current, history)
+
+        self.assertEqual(payload["meta"]["count"], 3)
+        secondary = payload["meta"]["sources"][1]
+        self.assertEqual(secondary["currentAvailableCount"], 1)
+        self.assertEqual(secondary["availableCount"], 2)
+        self.assertEqual(secondary["historicalCount"], 1)
 
     def test_reuses_revision_when_source_blob_is_unchanged(self) -> None:
         existing = {
@@ -209,6 +342,13 @@ Create a polished portrait
                 "reference", 516, {"availableCount": 517}
             )
 
+    def test_uses_current_window_for_accumulated_source_guard(self) -> None:
+        ensure_case_count_not_decreased(
+            "reference",
+            120,
+            {"currentAvailableCount": 120, "availableCount": 178},
+        )
+
     def test_validation_requires_source_blob_sha(self) -> None:
         payload = build_merged_payload(
             [
@@ -246,6 +386,42 @@ Create a polished portrait
             path.write_text(json.dumps(payload), encoding="utf-8")
             with self.assertRaisesRegex(ValueError, "sourceBlobSha"):
                 validate_file(path)
+
+    def test_validation_accepts_zero_historical_count(self) -> None:
+        payload = build_merged_payload(
+            [
+                {
+                    "id": 7,
+                    "title": "Primary",
+                    "category": "Other Use Cases",
+                    "image": "https://example.com/primary.jpg",
+                    "prompt": "Primary prompt",
+                    "githubUrl": "https://example.com/primary",
+                }
+            ],
+            "abc123",
+            "2026-01-01",
+            "blob123",
+            [
+                {
+                    "id": "youmind-8",
+                    "title": "Secondary",
+                    "category": "Other Use Cases",
+                    "source": "youmind-awesome-gpt-image-2",
+                    "image": "https://example.com/secondary.jpg",
+                    "prompt": "Secondary prompt",
+                    "caseUrl": "https://example.com/secondary",
+                }
+            ],
+            "def456",
+            "2026-01-02",
+            "blob456",
+        )
+
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "community-cases.json"
+            path.write_text(json.dumps(payload), encoding="utf-8")
+            self.assertEqual(validate_file(path), 0)
 
 
 if __name__ == "__main__":
