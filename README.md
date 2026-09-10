@@ -19,6 +19,10 @@
 
 </div>
 
+> **最新：Images 2.5 已单独建站**（≠ 本仓库的 GPT Image 2 / Images 2.0）  
+> 玩法画廊（94+ 案例）：https://xianyu110.github.io/awesome-gpt-image2.5/ · [GitHub](https://github.com/xianyu110/awesome-gpt-image2.5)  
+> 国内使用汇总：https://xianyu110.github.io/gptimage2.5/ · 工作流 Skill：https://xianyu110.github.io/awesome-gpt-image2.5/skills.html
+
 ---
 
 ## 🔗 MaynorAI 高星项目导航
@@ -30,6 +34,8 @@
 - [awesome-chatgpt-project](https://github.com/xianyu110/awesome-chatgpt-project)：ChatGPT 注册、项目资源和高效使用技巧整理，帮助新用户快速入门 AI 工具。
 - [awesome-claudcode-tutorial](https://github.com/xianyu110/awesome-claudcode-tutorial)：Claude Code 中文教程，从基础使用到团队级开发工作流。
 - [awesome-gptimage2](https://github.com/xianyu110/awesome-gptimage2)：GPT Image 2 中文资料站，聚焦模型能力、提示词框架和商业图片生成场景。
+- [awesome-gpt-image2.5](https://github.com/xianyu110/awesome-gpt-image2.5)：ChatGPT Images 2.5（Flare / Sunburst）玩法画廊与可抄工作流 · [Pages](https://xianyu110.github.io/awesome-gpt-image2.5/)。
+- [gptimage2.5](https://github.com/xianyu110/gptimage2.5)：Images 2.5 国内使用汇总与实测 · [Pages](https://xianyu110.github.io/gptimage2.5/)。
 - [CodexPlusPlus](https://github.com/xianyu110/CodexPlusPlus)：Codex App 外部增强启动器，通过 DevTools 协议注入增强能力，不修改原始安装文件。
 
 ## 快速开始
@@ -42,12 +48,21 @@
 
 常用入口：
 
+**Images 2.5（推荐先看）**
+
+- 玩法画廊 / 案例：<https://xianyu110.github.io/awesome-gpt-image2.5/>
+- 工作流 Skill：<https://xianyu110.github.io/awesome-gpt-image2.5/skills.html>
+- 国内使用汇总：<https://xianyu110.github.io/gptimage2.5/>
+- 仓库：<https://github.com/xianyu110/awesome-gpt-image2.5> · <https://github.com/xianyu110/gptimage2.5>
+
+**GPT Image 2（本站）**
+
 - 官网使用：<https://chatgpt.com/>
 - 国内使用地址：<https://chatgpt-plus.top/list/#/home>
 - API 使用地址：<https://apipro.maynor1024.live/>
 - Codex 使用：<https://maynorai.jichiyun.sbs/buy/13>
 - 国外使用地址：<https://gptimage2.asia/>
-- 英文版站点：<https://awesome.gptimage2.asia/en/>
+- 本站中文 / 英文：<https://awesome.gptimage2.asia/> · <https://awesome.gptimage2.asia/en/>
 
 > 第三方入口请自行确认可用性、价格和数据安全；重要素材建议优先使用官方或可信环境。
 
