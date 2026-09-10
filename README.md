@@ -59,7 +59,7 @@
 
 - 官网使用：<https://chatgpt.com/>
 - 国内使用地址：<https://chatgpt-plus.top/list/#/home>
-- API 使用地址：<https://apipro.maynor1024.live/>
+- API 使用地址：<https://tryallapi.com/>
 - Codex 使用：<https://maynorai.jichiyun.sbs/buy/13>
 - 国外使用地址：<https://gptimage2.asia/>
 - 本站中文 / 英文：<https://awesome.gptimage2.asia/> · <https://awesome.gptimage2.asia/en/>

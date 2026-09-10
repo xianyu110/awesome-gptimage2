@@ -29,7 +29,7 @@ def iso_utc_now() -> str:
 
 
 def normalize_base_url(value: str) -> str:
-    base = value.strip() or "http://apipro.maynor1024.live/v1"
+    base = value.strip() or "https://tryallapi.com/v1"
     return base.rstrip("/")
 
 
@@ -394,7 +394,7 @@ def normalize_output(
             "count": len(filtered_items),
             "date_count": len(date_groups),
             "dropped_count": max(0, len(normalized_items) - len(filtered_items)),
-            "provider": "apipro.maynor1024.live",
+            "provider": "tryallapi.com",
             "base_url": base_url,
             "model": model,
             "filters": {
@@ -500,7 +500,7 @@ def main() -> int:
         print("Missing required env: APIPRO_API_KEY", file=sys.stderr)
         return 2
 
-    base_url = normalize_base_url(os.getenv("APIPRO_BASE_URL", "http://apipro.maynor1024.live/v1"))
+    base_url = normalize_base_url(os.getenv("APIPRO_BASE_URL", "https://tryallapi.com/v1"))
     model = os.getenv("APIPRO_MODEL", "grok-4.1-fast").strip() or "grok-4.1-fast"
     fallback_models_raw = os.getenv("APIPRO_FALLBACK_MODELS", "").strip()
     query = os.getenv(

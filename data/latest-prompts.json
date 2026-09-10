@@ -7,8 +7,8 @@
     "count": 35,
     "date_count": 10,
     "dropped_count": 0,
-    "provider": "apipro.maynor1024.live",
-    "base_url": "http://apipro.maynor1024.live/v1",
+    "provider": "tryallapi.com",
+    "base_url": "https://tryallapi.com/v1",
     "model": "grok-4.1",
     "filters": {
       "min_views": 0,
